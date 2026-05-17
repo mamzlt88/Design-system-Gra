@@ -24,6 +24,21 @@ npm run build-storybook
 npm run build
 ```
 
+## Storybook Review
+
+Local review:
+
+```bash
+npm install
+npm run storybook
+```
+
+Shared review:
+
+- GitLab CI builds Storybook on every branch update.
+- The `pages` job publishes `storybook-static` as a GitLab Pages review site.
+- After the pipeline finishes, open the GitLab job or project Pages section to copy the live review URL.
+
 ## Current Agent Step
 
 The agent is in Step 08 Validation.
