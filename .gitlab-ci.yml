@@ -18,6 +18,7 @@ validate-storybook:
     - npm run build
     - npm run build-storybook
   artifacts:
+    expose_as: Storybook static build
     when: always
     paths:
       - storybook-static/
@@ -35,6 +36,9 @@ pages:
     paths:
       - public
     expire_in: 1 week
+  environment:
+    name: storybook/$CI_COMMIT_REF_SLUG
+    url: $CI_PAGES_URL
   rules:
     - if: '$CI_COMMIT_BRANCH == "feature/design-system-agent"'
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
