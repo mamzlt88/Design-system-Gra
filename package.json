@@ -1,0 +1,26 @@
+{
+  "name": "design-system-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc --noEmit",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "^8.6.18",
+    "@storybook/addon-essentials": "^8.6.18",
+    "@storybook/react": "^8.6.18",
+    "@storybook/react-vite": "^8.6.18",
+    "@storybook/test": "^8.6.18",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "storybook": "^8.6.18",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.12"
+  }
+}

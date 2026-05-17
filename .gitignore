@@ -1,0 +1,10 @@
+node_modules
+storybook-static
+dist
+.DS_Store
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+design/figma-file.snapshot.json

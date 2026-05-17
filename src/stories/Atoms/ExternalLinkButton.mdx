@@ -1,0 +1,62 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as ExternalLinkButtonStories from './ExternalLinkButton.stories';
+
+<Meta of={ExternalLinkButtonStories} />
+
+# ExternalLinkButton
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=9182-7501)
+
+## Overview
+
+ExternalLinkButton opens a page outside the current app. Use it when the person is leaving the product or opening supporting information in another place.
+
+## Default Usage
+
+<Canvas of={ExternalLinkButtonStories.Medium} />
+
+```tsx
+import { ExternalLinkButton } from '@design-system/components';
+
+<ExternalLinkButton label="External Link" href="https://example.com" />
+```
+
+## Props
+
+<Controls />
+
+## Sizes
+
+<Canvas of={ExternalLinkButtonStories.Medium} />
+<Canvas of={ExternalLinkButtonStories.Large} />
+
+## States
+
+<Canvas of={ExternalLinkButtonStories.Disabled} />
+
+## Interaction
+
+<Canvas of={ExternalLinkButtonStories.Clickable} />
+
+## Accessibility
+
+| Expectation | Implementation |
+|-------------|----------------|
+| Role | Native `link` |
+| Keyboard | `Tab` focuses, `Enter` activates |
+| Disabled | `aria-disabled`, no `href`, and removed from tab order |
+| Label | Visible text is the accessible name |
+| Icon | Decorative external-link icon |
+
+## Figma Mapping
+
+| Figma Property | Prop | Notes |
+|----------------|------|-------|
+| `Link_Text` | `label` | Direct visible text |
+| `Text_Size=Medium` | `textSize="medium"` | Direct mapping |
+| `Text_Size=Large` | `textSize="large"` | Direct mapping |
+| `State=Pressed` | Browser press state | Not a persistent prop |
+
+## All Stories
+
+<Stories />

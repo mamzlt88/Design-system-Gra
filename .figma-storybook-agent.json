@@ -1,0 +1,53 @@
+{
+  "agent": {
+    "storiesDir": "src/stories"
+  },
+  "integrations": {
+    "figma": {
+      "mode": "api",
+      "jsonPath": "",
+      "fileKey": "LuOSourQp644YKhg0MrCE0",
+      "fileUrl": "https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=0-1&m=dev&t=SJ8eG4Y4dpChOctA-1",
+      "tokenEnv": "FIGMA_TOKEN"
+    },
+    "storybook": {
+      "devCommand": "npm run storybook",
+      "buildCommand": "npm run build-storybook"
+    }
+  },
+  "storybook": {
+    "argValueMappings": {},
+    "argExcludes": []
+  },
+  "tokens": {
+    "source": "figma.styles",
+    "outputJson": "src/tokens/figma-tokens.json",
+    "outputTs": "src/tokens/figmaTokens.ts",
+    "policy": "Use the Figma styles library as the design token source."
+  },
+  "componentBacklog": {
+    "source": "figma.assets",
+    "outputJson": "docs/component-backlog/figma-components.json",
+    "outputMarkdown": "docs/component-backlog/figma-components.md",
+    "componentNodeTypes": [
+      "COMPONENT",
+      "COMPONENT_SET"
+    ],
+    "reviewNodeTypes": [
+      "FRAME"
+    ],
+    "policy": "Treat Figma components and component sets as component backlog items. Keep large frames for review before treating them as components."
+  },
+  "iconLibrary": {
+    "source": "figma.assets.icons",
+    "outputJson": "docs/icon-library/figma-icons.json",
+    "outputMarkdown": "docs/icon-library/figma-icons.md",
+    "policy": "Treat Figma assets from the Icons page/frame as the icon library, separate from the main component backlog."
+  },
+  "matching": {
+    "requireExplicitMappings": false,
+    "excludeFigmaNodeIds": [],
+    "excludeFigmaNames": []
+  },
+  "mappings": []
+}

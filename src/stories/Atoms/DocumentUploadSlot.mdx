@@ -1,0 +1,63 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as DocumentUploadSlotStories from './DocumentUploadSlot.stories';
+
+<Meta of={DocumentUploadSlotStories} />
+
+# DocumentUploadSlot
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=9304-2207)
+
+## Overview
+
+DocumentUploadSlot is the place where a person can add or review a document. Use it when a form asks for a file, proof, or supporting document.
+
+## Default Usage
+
+<Canvas of={DocumentUploadSlotStories.Default} />
+
+```tsx
+import { DocumentUploadSlot } from '@design-system/components';
+
+<DocumentUploadSlot instructionText="Upload proof of identity" requirement="required" />
+```
+
+## Props
+
+<Controls />
+
+## States
+
+<Canvas of={DocumentUploadSlotStories.Default} />
+<Canvas of={DocumentUploadSlotStories.Pressed} />
+<Canvas of={DocumentUploadSlotStories.Uploaded} />
+<Canvas of={DocumentUploadSlotStories.Optional} />
+<Canvas of={DocumentUploadSlotStories.WithoutType} />
+
+## Interaction
+
+<Canvas of={DocumentUploadSlotStories.Clickable} />
+
+## Accessibility
+
+| Expectation | Implementation |
+|-------------|----------------|
+| Role | Native `button` |
+| Accessible name | Instruction text and uploaded filename when present |
+| Keyboard | `Tab` focuses, `Enter` and `Space` activate |
+| Disabled | Native `disabled` attribute |
+| Requirement | Required or optional text remains readable |
+
+## Figma Mapping
+
+| Figma Property | Prop | Notes |
+|----------------|------|-------|
+| `Instruction_Text` | `instructionText` | Direct visible text |
+| `Type_Text` | `typeLabel` | Helper text |
+| `Show_Type` | `showType` | Boolean |
+| `State=Uploaded` | `state="uploaded"` | Uploaded state |
+| `Type=Optional` | `requirement="optional"` | Requirement label |
+| `Type=Required` | `requirement="required"` | Requirement label |
+
+## All Stories
+
+<Stories />
