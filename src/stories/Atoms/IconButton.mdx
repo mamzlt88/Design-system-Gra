@@ -1,0 +1,72 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as IconButtonStories from './IconButton.stories';
+
+<Meta of={IconButtonStories} />
+
+# IconButton
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=91-4104)
+
+## Overview
+
+IconButton is a compact action button that uses only an icon. Use it for small repeated actions, close controls, and toolbars.
+
+**Use this component when:**
+- The action is already clear from context.
+- Space is limited and a visible text label would make the layout noisy.
+
+**Do not use this component when:**
+- The action is unfamiliar or high-risk.
+- The action needs visible text to be understood.
+
+## Default Usage
+
+<Canvas of={IconButtonStories.Default} />
+
+```tsx
+import { IconButton } from '@design-system/components';
+
+<IconButton ariaLabel="Add item" icon="plus" />
+```
+
+## Props
+
+<Controls />
+
+## Variants
+
+<Canvas of={IconButtonStories.Tonal} />
+<Canvas of={IconButtonStories.Outlined} />
+<Canvas of={IconButtonStories.OutlinedAccent} />
+<Canvas of={IconButtonStories.FilledRed} />
+
+## States
+
+<Canvas of={IconButtonStories.Disabled} />
+
+## Interaction
+
+<Canvas of={IconButtonStories.Clickable} />
+<Canvas of={IconButtonStories.DisabledDoesNotFire} />
+
+## Accessibility
+
+| Expectation | Implementation |
+|-------------|----------------|
+| Role | Native `button` |
+| Accessible name | Required `ariaLabel` |
+| Keyboard | `Tab` focuses, `Enter` and `Space` activate |
+| Disabled | Native `disabled` attribute |
+| Touch target | 44px by 44px |
+
+## Figma Mapping
+
+| Figma Property | Prop | Notes |
+|----------------|------|-------|
+| `Change_Icon` | `icon` | Uses the icon library |
+| `Style` | `variant` | Direct visual mapping |
+| `State=Disabled` | `disabled={true}` | Direct mapping |
+
+## All Stories
+
+<Stories />

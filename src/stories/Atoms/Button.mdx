@@ -1,0 +1,79 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=50-6188)
+
+## Overview
+
+Button is the main action control. Use it when a person needs to submit, confirm, continue, cancel, or trigger an action.
+
+**Use this component when:**
+- The action changes something on the current page.
+- The action submits, confirms, cancels, or continues a flow.
+
+**Do not use this component when:**
+- The action is navigation-only. Use a link or `ExternalLinkButton`.
+- The action only needs an icon. Use `IconButton`.
+
+## Default Usage
+
+<Canvas of={ButtonStories.Default} />
+
+```tsx
+import { Button } from '@design-system/components';
+
+<Button label="Continue" tone="primary" />
+```
+
+## Props
+
+<Controls />
+
+## Variants
+
+<Canvas of={ButtonStories.Filled} />
+<Canvas of={ButtonStories.Outlined} />
+<Canvas of={ButtonStories.Text} />
+<Canvas of={ButtonStories.Danger} />
+
+## States
+
+<Canvas of={ButtonStories.Disabled} />
+<Canvas of={ButtonStories.FullWidth} />
+<Canvas of={ButtonStories.DarkModePreview} />
+
+## Interaction
+
+<Canvas of={ButtonStories.Clickable} />
+<Canvas of={ButtonStories.DisabledDoesNotFire} />
+
+## Accessibility
+
+| Expectation | Implementation |
+|-------------|----------------|
+| Role | Native `button` |
+| Keyboard | `Tab` focuses, `Enter` and `Space` activate |
+| Disabled | Native `disabled` attribute |
+| Touch target | Minimum 44px height |
+| Label | Visible text is the accessible name |
+
+## Figma Mapping
+
+| Figma Property | Prop | Notes |
+|----------------|------|-------|
+| `Button_text` | `label` | Direct visible text |
+| `Style=Filled` | `variant="filled"` | Direct mapping |
+| `Style=Outlined` | `variant="outlined"` | Direct mapping |
+| `Style=Text` | `variant="text"` | Direct mapping |
+| `Type=Primary` | `tone="primary"` | Direct mapping |
+| `State=Disabled` | `disabled={true}` | Direct mapping |
+| `Left_Icon` | `leftIcon` | Boolean |
+| `Right_Icon` | `rightIcon` | Boolean |
+
+## All Stories
+
+<Stories />

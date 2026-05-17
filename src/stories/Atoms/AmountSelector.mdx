@@ -1,0 +1,57 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as AmountSelectorStories from './AmountSelector.stories';
+
+<Meta of={AmountSelectorStories} />
+
+# AmountSelector
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=8273-7829)
+
+## Overview
+
+AmountSelector shows a selected amount or a starting placeholder. Use it when a person needs to choose or confirm a value.
+
+## Default Usage
+
+<Canvas of={AmountSelectorStories.Initial} />
+
+```tsx
+import { AmountSelector } from '@design-system/components';
+
+<AmountSelector value="Value" />
+```
+
+## Props
+
+<Controls />
+
+## States
+
+<Canvas of={AmountSelectorStories.Initial} />
+<Canvas of={AmountSelectorStories.Selected} />
+<Canvas of={AmountSelectorStories.Disabled} />
+
+## Interaction
+
+<Canvas of={AmountSelectorStories.Clickable} />
+
+## Accessibility
+
+| Expectation | Implementation |
+|-------------|----------------|
+| Role | Native `button` |
+| Accessible name | `Select amount` or selected amount text |
+| Keyboard | `Tab` focuses, `Enter` and `Space` activate |
+| Disabled | Native `disabled` attribute |
+
+## Figma Mapping
+
+| Figma Property | Prop | Notes |
+|----------------|------|-------|
+| `Value_Text` | `value` | Direct visible text |
+| `State=Initial` | `state="initial"` | Placeholder state |
+| `State=Default` | `state="default"` | Selected state |
+
+## All Stories
+
+<Stories />
