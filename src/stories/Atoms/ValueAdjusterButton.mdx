@@ -1,0 +1,159 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as ValueAdjusterButtonStories from './ValueAdjusterButton.stories';
+
+<Meta of={ValueAdjusterButtonStories} />
+
+# ValueAdjusterButton
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=8510-11062)
+
+## Overview
+
+ValueAdjusterButton is a compact plus or minus button. Use it when a person needs to increase or decrease a value one step at a time.
+
+This page uses [Component Gallery's Button reference](https://component.gallery/components/button/) as a documentation guide, especially for icon-only button labeling. The visual styles and states come from the Gra Figma UI Kit.
+
+**Use this component when:**
+- A value changes by one step at a time.
+- The plus or minus meaning is obvious in the surrounding layout.
+- The control appears beside a visible value.
+
+**Do not use this component when:**
+- A person needs to type an exact number. Use an input instead.
+- The value change is large or hard to undo.
+- The icon would be unclear without nearby value text.
+
+## Default Usage
+
+<Canvas of={ValueAdjusterButtonStories.Decrease} />
+
+```tsx
+import { ValueAdjusterButton } from '@design-system/components';
+
+<ValueAdjusterButton adjustment="decrease" ariaLabel="Decrease value" />
+```
+
+## Props
+
+<Controls />
+
+## Variants
+
+Use `decrease` for minus actions and `increase` for plus actions. These should normally sit next to the value they change.
+
+<Canvas of={ValueAdjusterButtonStories.VariantExamples} />
+
+## States
+
+<Canvas of={ValueAdjusterButtonStories.StateExamples} />
+
+## Paired Example
+
+<Canvas of={ValueAdjusterButtonStories.Pair} />
+
+## Interaction
+
+Each click should adjust the value once. Disabled buttons should be used when the value has reached a minimum or maximum.
+
+<Canvas of={ValueAdjusterButtonStories.Clickable} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td>Native <code>button</code></td>
+    </tr>
+    <tr>
+      <td>Accessible name</td>
+      <td>Required <code>ariaLabel</code>, for example <code>Increase value</code></td>
+    </tr>
+    <tr>
+      <td>Keyboard</td>
+      <td><code>Tab</code> focuses, <code>Enter</code> and <code>Space</code> activate</td>
+    </tr>
+    <tr>
+      <td>Disabled</td>
+      <td>Native <code>disabled</code> attribute</td>
+    </tr>
+    <tr>
+      <td>Visible context</td>
+      <td>Place next to the value being changed</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>AmountSelector</code></td>
+      <td>The whole value-selection control should open a selection flow</td>
+    </tr>
+    <tr>
+      <td><code>IconButton</code></td>
+      <td>The icon action is not tied to increasing or decreasing a value</td>
+    </tr>
+    <tr>
+      <td><code>Button</code></td>
+      <td>The action needs visible text</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Type=Decrease</code></td>
+      <td><code>adjustment="decrease"</code></td>
+      <td>Shows minus icon</td>
+    </tr>
+    <tr>
+      <td><code>Type=Increase</code></td>
+      <td><code>adjustment="increase"</code></td>
+      <td>Shows plus icon</td>
+    </tr>
+    <tr>
+      <td><code>State=Enabled</code></td>
+      <td><code>state="enabled"</code></td>
+      <td>Default state</td>
+    </tr>
+    <tr>
+      <td><code>State=Pressed</code></td>
+      <td><code>state="pressed"</code></td>
+      <td>Pressed visual state</td>
+    </tr>
+    <tr>
+      <td><code>State=Disabled</code></td>
+      <td><code>state="disabled"</code></td>
+      <td>Disabled visual state</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

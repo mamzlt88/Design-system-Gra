@@ -27,8 +27,7 @@ import { ExternalLinkButton } from '@design-system/components';
 
 ## Sizes
 
-<Canvas of={ExternalLinkButtonStories.Medium} />
-<Canvas of={ExternalLinkButtonStories.Large} />
+<Canvas of={ExternalLinkButtonStories.SizeExamples} />
 
 ## States
 
@@ -40,22 +39,70 @@ import { ExternalLinkButton } from '@design-system/components';
 
 ## Accessibility
 
-| Expectation | Implementation |
-|-------------|----------------|
-| Role | Native `link` |
-| Keyboard | `Tab` focuses, `Enter` activates |
-| Disabled | `aria-disabled`, no `href`, and removed from tab order |
-| Label | Visible text is the accessible name |
-| Icon | Decorative external-link icon |
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td>Native <code>link</code></td>
+    </tr>
+    <tr>
+      <td>Keyboard</td>
+      <td><code>Tab</code> focuses, <code>Enter</code> activates</td>
+    </tr>
+    <tr>
+      <td>Disabled</td>
+      <td><code>aria-disabled</code>, no <code>href</code>, and removed from tab order</td>
+    </tr>
+    <tr>
+      <td>Label</td>
+      <td>Visible text is the accessible name</td>
+    </tr>
+    <tr>
+      <td>Icon</td>
+      <td>Decorative external-link icon</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Figma Mapping
 
-| Figma Property | Prop | Notes |
-|----------------|------|-------|
-| `Link_Text` | `label` | Direct visible text |
-| `Text_Size=Medium` | `textSize="medium"` | Direct mapping |
-| `Text_Size=Large` | `textSize="large"` | Direct mapping |
-| `State=Pressed` | Browser press state | Not a persistent prop |
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Link_Text</code></td>
+      <td><code>label</code></td>
+      <td>Direct visible text</td>
+    </tr>
+    <tr>
+      <td><code>Text_Size=Medium</code></td>
+      <td><code>textSize="medium"</code></td>
+      <td>Direct mapping</td>
+    </tr>
+    <tr>
+      <td><code>Text_Size=Large</code></td>
+      <td><code>textSize="large"</code></td>
+      <td>Direct mapping</td>
+    </tr>
+    <tr>
+      <td><code>State=Pressed</code></td>
+      <td>Browser press state</td>
+      <td>Not a persistent prop</td>
+    </tr>
+  </tbody>
+</table>
 
 ## All Stories
 

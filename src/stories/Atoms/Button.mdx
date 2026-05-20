@@ -11,13 +11,17 @@ import * as ButtonStories from './Button.stories';
 
 Button is the main action control. Use it when a person needs to submit, confirm, continue, cancel, or trigger an action.
 
+This page uses [Component Gallery's Button reference](https://component.gallery/components/button/) as a documentation guide, while the visual styles and variants come from the Gra Figma UI Kit.
+
 **Use this component when:**
 - The action changes something on the current page.
 - The action submits, confirms, cancels, or continues a flow.
+- The label can clearly say what will happen next.
 
 **Do not use this component when:**
 - The action is navigation-only. Use a link or `ExternalLinkButton`.
 - The action only needs an icon. Use `IconButton`.
+- The action is unclear without extra explanation. In that case, improve the label or add supporting context nearby.
 
 ## Default Usage
 
@@ -35,44 +39,137 @@ import { Button } from '@design-system/components';
 
 ## Variants
 
-<Canvas of={ButtonStories.Filled} />
-<Canvas of={ButtonStories.Outlined} />
-<Canvas of={ButtonStories.Text} />
-<Canvas of={ButtonStories.Danger} />
+Use variants to show action priority, theme, or layout. The primary filled button should be the clearest next step. Outlined and text buttons are better for secondary or quieter actions. Danger actions should be visually distinct and used only when the result is risky or destructive.
+
+<Canvas of={ButtonStories.VariantExamples} />
 
 ## States
 
-<Canvas of={ButtonStories.Disabled} />
-<Canvas of={ButtonStories.FullWidth} />
-<Canvas of={ButtonStories.DarkModePreview} />
+Every button should have clear pressed and disabled behavior. Disabled buttons should not be the only explanation for why an action is unavailable; add nearby helper text when the reason matters.
+
+<Canvas of={ButtonStories.StateExamples} />
 
 ## Interaction
 
-<Canvas of={ButtonStories.Clickable} />
-<Canvas of={ButtonStories.DisabledDoesNotFire} />
+Buttons perform actions. They should not be used as links to another page. Use clear action labels such as "Continue", "Save", "Delete", or "Upload document" instead of generic labels like "OK".
+
+<Canvas of={ButtonStories.InteractivePressed} />
 
 ## Accessibility
 
-| Expectation | Implementation |
-|-------------|----------------|
-| Role | Native `button` |
-| Keyboard | `Tab` focuses, `Enter` and `Space` activate |
-| Disabled | Native `disabled` attribute |
-| Touch target | Minimum 44px height |
-| Label | Visible text is the accessible name |
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td>Native <code>button</code></td>
+    </tr>
+    <tr>
+      <td>Keyboard</td>
+      <td><code>Tab</code> focuses, <code>Enter</code> and <code>Space</code> activate</td>
+    </tr>
+    <tr>
+      <td>Disabled</td>
+      <td>Native <code>disabled</code> attribute</td>
+    </tr>
+    <tr>
+      <td>Touch target</td>
+      <td>Minimum 44px height</td>
+    </tr>
+    <tr>
+      <td>Label</td>
+      <td>Visible text is the accessible name</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>IconButton</code></td>
+      <td>The action is compact and the icon is familiar enough with an accessible label</td>
+    </tr>
+    <tr>
+      <td><code>ExternalLinkButton</code></td>
+      <td>The action opens another site or a different place outside the current flow</td>
+    </tr>
+    <tr>
+      <td><code>AmountSelector</code></td>
+      <td>The action changes a numeric value</td>
+    </tr>
+    <tr>
+      <td><code>DocumentUploadSlot</code></td>
+      <td>The action starts or repeats a document upload</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Figma Mapping
 
-| Figma Property | Prop | Notes |
-|----------------|------|-------|
-| `Button_text` | `label` | Direct visible text |
-| `Style=Filled` | `variant="filled"` | Direct mapping |
-| `Style=Outlined` | `variant="outlined"` | Direct mapping |
-| `Style=Text` | `variant="text"` | Direct mapping |
-| `Type=Primary` | `tone="primary"` | Direct mapping |
-| `State=Disabled` | `disabled={true}` | Direct mapping |
-| `Left_Icon` | `leftIcon` | Boolean |
-| `Right_Icon` | `rightIcon` | Boolean |
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Button_text</code></td>
+      <td><code>label</code></td>
+      <td>Direct visible text</td>
+    </tr>
+    <tr>
+      <td><code>Style=Filled</code></td>
+      <td><code>variant="filled"</code></td>
+      <td>Direct mapping</td>
+    </tr>
+    <tr>
+      <td><code>Style=Outlined</code></td>
+      <td><code>variant="outlined"</code></td>
+      <td>Direct mapping</td>
+    </tr>
+    <tr>
+      <td><code>Style=Text</code></td>
+      <td><code>variant="text"</code></td>
+      <td>Direct mapping</td>
+    </tr>
+    <tr>
+      <td><code>Type=Primary</code></td>
+      <td><code>tone="primary"</code></td>
+      <td>Direct mapping</td>
+    </tr>
+    <tr>
+      <td><code>State=Disabled</code></td>
+      <td><code>disabled=&#123;true&#125;</code></td>
+      <td>Direct mapping</td>
+    </tr>
+    <tr>
+      <td><code>Left_Icon</code></td>
+      <td><code>leftIcon</code></td>
+      <td>Boolean</td>
+    </tr>
+    <tr>
+      <td><code>Right_Icon</code></td>
+      <td><code>rightIcon</code></td>
+      <td>Boolean</td>
+    </tr>
+  </tbody>
+</table>
 
 ## All Stories
 

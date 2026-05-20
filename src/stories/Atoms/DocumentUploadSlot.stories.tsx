@@ -1,7 +1,37 @@
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from '@storybook/test';
 
-import { DocumentUploadSlot } from '../../components/DocumentUploadSlot';
+import { DocumentUploadSlot, type DocumentUploadSlotProps } from '../../components/DocumentUploadSlot';
+
+// Story-only state keeps DocumentUploadSlot controlled by props while demonstrating uploaded and pressed states.
+function InteractiveDocumentUploadSlot(args: DocumentUploadSlotProps) {
+  const [uploaded, setUploaded] = useState(args.state === 'uploaded');
+  const [pressed, setPressed] = useState(false);
+
+  return (
+    <DocumentUploadSlot
+      {...args}
+      state={args.disabled ? args.state : pressed ? 'pressed' : uploaded ? 'uploaded' : 'default'}
+      onClick={(event) => {
+        setUploaded((current) => !current);
+        args.onClick?.(event);
+      }}
+      onMouseDown={(event) => {
+        setPressed(true);
+        args.onMouseDown?.(event);
+      }}
+      onMouseUp={(event) => {
+        setPressed(false);
+        args.onMouseUp?.(event);
+      }}
+      onMouseLeave={(event) => {
+        setPressed(false);
+        args.onMouseLeave?.(event);
+      }}
+    />
+  );
+}
 
 const meta = {
   title: 'Atoms/Buttons/DocumentUploadSlot',
@@ -98,6 +128,10 @@ export const Disabled: Story = {
   args: { disabled: true },
 };
 
+export const InteractiveUpload: Story = {
+  render: (args) => <InteractiveDocumentUploadSlot {...args} />,
+};
+
 export const Clickable: Story = {
   play: async ({ args, canvasElement }) => {
     const canvas = within(canvasElement);
@@ -113,6 +147,8 @@ export const AllStates: Story = {
       <DocumentUploadSlot instructionText="Upload proof of identity" requirement="required" typeLabel="(PDF or image)" />
       <DocumentUploadSlot instructionText="Upload proof of income" requirement="optional" state="pressed" typeLabel="(PDF)" />
       <DocumentUploadSlot instructionText="Proof uploaded" requirement="required" state="uploaded" fileName="identity.pdf" typeLabel="(PDF)" />
+      <DocumentUploadSlot instructionText="Optional upload" requirement="optional" typeLabel="(PDF)" />
+      <DocumentUploadSlot instructionText="Upload supporting document" requirement="none" showType={false} />
     </div>
   ),
 };

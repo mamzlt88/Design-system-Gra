@@ -27,36 +27,88 @@ import { DocumentUploadSlot } from '@design-system/components';
 
 ## States
 
-<Canvas of={DocumentUploadSlotStories.Default} />
-<Canvas of={DocumentUploadSlotStories.Pressed} />
-<Canvas of={DocumentUploadSlotStories.Uploaded} />
-<Canvas of={DocumentUploadSlotStories.Optional} />
-<Canvas of={DocumentUploadSlotStories.WithoutType} />
+<Canvas of={DocumentUploadSlotStories.AllStates} />
 
 ## Interaction
 
-<Canvas of={DocumentUploadSlotStories.Clickable} />
+<Canvas of={DocumentUploadSlotStories.InteractiveUpload} />
 
 ## Accessibility
 
-| Expectation | Implementation |
-|-------------|----------------|
-| Role | Native `button` |
-| Accessible name | Instruction text and uploaded filename when present |
-| Keyboard | `Tab` focuses, `Enter` and `Space` activate |
-| Disabled | Native `disabled` attribute |
-| Requirement | Required or optional text remains readable |
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td>Native <code>button</code></td>
+    </tr>
+    <tr>
+      <td>Accessible name</td>
+      <td>Instruction text and uploaded filename when present</td>
+    </tr>
+    <tr>
+      <td>Keyboard</td>
+      <td><code>Tab</code> focuses, <code>Enter</code> and <code>Space</code> activate</td>
+    </tr>
+    <tr>
+      <td>Disabled</td>
+      <td>Native <code>disabled</code> attribute</td>
+    </tr>
+    <tr>
+      <td>Requirement</td>
+      <td>Required or optional text remains readable</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Figma Mapping
 
-| Figma Property | Prop | Notes |
-|----------------|------|-------|
-| `Instruction_Text` | `instructionText` | Direct visible text |
-| `Type_Text` | `typeLabel` | Helper text |
-| `Show_Type` | `showType` | Boolean |
-| `State=Uploaded` | `state="uploaded"` | Uploaded state |
-| `Type=Optional` | `requirement="optional"` | Requirement label |
-| `Type=Required` | `requirement="required"` | Requirement label |
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Instruction_Text</code></td>
+      <td><code>instructionText</code></td>
+      <td>Direct visible text</td>
+    </tr>
+    <tr>
+      <td><code>Type_Text</code></td>
+      <td><code>typeLabel</code></td>
+      <td>Helper text</td>
+    </tr>
+    <tr>
+      <td><code>Show_Type</code></td>
+      <td><code>showType</code></td>
+      <td>Boolean</td>
+    </tr>
+    <tr>
+      <td><code>State=Uploaded</code></td>
+      <td><code>state="uploaded"</code></td>
+      <td>Uploaded state</td>
+    </tr>
+    <tr>
+      <td><code>Type=Optional</code></td>
+      <td><code>requirement="optional"</code></td>
+      <td>Requirement label</td>
+    </tr>
+    <tr>
+      <td><code>Type=Required</code></td>
+      <td><code>requirement="required"</code></td>
+      <td>Requirement label</td>
+    </tr>
+  </tbody>
+</table>
 
 ## All Stories
 

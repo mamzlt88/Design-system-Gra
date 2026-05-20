@@ -1,7 +1,32 @@
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from '@storybook/test';
 
-import { IconButton } from '../../components/IconButton';
+import { IconButton, type IconButtonProps } from '../../components/IconButton';
+
+// Story-only state keeps IconButton controlled by props while demonstrating the transient pressed visual state.
+function InteractiveIconButton(args: IconButtonProps) {
+  const [pressed, setPressed] = useState(false);
+
+  return (
+    <IconButton
+      {...args}
+      state={args.disabled ? 'disabled' : pressed ? 'pressed' : args.state ?? 'enabled'}
+      onMouseDown={(event) => {
+        setPressed(true);
+        args.onMouseDown?.(event);
+      }}
+      onMouseUp={(event) => {
+        setPressed(false);
+        args.onMouseUp?.(event);
+      }}
+      onMouseLeave={(event) => {
+        setPressed(false);
+        args.onMouseLeave?.(event);
+      }}
+    />
+  );
+}
 
 const meta = {
   title: 'Atoms/Buttons/IconButton',
@@ -112,6 +137,20 @@ export const DarkMode: Story = {
   ],
 };
 
+export const InteractivePressed: Story = {
+  render: (args) => <InteractiveIconButton {...args} />,
+};
+
+export const StateExamples: Story = {
+  tags: ['!test', '!dev'],
+  render: () => (
+    <div style={{ alignItems: 'center', display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+      <IconButton ariaLabel="Pressed icon button" state="pressed" />
+      <IconButton ariaLabel="Disabled icon button" disabled state="disabled" />
+    </div>
+  ),
+};
+
 export const Clickable: Story = {
   play: async ({ args, canvasElement }) => {
     const canvas = within(canvasElement);
@@ -132,14 +171,19 @@ export const DisabledDoesNotFire: Story = {
 export const AllVariants: Story = {
   tags: ['!test', '!dev'],
   render: () => (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-      <IconButton ariaLabel="Filled" variant="filled" />
-      <IconButton ariaLabel="Tonal" variant="tonal" />
-      <IconButton ariaLabel="Outlined" variant="outlined" />
-      <IconButton ariaLabel="Outlined accent" variant="outlinedAccent" />
-      <IconButton ariaLabel="Filled red" variant="filledRed" />
-      <IconButton ariaLabel="Standard" variant="standard" />
-      <IconButton ariaLabel="Standard inverse" variant="standardInverse" />
+    <div style={{ display: 'grid', gap: 16 }}>
+      <div style={{ alignItems: 'center', display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+        <IconButton ariaLabel="Filled" variant="filled" />
+        <IconButton ariaLabel="Tonal" variant="tonal" />
+        <IconButton ariaLabel="Outlined" variant="outlined" />
+        <IconButton ariaLabel="Outlined accent" variant="outlinedAccent" />
+        <IconButton ariaLabel="Filled red" variant="filledRed" />
+        <IconButton ariaLabel="Standard" variant="standard" />
+        <IconButton ariaLabel="Standard inverse" variant="standardInverse" />
+      </div>
+      <div style={{ background: '#151515', borderRadius: 8, padding: 18 }}>
+        <IconButton ariaLabel="Dark mode icon button" darkMode />
+      </div>
     </div>
   ),
 };

@@ -16,6 +16,16 @@
     }
   },
   "storybook": {
+    "bestPractices": {
+      "enforcement": "guided",
+      "blockedComponentNames": [
+        "Item",
+        "Thing",
+        "MyComponent",
+        "Component",
+        "Component1"
+      ]
+    },
     "argValueMappings": {},
     "argExcludes": []
   },

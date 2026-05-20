@@ -1,0 +1,211 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as IconContainerStories from './IconContainer.stories';
+
+<Meta of={IconContainerStories} />
+
+# IconContainer
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=9084-6053)
+
+## Overview
+
+IconContainer is a small colored holder for an icon. It helps people scan a screen by pairing a simple visual marker with nearby text.
+
+This pass uses the saved Figma snapshot for the container shape, size, radius, and color fills. Please review the final icon choice against the design.
+
+**Use this component when:**
+- A card, list item, or status row needs a small visual marker.
+- The icon is supportive, and nearby text explains the meaning.
+- The color and style match one of the Figma-defined options.
+
+**Do not use this component when:**
+- The icon should trigger an action. Use `IconButton` instead.
+- The icon is the only way the person understands the content.
+- You need a large illustration or a notification-specific graphic.
+
+## Default Usage
+
+<Canvas of={IconContainerStories.Default} />
+
+```tsx
+import { IconContainer } from '@design-system/components';
+
+<IconContainer color="red" icon="check" label="Completed" />
+```
+
+## Props
+
+<Controls />
+
+## Styles
+
+The Figma component set includes `Default` and `Emphasized` styles. Both are circular `37px` containers with an `8px` inner padding.
+
+<Canvas of={IconContainerStories.StyleExamples} />
+
+## Colors
+
+The color variants come from the Figma `Color` property.
+
+<Canvas of={IconContainerStories.AllColors} />
+
+## Icons
+
+The icon is swappable. In this Storybook pass, it uses the local `Icon` library so the component stays stable without depending on temporary Figma image URLs.
+
+<Canvas of={IconContainerStories.IconOptions} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td><code>img</code></td>
+    </tr>
+    <tr>
+      <td>Accessible name</td>
+      <td><code>label</code>, for example <code>Completed</code></td>
+    </tr>
+    <tr>
+      <td>Meaning</td>
+      <td>Should be paired with visible text nearby</td>
+    </tr>
+    <tr>
+      <td>Interaction</td>
+      <td>Not interactive; use <code>IconButton</code> for clickable icon actions</td>
+    </tr>
+    <tr>
+      <td>Touch target</td>
+      <td>No minimum target required because this is not a control</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Color=Red</code></td>
+      <td><code>color="red"</code></td>
+      <td>Soft red by default, stronger red tint when emphasized</td>
+    </tr>
+    <tr>
+      <td><code>Color=Yellow</code></td>
+      <td><code>color="yellow"</code></td>
+      <td>Soft yellow by default, stronger yellow tint when emphasized</td>
+    </tr>
+    <tr>
+      <td><code>Color=Green</code></td>
+      <td><code>color="green"</code></td>
+      <td>Soft green by default, stronger green tint when emphasized</td>
+    </tr>
+    <tr>
+      <td><code>Color=Brand</code></td>
+      <td><code>color="brand"</code></td>
+      <td>Brand teal option</td>
+    </tr>
+    <tr>
+      <td><code>Color=Blue</code></td>
+      <td><code>color="blue"</code></td>
+      <td>Blue option</td>
+    </tr>
+    <tr>
+      <td><code>Color=Purple</code></td>
+      <td><code>color="purple"</code></td>
+      <td>Purple option</td>
+    </tr>
+    <tr>
+      <td><code>Color=Pink</code></td>
+      <td><code>color="pink"</code></td>
+      <td>Pink option</td>
+    </tr>
+    <tr>
+      <td><code>Style=Default</code></td>
+      <td><code>styleVariant="default"</code></td>
+      <td>Soft background with colored icon</td>
+    </tr>
+    <tr>
+      <td><code>Style=Emphasized</code></td>
+      <td><code>styleVariant="emphasized"</code></td>
+      <td>Stronger tinted background with the same icon color</td>
+    </tr>
+    <tr>
+      <td><code>Change_Icon</code></td>
+      <td><code>icon</code></td>
+      <td>Uses local icon names while the icon library is being mapped</td>
+    </tr>
+  </tbody>
+</table>
+
+## Source Metadata
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Figma node</td>
+      <td><code>9084:6053</code></td>
+    </tr>
+    <tr>
+      <td>Original Figma name</td>
+      <td><code>Icon Containers</code></td>
+    </tr>
+    <tr>
+      <td>Parent family</td>
+      <td><code>Icon Containers</code></td>
+    </tr>
+    <tr>
+      <td>Source role</td>
+      <td>Component set</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Icon</code></td>
+      <td>You need a standalone symbol without the colored container</td>
+    </tr>
+    <tr>
+      <td><code>IconButton</code></td>
+      <td>The icon needs to be clickable</td>
+    </tr>
+    <tr>
+      <td><code>NotificationIcon</code></td>
+      <td>The visual marker represents a notification type</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

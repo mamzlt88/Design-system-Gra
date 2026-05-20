@@ -1,0 +1,146 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as PillButtonStories from './PillButton.stories';
+
+<Meta of={PillButtonStories} />
+
+# PillButton
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=8363-4304)
+
+## Overview
+
+PillButton is a compact selectable button. Use it for filters, small tabs, or short choices where the selected state matters.
+
+This page uses [Component Gallery's Button reference](https://component.gallery/components/button/) as a documentation guide. The visual styles and states come from the Gra Figma UI Kit.
+
+**Use this component when:**
+- A person needs to choose one small option.
+- The label is short enough to stay readable inside a pill.
+- The selected state needs to be visible.
+
+**Do not use this component when:**
+- The action is a primary page action. Use `Button`.
+- The option needs a long explanation.
+- The component is only decoration and does not trigger a choice or action.
+
+## Default Usage
+
+<Canvas of={PillButtonStories.Default} />
+
+```tsx
+import { PillButton } from '@design-system/components';
+
+<PillButton label="Tab X" />
+```
+
+## Props
+
+<Controls />
+
+## States
+
+Use `enabled` for the normal state, `selected` for the active option, and `pressed` to show the button while it is being activated.
+
+<Canvas of={PillButtonStories.AllStates} />
+
+## Interaction
+
+Pill buttons should feel quick and lightweight. When they behave like filters or tabs, the selected pill should remain clear after the click.
+
+<Canvas of={PillButtonStories.InteractiveToggle} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td>Native <code>button</code></td>
+    </tr>
+    <tr>
+      <td>Selected state</td>
+      <td><code>aria-pressed</code> when selected</td>
+    </tr>
+    <tr>
+      <td>Keyboard</td>
+      <td><code>Tab</code> focuses, <code>Enter</code> and <code>Space</code> activate</td>
+    </tr>
+    <tr>
+      <td>Label</td>
+      <td>Visible text is the accessible name</td>
+    </tr>
+    <tr>
+      <td>Touch target</td>
+      <td>Minimum 32px height; use more space when shown on mobile</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Button</code></td>
+      <td>The action is a main page action</td>
+    </tr>
+    <tr>
+      <td><code>IconButton</code></td>
+      <td>The action can be represented by a familiar icon</td>
+    </tr>
+    <tr>
+      <td><code>ValueAdjusterButton</code></td>
+      <td>The action changes a number up or down</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Tab_Text</code></td>
+      <td><code>label</code></td>
+      <td>Visible text</td>
+    </tr>
+    <tr>
+      <td><code>State=Enabled</code></td>
+      <td><code>state="enabled"</code></td>
+      <td>Default state</td>
+    </tr>
+    <tr>
+      <td><code>State=Selected</code></td>
+      <td><code>state="selected"</code></td>
+      <td>Active option</td>
+    </tr>
+    <tr>
+      <td><code>State=Pressed</code></td>
+      <td><code>state="pressed"</code></td>
+      <td>Pressed visual state</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

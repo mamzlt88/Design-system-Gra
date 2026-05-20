@@ -67,6 +67,16 @@ export const Disabled: Story = {
   args: { disabled: true },
 };
 
+export const SizeExamples: Story = {
+  tags: ['!test', '!dev'],
+  render: () => (
+    <div style={{ alignItems: 'center', display: 'flex', flexWrap: 'wrap', gap: 20 }}>
+      <ExternalLinkButton label="Medium link" href="#medium" textSize="medium" />
+      <ExternalLinkButton label="Large link" href="#large" textSize="large" />
+    </div>
+  ),
+};
+
 export const Clickable: Story = {
   play: async ({ args, canvasElement }) => {
     const canvas = within(canvasElement);

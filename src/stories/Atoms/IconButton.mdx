@@ -11,13 +11,17 @@ import * as IconButtonStories from './IconButton.stories';
 
 IconButton is a compact action button that uses only an icon. Use it for small repeated actions, close controls, and toolbars.
 
+This page uses [Component Gallery's Button reference](https://component.gallery/components/button/) as a documentation guide, especially for icon-only button accessibility. The visual styles and variants still come from the Gra Figma UI Kit.
+
 **Use this component when:**
 - The action is already clear from context.
 - Space is limited and a visible text label would make the layout noisy.
+- The icon is familiar or repeated in a pattern the user can learn quickly.
 
 **Do not use this component when:**
 - The action is unfamiliar or high-risk.
 - The action needs visible text to be understood.
+- The icon could mean more than one thing without a label nearby.
 
 ## Default Usage
 
@@ -35,37 +39,112 @@ import { IconButton } from '@design-system/components';
 
 ## Variants
 
-<Canvas of={IconButtonStories.Tonal} />
-<Canvas of={IconButtonStories.Outlined} />
-<Canvas of={IconButtonStories.OutlinedAccent} />
-<Canvas of={IconButtonStories.FilledRed} />
+Use variants to match the importance of the action. A filled icon button attracts more attention, while outlined and tonal icon buttons are better for repeated or secondary actions.
+
+<Canvas of={IconButtonStories.AllVariants} />
 
 ## States
 
-<Canvas of={IconButtonStories.Disabled} />
+Icon buttons must keep the same size across pressed and disabled states so toolbars and dense layouts do not shift.
+
+<Canvas of={IconButtonStories.StateExamples} />
 
 ## Interaction
 
-<Canvas of={IconButtonStories.Clickable} />
-<Canvas of={IconButtonStories.DisabledDoesNotFire} />
+Icon buttons perform actions, not navigation. When the action is destructive, use a warning style only when the result is clear and confirmed somewhere in the flow.
+
+<Canvas of={IconButtonStories.InteractivePressed} />
 
 ## Accessibility
 
-| Expectation | Implementation |
-|-------------|----------------|
-| Role | Native `button` |
-| Accessible name | Required `ariaLabel` |
-| Keyboard | `Tab` focuses, `Enter` and `Space` activate |
-| Disabled | Native `disabled` attribute |
-| Touch target | 44px by 44px |
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td>Native <code>button</code></td>
+    </tr>
+    <tr>
+      <td>Accessible name</td>
+      <td>Required <code>ariaLabel</code></td>
+    </tr>
+    <tr>
+      <td>Keyboard</td>
+      <td><code>Tab</code> focuses, <code>Enter</code> and <code>Space</code> activate</td>
+    </tr>
+    <tr>
+      <td>Disabled</td>
+      <td>Native <code>disabled</code> attribute</td>
+    </tr>
+    <tr>
+      <td>Touch target</td>
+      <td>44px by 44px</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Button</code></td>
+      <td>The action needs a visible text label</td>
+    </tr>
+    <tr>
+      <td><code>ExternalLinkButton</code></td>
+      <td>The action opens another site or external destination</td>
+    </tr>
+    <tr>
+      <td><code>AmountSelector</code></td>
+      <td>The control changes a visible amount</td>
+    </tr>
+    <tr>
+      <td><code>DocumentUploadSlot</code></td>
+      <td>The action uploads or replaces a document</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Figma Mapping
 
-| Figma Property | Prop | Notes |
-|----------------|------|-------|
-| `Change_Icon` | `icon` | Uses the icon library |
-| `Style` | `variant` | Direct visual mapping |
-| `State=Disabled` | `disabled={true}` | Direct mapping |
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Change_Icon</code></td>
+      <td><code>icon</code></td>
+      <td>Uses the icon library</td>
+    </tr>
+    <tr>
+      <td><code>Style</code></td>
+      <td><code>variant</code></td>
+      <td>Direct visual mapping</td>
+    </tr>
+    <tr>
+      <td><code>State=Disabled</code></td>
+      <td><code>disabled=&#123;true&#125;</code></td>
+      <td>Direct mapping</td>
+    </tr>
+  </tbody>
+</table>
 
 ## All Stories
 

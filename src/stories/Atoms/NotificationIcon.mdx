@@ -1,0 +1,141 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as NotificationIconStories from './NotificationIcon.stories';
+
+<Meta of={NotificationIconStories} />
+
+# NotificationIcon
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=2870-5575)
+
+## Overview
+
+NotificationIcon is a small visual marker for notification and card activity types. It helps people scan a list and quickly understand what kind of update they are seeing.
+
+This page uses [Component Gallery's Icon reference](https://component.gallery/components/icon/) as a documentation guide. The visual meaning and variants come from the Gra Figma UI Kit.
+
+**Use this component when:**
+- A card or notification needs a quick visual category.
+- The icon appears beside supporting text.
+- The type comes from one of the Figma-defined activity meanings.
+
+**Do not use this component when:**
+- The icon is the only way to understand the message.
+- The card needs an interactive control. Use a button instead.
+- The activity type is not one of the approved options.
+
+## Default Usage
+
+<Canvas of={NotificationIconStories.RequestedLoan} />
+
+```tsx
+import { NotificationIcon } from '@design-system/components';
+
+<NotificationIcon type="requestedLoan" label="Requested loan" />
+```
+
+## Props
+
+<Controls />
+
+## Types
+
+Each type maps to a Figma variant. Use the type that matches the notification content, not the color that looks nicest.
+
+<Canvas of={NotificationIconStories.AllTypes} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td><code>img</code></td>
+    </tr>
+    <tr>
+      <td>Accessible name</td>
+      <td><code>label</code>, for example <code>Weekly payment</code></td>
+    </tr>
+    <tr>
+      <td>Context</td>
+      <td>Should be paired with visible notification text</td>
+    </tr>
+    <tr>
+      <td>Meaning</td>
+      <td>Must not be the only way the person understands the card</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Icon</code></td>
+      <td>You need a standalone symbol without the notification container</td>
+    </tr>
+    <tr>
+      <td><code>IconButton</code></td>
+      <td>The icon should trigger an action</td>
+    </tr>
+    <tr>
+      <td><code>StatusBadge</code></td>
+      <td>The message needs a visible status label instead of only an icon</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Type=Requested Loan</code></td>
+      <td><code>type="requestedLoan"</code></td>
+      <td>Document icon with action badge</td>
+    </tr>
+    <tr>
+      <td><code>Type=Loan Renewal</code></td>
+      <td><code>type="loanRenewal"</code></td>
+      <td>Document icon</td>
+    </tr>
+    <tr>
+      <td><code>Type=Loan Approval Pending</code></td>
+      <td><code>type="loanApprovalPending"</code></td>
+      <td>Document icon with pending marker</td>
+    </tr>
+    <tr>
+      <td><code>Type=Weekly Payment</code></td>
+      <td><code>type="weeklyPayment"</code></td>
+      <td>Payment icon</td>
+    </tr>
+    <tr>
+      <td><code>Type=Center Meeting</code></td>
+      <td><code>type="centerMeeting"</code></td>
+      <td>Location icon</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

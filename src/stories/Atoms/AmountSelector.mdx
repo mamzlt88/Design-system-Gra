@@ -5,11 +5,11 @@ import * as AmountSelectorStories from './AmountSelector.stories';
 
 # AmountSelector
 
-> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=8273-7829)
+> **Atomic Level**: Atom | **Family**: Input Components | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=8273-7829)
 
 ## Overview
 
-AmountSelector shows a selected amount or a starting placeholder. Use it when a person needs to choose or confirm a value.
+AmountSelector is an input stepper for increasing or decreasing an amount. Use it when a person needs to adjust a visible value in small steps.
 
 ## Default Usage
 
@@ -27,30 +27,76 @@ import { AmountSelector } from '@design-system/components';
 
 ## States
 
-<Canvas of={AmountSelectorStories.Initial} />
-<Canvas of={AmountSelectorStories.Selected} />
-<Canvas of={AmountSelectorStories.Disabled} />
+<Canvas of={AmountSelectorStories.StateExamples} />
 
 ## Interaction
 
-<Canvas of={AmountSelectorStories.Clickable} />
+Use the interactive stepper to click the plus and minus buttons and see the value change. The pressed state appears briefly on the control that was clicked.
+
+<Canvas of={AmountSelectorStories.InteractiveStepper} />
 
 ## Accessibility
 
-| Expectation | Implementation |
-|-------------|----------------|
-| Role | Native `button` |
-| Accessible name | `Select amount` or selected amount text |
-| Keyboard | `Tab` focuses, `Enter` and `Space` activate |
-| Disabled | Native `disabled` attribute |
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td>Labeled <code>group</code> for the amount stepper</td>
+    </tr>
+    <tr>
+      <td>Controls</td>
+      <td>Native <code>button</code> for decrease and increase</td>
+    </tr>
+    <tr>
+      <td>Keyboard</td>
+      <td><code>Tab</code> reaches each control, <code>Enter</code> and <code>Space</code> activate</td>
+    </tr>
+    <tr>
+      <td>Disabled</td>
+      <td>Native <code>disabled</code> attribute</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Figma Mapping
 
-| Figma Property | Prop | Notes |
-|----------------|------|-------|
-| `Value_Text` | `value` | Direct visible text |
-| `State=Initial` | `state="initial"` | Placeholder state |
-| `State=Default` | `state="default"` | Selected state |
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Value_Text</code></td>
+      <td><code>value</code></td>
+      <td>Direct visible text</td>
+    </tr>
+    <tr>
+      <td><code>State=Initial</code></td>
+      <td><code>state="initial"</code></td>
+      <td>Placeholder state</td>
+    </tr>
+    <tr>
+      <td><code>State=Default</code></td>
+      <td><code>state="default"</code></td>
+      <td>Selected state</td>
+    </tr>
+    <tr>
+      <td>Pressed visual</td>
+      <td><code>pressedControl</code></td>
+      <td>Shows minus or plus as pressed during interaction</td>
+    </tr>
+  </tbody>
+</table>
 
 ## All Stories
 

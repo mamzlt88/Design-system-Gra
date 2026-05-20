@@ -1,19 +1,23 @@
-import type { ButtonHTMLAttributes, CSSProperties } from 'react';
+import type { CSSProperties, HTMLAttributes } from 'react';
 
-import { Icon } from './Icon';
+import { ValueAdjusterButton } from './ValueAdjusterButton';
 
 export type AmountSelectorProps = {
-  value: string;
+  value: string | number;
   state?: 'initial' | 'default';
-} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'>;
+  pressedControl?: 'decrease' | 'increase' | null;
+  disabled?: boolean;
+  decreaseDisabled?: boolean;
+  increaseDisabled?: boolean;
+  onDecrease?: () => void;
+  onIncrease?: () => void;
+} & Omit<HTMLAttributes<HTMLDivElement>, 'children'>;
 
 const baseStyle: CSSProperties = {
   alignItems: 'center',
   backgroundColor: '#FFFFFF',
-  border: '1px solid #E6E6E6',
   borderRadius: 8,
   color: '#5C5C5C',
-  cursor: 'pointer',
   display: 'inline-flex',
   fontFamily: 'Open Sans, Arial, sans-serif',
   fontSize: 34,
@@ -24,49 +28,64 @@ const baseStyle: CSSProperties = {
   minWidth: 326,
   overflow: 'hidden',
   padding: 0,
-  transition: 'border-color 120ms ease-in-out, opacity 120ms ease-in-out',
 };
 
-const adjusterStyle: CSSProperties = {
+const valueStyle: CSSProperties = {
   alignItems: 'center',
   alignSelf: 'stretch',
-  borderColor: '#E6E6E6',
-  borderStyle: 'solid',
-  borderWidth: '0 1px',
-  color: '#0C6466',
+  borderBottom: '1px solid #E6E6E6',
+  borderTop: '1px solid #E6E6E6',
   display: 'inline-flex',
-  flex: '0 0 52px',
+  flex: '1 1 auto',
   justifyContent: 'center',
+  minWidth: 222,
+  padding: '0 16px',
+  textAlign: 'center',
 };
 
 export function AmountSelector({
   value,
   state = 'initial',
+  pressedControl = null,
   disabled = false,
+  decreaseDisabled = false,
+  increaseDisabled = false,
+  onDecrease,
+  onIncrease,
   style,
-  ...buttonProps
+  ...divProps
 }: AmountSelectorProps) {
+  const displayValue = String(value);
+
   return (
-    <button
-      type="button"
-      aria-label={state === 'initial' ? 'Select amount' : `Selected amount: ${value}`}
-      disabled={disabled}
+    <div
+      role="group"
+      aria-label={state === 'initial' ? 'Amount selector' : `Selected amount: ${displayValue}`}
       style={{
         ...baseStyle,
         color: state === 'initial' ? '#A4A4A4' : '#5C5C5C',
         opacity: disabled ? 0.55 : 1,
-        pointerEvents: disabled ? 'none' : undefined,
         ...style,
       }}
-      {...buttonProps}
+      {...divProps}
     >
-      <span aria-hidden="true" style={{ ...adjusterStyle, borderLeftWidth: 0 }}>
-        <Icon name="minus" width={24} height={24} />
+      <ValueAdjusterButton
+        adjustment="decrease"
+        ariaLabel="Decrease amount"
+        disabled={disabled || decreaseDisabled}
+        state={pressedControl === 'decrease' ? 'pressed' : disabled || decreaseDisabled ? 'disabled' : 'enabled'}
+        onClick={onDecrease}
+      />
+      <span aria-live="polite" style={valueStyle}>
+        {displayValue}
       </span>
-      <span style={{ flex: '1 1 auto', textAlign: 'center' }}>{value}</span>
-      <span aria-hidden="true" style={{ ...adjusterStyle, borderRightWidth: 0 }}>
-        <Icon name="plus" width={24} height={24} />
-      </span>
-    </button>
+      <ValueAdjusterButton
+        adjustment="increase"
+        ariaLabel="Increase amount"
+        disabled={disabled || increaseDisabled}
+        state={pressedControl === 'increase' ? 'pressed' : disabled || increaseDisabled ? 'disabled' : 'enabled'}
+        onClick={onIncrease}
+      />
+    </div>
   );
 }

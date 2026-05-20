@@ -43,6 +43,18 @@ IconButton is a compact action button that uses only an icon. Use it for toolbar
 - Touch target should be at least 44px tall and wide.
 - Icon alone must not be the only accessible name.
 
+## Best Practices Review
+
+- [ ] One responsibility: `IconButton` only renders compact icon actions and does not own toolbar, menu, or navigation state.
+- [ ] Props over state: icon, variant, disabled, and state are controlled by props; pressed state in Storybook remains demo-only state.
+- [ ] Descriptive typed props: `ariaLabel`, `icon`, `variant`, `state`, `darkMode`, `disabled`, and `onClick` stay typed and documented.
+- [ ] No business logic: source stays free of auth, storage, routing, analytics, and data-fetching side effects.
+- [ ] Simple props: public API remains primitive values, icon names, and callbacks.
+- [ ] Accessibility: native button, required accessible name, keyboard activation, and target size stay covered.
+- [ ] Defaults and variants: filled, tonal, outlined, accent, red, standard, disabled, pressed, and dark examples stay represented.
+- [ ] Theme decision: `darkMode` is either approved as a public prop or moved to Storybook/theme background after review.
+- [ ] Central stories: `src/stories` remains the workspace convention; co-location is a future migration option, not required in this batch.
+
 ## Reuse Decisions
 
 - Reuses the icon library.
@@ -53,4 +65,5 @@ IconButton is a compact action button that uses only an icon. Use it for toolbar
 
 - [ ] Designer confirms the final public name should be `IconButton`, not `03 Icon Button`.
 - [ ] Designer confirms `outlinedAccent` and `standardInverse` naming.
+- [ ] Best Practices Review checklist approved.
 - [ ] Agent may proceed to Step 07 for `IconButton`.

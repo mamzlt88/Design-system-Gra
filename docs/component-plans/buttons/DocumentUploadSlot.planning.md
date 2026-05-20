@@ -45,6 +45,17 @@ DocumentUploadSlot is the place where a person can add or review a document. Use
 - The uploaded file name must be announced as part of the component label or description.
 - Touch target should be at least 44px tall and wide.
 
+## Best Practices Review
+
+- [ ] One responsibility: `DocumentUploadSlot` only presents upload-slot state and delegates real upload handling to the app.
+- [ ] Props over state: `state`, `fileName`, and `onClick` control behavior; uploaded/pressed toggling in Storybook remains demo-only state.
+- [ ] Descriptive typed props: instruction, requirement, type label, visibility, file name, state, and event props stay typed and documented.
+- [ ] No business logic: source stays free of file-system, network upload, auth, storage, routing, or validation side effects.
+- [ ] Simple props: public props remain text, booleans, state unions, and callbacks.
+- [ ] Accessibility: button or labelled file-input pattern, requirement text, file-name announcement, and touch target stay covered.
+- [ ] Defaults and variants: default, pressed, uploaded, optional, required, and hidden-type examples are covered in stories.
+- [ ] Central stories: `src/stories` remains the workspace convention; co-location is a future migration option, not required in this batch.
+
 ## Reuse Decisions
 
 - May reuse icon assets from the icon library.
@@ -55,4 +66,5 @@ DocumentUploadSlot is the place where a person can add or review a document. Use
 
 - [ ] Designer confirms whether uploaded files can be replaced, removed, or only viewed.
 - [ ] Designer confirms the exact words for optional, required, and no type label.
+- [ ] Best Practices Review checklist approved.
 - [ ] Agent may proceed to Step 07 for `DocumentUploadSlot`.

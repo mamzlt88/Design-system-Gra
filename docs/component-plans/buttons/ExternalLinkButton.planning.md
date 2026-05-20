@@ -42,6 +42,17 @@ ExternalLinkButton opens a page outside the current app. Use it when the person 
 - If it opens a new tab, include screen-reader text that says it opens in a new tab.
 - Keyboard users can reach it with `Tab` and activate it with `Enter`.
 
+## Best Practices Review
+
+- [ ] One responsibility: `ExternalLinkButton` only presents external navigation affordance and does not own routing policy.
+- [ ] Props over state: destination, size, disabled availability, and click tracking stay controlled by props.
+- [ ] Descriptive typed props: `label`, `href`, `textSize`, `disabled`, and `onClick` remain typed and documented.
+- [ ] No business logic: source stays free of analytics, auth, storage, routing mutations, and data-fetching side effects.
+- [ ] Simple props: public API remains primitive values and callbacks.
+- [ ] Accessibility: anchor semantics, visible text, new-tab warning, and keyboard activation stay covered.
+- [ ] Defaults and variants: enabled, pressed, text-size, and disabled examples are represented in Storybook when approved.
+- [ ] Central stories: `src/stories` remains the workspace convention; co-location is a future migration option, not required in this batch.
+
 ## Reuse Decisions
 
 - Reuses the icon library for the external-link icon.
@@ -51,4 +62,5 @@ ExternalLinkButton opens a page outside the current app. Use it when the person 
 
 - [ ] Designer confirms if external links open in the same tab or a new tab.
 - [ ] Designer confirms whether disabled external links exist in the product.
+- [ ] Best Practices Review checklist approved.
 - [ ] Agent may proceed to Step 07 for `ExternalLinkButton`.

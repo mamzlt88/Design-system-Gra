@@ -1,7 +1,32 @@
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from '@storybook/test';
 
-import { Button } from '../../components/Button';
+import { Button, type ButtonProps } from '../../components/Button';
+
+// Story-only state keeps Button controlled by props while demonstrating the transient pressed visual state.
+function InteractiveButton(args: ButtonProps) {
+  const [pressed, setPressed] = useState(false);
+
+  return (
+    <Button
+      {...args}
+      state={args.disabled ? 'disabled' : pressed ? 'pressed' : args.state ?? 'enabled'}
+      onMouseDown={(event) => {
+        setPressed(true);
+        args.onMouseDown?.(event);
+      }}
+      onMouseUp={(event) => {
+        setPressed(false);
+        args.onMouseUp?.(event);
+      }}
+      onMouseLeave={(event) => {
+        setPressed(false);
+        args.onMouseLeave?.(event);
+      }}
+    />
+  );
+}
 
 const meta = {
   title: 'Atoms/Buttons/Button',
@@ -133,9 +158,12 @@ export const Disabled: Story = {
 
 export const FullWidth: Story = {
   args: { fullWidth: true },
+  parameters: {
+    layout: 'padded',
+  },
   decorators: [
     (Story) => (
-      <div style={{ width: 360 }}>
+      <div style={{ width: '100%', minWidth: 320 }}>
         <Story />
       </div>
     ),
@@ -151,6 +179,41 @@ export const DarkModePreview: Story = {
       </div>
     ),
   ],
+};
+
+export const InteractivePressed: Story = {
+  render: (args) => <InteractiveButton {...args} />,
+};
+
+export const VariantExamples: Story = {
+  tags: ['!test', '!dev'],
+  parameters: {
+    layout: 'padded',
+  },
+  render: () => (
+    <div style={{ display: 'grid', gap: 18, width: '100%', minWidth: 320 }}>
+      <div style={{ alignItems: 'center', display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+        <Button label="Filled" variant="filled" />
+        <Button label="Outlined" variant="outlined" />
+        <Button label="Text" variant="text" />
+        <Button label="Danger" tone="red" />
+      </div>
+      <Button label="Full width" fullWidth />
+      <div style={{ background: '#151515', borderRadius: 8, padding: 18 }}>
+        <Button label="Dark mode" darkMode />
+      </div>
+    </div>
+  ),
+};
+
+export const StateExamples: Story = {
+  tags: ['!test', '!dev'],
+  render: () => (
+    <div style={{ alignItems: 'center', display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+      <Button label="Pressed" state="pressed" />
+      <Button label="Disabled" disabled state="disabled" />
+    </div>
+  ),
 };
 
 export const Clickable: Story = {

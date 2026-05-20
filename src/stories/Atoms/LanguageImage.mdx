@@ -1,0 +1,128 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as LanguageImageStories from './LanguageImage.stories';
+
+<Meta of={LanguageImageStories} />
+
+# LanguageImage
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=7878-11296)
+
+## Overview
+
+LanguageImage is a small visual marker for language dropdowns. It helps people recognize whether the current language option is English or Spanish.
+
+This is a first-pass component from the source catalog. Figma live context was not available because the Figma MCP tool limit was reached, so the exact visual styling should be reviewed against Figma before approval.
+
+**Use this component when:**
+- A language dropdown needs a compact visual language marker.
+- The option is English or Spanish.
+- The language name is shown nearby.
+
+**Do not use this component when:**
+- The user needs to choose a language by image alone.
+- The language list includes more languages that are not defined in Figma yet.
+- The control itself needs to open a menu. Use a dropdown component around it.
+
+## Default Usage
+
+<Canvas of={LanguageImageStories.English} />
+
+```tsx
+import { LanguageImage } from '@design-system/components';
+
+<LanguageImage language="english" />
+```
+
+## Props
+
+<Controls />
+
+## Languages
+
+<Canvas of={LanguageImageStories.AllLanguages} />
+
+## Dropdown Row Example
+
+<Canvas of={LanguageImageStories.InDropdownRow} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td><code>img</code></td>
+    </tr>
+    <tr>
+      <td>Accessible name</td>
+      <td>Defaults to the language, for example <code>English language image</code></td>
+    </tr>
+    <tr>
+      <td>Context</td>
+      <td>Should appear beside visible language text</td>
+    </tr>
+    <tr>
+      <td>Meaning</td>
+      <td>Should not be the only way to understand the language option</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Language Dropdown</code></td>
+      <td>The person needs to open and choose a language</td>
+    </tr>
+    <tr>
+      <td><code>Dropdown</code></td>
+      <td>The pattern is a generic selection menu</td>
+    </tr>
+    <tr>
+      <td><code>Icon</code></td>
+      <td>The visual is a general symbol, not a language marker</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Language=English</code></td>
+      <td><code>language="english"</code></td>
+      <td>English language image</td>
+    </tr>
+    <tr>
+      <td><code>Language=Spanish</code></td>
+      <td><code>language="spanish"</code></td>
+      <td>Spanish language image</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />
