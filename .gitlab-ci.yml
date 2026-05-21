@@ -29,9 +29,6 @@ pages:
   artifacts:
     paths:
       - public
-  environment:
-    name: storybook/$CI_COMMIT_REF_SLUG
-    url: $CI_PAGES_URL
   rules:
     - if: '$CI_COMMIT_BRANCH == "feature/design-system-agent"'
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
