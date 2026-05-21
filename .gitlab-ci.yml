@@ -17,25 +17,18 @@ validate-storybook:
     - npm ci --cache .npm --prefer-offline
     - npm run build
     - npm run build-storybook
-  artifacts:
-    expose_as: Storybook static build
-    when: always
-    paths:
-      - storybook-static/
-    expire_in: 1 week
 
 pages:
   stage: deploy
-  needs:
-    - job: validate-storybook
-      artifacts: true
   script:
+    - npm ci --cache .npm --prefer-offline
+    - npm run build
+    - npm run build-storybook
     - rm -rf public
     - cp -r storybook-static public
   artifacts:
     paths:
       - public
-    expire_in: 1 week
   environment:
     name: storybook/$CI_COMMIT_REF_SLUG
     url: $CI_PAGES_URL
