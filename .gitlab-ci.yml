@@ -30,5 +30,5 @@ pages:
     paths:
       - public
   rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
     - if: '$CI_COMMIT_BRANCH == "feature/design-system-agent"'
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
