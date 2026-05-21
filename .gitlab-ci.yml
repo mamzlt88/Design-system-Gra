@@ -20,6 +20,7 @@ validate-storybook:
 
 pages:
   stage: deploy
+  pages: true
   script:
     - npm ci --cache .npm --prefer-offline
     - npm run build
