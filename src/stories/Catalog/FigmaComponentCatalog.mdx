@@ -1,0 +1,69 @@
+import { Meta, Canvas, Stories } from '@storybook/addon-docs/blocks';
+import * as FigmaComponentCatalogStories from './FigmaComponentCatalog.stories';
+
+<Meta of={FigmaComponentCatalogStories} />
+
+# Figma Component Catalog
+
+> **Scope**: All component assets | **Source**: `docs/component-backlog/figma-components.json`
+
+## Overview
+
+This page represents every cataloged Figma component asset in Storybook. Fully implemented atoms have dedicated component pages; molecules, organisms, pages, and needs-review items remain visible here as implementation backlog instead of disappearing.
+
+## All Components
+
+<Canvas of={FigmaComponentCatalogStories.AllComponents} />
+
+## Atoms
+
+<Canvas of={FigmaComponentCatalogStories.Atoms} />
+
+## Molecules
+
+<Canvas of={FigmaComponentCatalogStories.Molecules} />
+
+## Organisms
+
+<Canvas of={FigmaComponentCatalogStories.Organisms} />
+
+## Pages
+
+<Canvas of={FigmaComponentCatalogStories.Pages} />
+
+## Needs Review
+
+<Canvas of={FigmaComponentCatalogStories.NeedsReview} />
+
+## Coverage Rules
+
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th>How it is represented</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented atoms</td>
+      <td>Real React component source, CSF stories, MDX docs, and planning docs</td>
+    </tr>
+    <tr>
+      <td>Higher-level components</td>
+      <td>Catalog representation with level, family, Figma node, status, and variant axes</td>
+    </tr>
+    <tr>
+      <td>Needs-review components</td>
+      <td>Kept visible in Storybook so review gaps are not hidden</td>
+    </tr>
+    <tr>
+      <td>No invented behavior</td>
+      <td>Catalog items do not claim production behavior until implemented as real components</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

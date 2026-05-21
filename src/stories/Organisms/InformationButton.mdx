@@ -1,0 +1,153 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as InformationButtonStories from './InformationButton.stories';
+
+<Meta of={InformationButtonStories} />
+
+# InformationButton
+
+> **Storybook Group**: Organisms / Buttons | **Figma Level**: Organism | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=7521-7432)
+
+## Overview
+
+InformationButton is a compact helper action that can reveal supporting information through a sourced tooltip-open state. It composes the existing `Icon` and `Tooltip` primitives while keeping the open state controlled by props.
+
+**Use this component when:**
+- A field, step, or section needs a short explanation available on demand.
+- The visible state maps to `Enabled`, `Pressed`, or `Tooltip Open`.
+- The parent owns whether the tooltip is open and handles any analytics or app behavior.
+
+**Do not use this component when:**
+- The content is primary page copy that should always be visible.
+- The interaction needs routing, fetching, storage, or permission logic inside the component.
+- The UI needs a full callout card or alert message instead of a compact helper action.
+
+## Default Usage
+
+<Canvas of={InformationButtonStories.Enabled} />
+
+```tsx
+import { InformationButton } from '@design-system/components';
+
+<InformationButton
+  label="Why is this needed?"
+  state={isOpen ? 'tooltipOpen' : 'enabled'}
+  tooltipText="This information helps explain why the user is being asked for this step."
+  onClick={() => setIsOpen((open) => !open)}
+/>
+```
+
+The default Storybook canvas uses story-only state so clicking the button toggles the tooltip-open state. The component itself remains controlled by `state`.
+
+## Props
+
+<Controls />
+
+## States
+
+The sourced Figma states are represented together in one review container.
+
+<Canvas of={InformationButtonStories.StateExamples} />
+
+## Text Size
+
+`Text_Size` maps to the `textSize` prop.
+
+<Canvas of={InformationButtonStories.TextSizeExamples} />
+
+## Interaction
+
+Click the button in the canvas to toggle between `enabled` and `tooltipOpen`.
+
+<Canvas of={InformationButtonStories.InteractionExamples} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td>Uses a native <code>button</code></td>
+    </tr>
+    <tr>
+      <td>Keyboard</td>
+      <td><code>Tab</code> focuses the button; <code>Enter</code> and <code>Space</code> activate it</td>
+    </tr>
+    <tr>
+      <td>Tooltip relationship</td>
+      <td>When open, the button points to the tooltip with <code>aria-describedby</code></td>
+    </tr>
+    <tr>
+      <td>Application state</td>
+      <td>The component does not own tooltip state; parent code controls <code>state</code></td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Tooltip</code></td>
+      <td>The UI needs helper text without the composed information action</td>
+    </tr>
+    <tr>
+      <td><code>IconButton</code></td>
+      <td>The action is icon-only and has a separate accessible label</td>
+    </tr>
+    <tr>
+      <td><code>Button</code></td>
+      <td>The user needs to perform a primary or secondary action</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>State=Enabled</code></td>
+      <td><code>state="enabled"</code></td>
+      <td>Default visible state</td>
+    </tr>
+    <tr>
+      <td><code>State=Pressed</code></td>
+      <td><code>state="pressed"</code></td>
+      <td>Transient touch or mouse feedback</td>
+    </tr>
+    <tr>
+      <td><code>State=Tooltip Open</code></td>
+      <td><code>state="tooltipOpen"</code></td>
+      <td>Shows the composed tooltip</td>
+    </tr>
+    <tr>
+      <td><code>Text_Size=Medium</code> / <code>Text_Size=Small</code></td>
+      <td><code>textSize</code></td>
+      <td>Controls text and icon sizing</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

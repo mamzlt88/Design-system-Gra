@@ -1,0 +1,137 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as UserAvatarStories from './UserAvatar.stories';
+
+<Meta of={UserAvatarStories} />
+
+# UserAvatar
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=1640-11011)
+
+## Overview
+
+Covers sourced size, avatar, initials, and x-small star variants.
+
+**Use this component when:**
+- The surrounding workflow matches the sourced Figma component purpose.
+- The visible state maps to a documented Figma variant.
+- The component can stay presentational and controlled by props.
+
+**Do not use this component when:**
+- The behavior would require fetching, routing, storage, auth, or submission logic inside the component.
+- The required state is not represented by Figma evidence or explicit config.
+- A more specific existing component covers the use case.
+
+## Default Usage
+
+<Canvas of={UserAvatarStories.Avatar} />
+
+```tsx
+import { UserAvatar } from '@design-system/components';
+
+<UserAvatar size="medium" avatar="3" />
+```
+
+## Props
+
+<Controls />
+
+## Examples
+
+<Canvas of={UserAvatarStories.SizeExamples} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Accessible name</td>
+      <td>Provide visible text or an explicit label prop when the visual alone is not enough</td>
+    </tr>
+    <tr>
+      <td>Semantic role</td>
+      <td>Uses native controls or explicit roles based on the represented pattern</td>
+    </tr>
+    <tr>
+      <td>State</td>
+      <td>Visual state is controlled by props and does not own application state</td>
+    </tr>
+    <tr>
+      <td>Interaction</td>
+      <td>Interactive behavior is limited to explicit event props supplied by the parent</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Button</code></td>
+      <td>The user needs to trigger an action</td>
+    </tr>
+    <tr>
+      <td><code>StatusBadge</code></td>
+      <td>The UI needs a visible textual status</td>
+    </tr>
+    <tr>
+      <td><code>IconButton</code></td>
+      <td>The action is compact and icon-led</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Size</code></td>
+      <td><code>size</code></td>
+      <td>Big, medium, small, or x-small</td>
+    </tr>
+    <tr>
+      <td><code>Type=Avatar</code></td>
+      <td><code>type="avatar"</code></td>
+      <td>Illustrated avatar</td>
+    </tr>
+    <tr>
+      <td><code>Type=Initials</code></td>
+      <td><code>type="initials"</code></td>
+      <td>Initials avatar</td>
+    </tr>
+    <tr>
+      <td><code>Avatar=1..6/None</code></td>
+      <td><code>avatar</code></td>
+      <td>Avatar variant color</td>
+    </tr>
+    <tr>
+      <td><code>Show_Star</code></td>
+      <td><code>showStar</code></td>
+      <td>X-small star badge</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

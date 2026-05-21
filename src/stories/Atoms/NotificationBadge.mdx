@@ -1,0 +1,132 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as NotificationBadgeStories from './NotificationBadge.stories';
+
+<Meta of={NotificationBadgeStories} />
+
+# NotificationBadge
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=7509-2356)
+
+## Overview
+
+NotificationBadge marks unread or pending notification counts. Use the dot size when the interface only needs to show that something exists, and digit sizes when the count matters.
+
+**Use this component when:**
+- A notification, tab, or icon needs a compact unread marker.
+- The badge is paired with a visible label, icon, or destination.
+- The count is short enough to remain readable.
+
+**Do not use this component when:**
+- The value is a general status label. Use `StatusBadge`.
+- The badge itself needs to be clicked.
+- The number needs detailed formatting or explanatory text.
+
+## Default Usage
+
+<Canvas of={NotificationBadgeStories.Small} />
+
+```tsx
+import { NotificationBadge } from '@design-system/components';
+
+<NotificationBadge size="singleDigit" value={3} label="3 notifications" />
+```
+
+## Props
+
+<Controls />
+
+## Sizes
+
+<Canvas of={NotificationBadgeStories.SizeExamples} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td>Uses <code>role="status"</code> for the compact notification marker</td>
+    </tr>
+    <tr>
+      <td>Accessible name</td>
+      <td><code>label</code> describes the count or unread marker</td>
+    </tr>
+    <tr>
+      <td>Visible text</td>
+      <td>Digit sizes render a short count; small size renders a dot only</td>
+    </tr>
+    <tr>
+      <td>Interaction</td>
+      <td>Not interactive; the parent button, tab, or link owns navigation and clicks</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>StatusBadge</code></td>
+      <td>The badge needs a visible semantic status label</td>
+    </tr>
+    <tr>
+      <td><code>ColorIndicator</code></td>
+      <td>The marker is a non-count color stripe</td>
+    </tr>
+    <tr>
+      <td><code>NotificationIcon</code></td>
+      <td>The notification type needs a larger illustrated icon</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Size=Small</code></td>
+      <td><code>size="small"</code></td>
+      <td>Dot-only unread marker</td>
+    </tr>
+    <tr>
+      <td><code>Size=Single Digit</code></td>
+      <td><code>size="singleDigit"</code></td>
+      <td>One-digit count</td>
+    </tr>
+    <tr>
+      <td><code>Size=Multiple Digits</code></td>
+      <td><code>size="multipleDigits"</code></td>
+      <td>Two-or-more digit count</td>
+    </tr>
+    <tr>
+      <td><code>Digit_Text</code></td>
+      <td><code>value</code></td>
+      <td>Visible count for digit badges</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

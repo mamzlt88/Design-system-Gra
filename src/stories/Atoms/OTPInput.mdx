@@ -1,0 +1,137 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as OTPInputStories from './OTPInput.stories';
+
+<Meta of={OTPInputStories} />
+
+# OTPInput
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=7878-736)
+
+## Overview
+
+OTPInput composes six OTP input boxes with optional supporting text. Use it when a one-time passcode must be entered as separate digit slots.
+
+**Use this component when:**
+- The flow asks for a short one-time passcode.
+- The value can be represented as a controlled string.
+- Supporting text needs to appear below the boxes.
+
+**Do not use this component when:**
+- The input accepts normal free-form text.
+- The code length or validation behavior is unknown.
+- The component would need to fetch, verify, or submit the code itself.
+
+## Default Usage
+
+<Canvas of={OTPInputStories.Empty} />
+
+```tsx
+import { OTPInput } from '@design-system/components';
+
+<OTPInput value="234567" showSupportingText={false} />
+```
+
+## Props
+
+<Controls />
+
+## States
+
+<Canvas of={OTPInputStories.StateExamples} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Group label</td>
+      <td>Uses <code>role="group"</code> and <code>label</code> for the full OTP control</td>
+    </tr>
+    <tr>
+      <td>Digit labels</td>
+      <td>Each box receives a generated digit label</td>
+    </tr>
+    <tr>
+      <td>Error state</td>
+      <td><code>hasError</code> applies error states to active and filled boxes</td>
+    </tr>
+    <tr>
+      <td>Controlled value</td>
+      <td><code>value</code> and <code>onValueChange</code> keep state outside the component</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>OTPInputBox</code></td>
+      <td>The UI needs only one OTP digit slot</td>
+    </tr>
+    <tr>
+      <td><code>AmountSelector</code></td>
+      <td>The field changes a numeric amount with increment controls</td>
+    </tr>
+    <tr>
+      <td><code>Button</code></td>
+      <td>The user submits or continues after entering the code</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Six <code>OTP Input Box</code> instances</td>
+      <td><code>length={6}</code></td>
+      <td>Default layout matches the source component</td>
+    </tr>
+    <tr>
+      <td><code>Show_Supp.Text</code></td>
+      <td><code>showSupportingText</code></td>
+      <td>Controls supporting text visibility</td>
+    </tr>
+    <tr>
+      <td><code>Supp_Text</code></td>
+      <td><code>supportingText</code></td>
+      <td>Supporting text content</td>
+    </tr>
+    <tr>
+      <td>Active visual slot</td>
+      <td><code>activeIndex</code></td>
+      <td>Marks one slot as active without internal state</td>
+    </tr>
+    <tr>
+      <td>Error visual treatment</td>
+      <td><code>hasError</code></td>
+      <td>Maps to the OTP box error states</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

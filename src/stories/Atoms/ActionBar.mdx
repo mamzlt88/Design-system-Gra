@@ -1,0 +1,139 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as ActionBarStories from './ActionBar.stories';
+
+<Meta of={ActionBarStories} />
+
+# ActionBar
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=8387-10564)
+
+## Overview
+
+Combines one or two footer actions.
+
+**Use this component when:**
+- The surrounding workflow matches the sourced Figma component purpose.
+- The visible state maps to a documented Figma variant.
+- The component can stay presentational and controlled by props.
+
+**Do not use this component when:**
+- The behavior would require fetching, routing, storage, auth, or submission logic inside the component.
+- The required state is not represented by Figma evidence or explicit config.
+- A more specific existing component covers the use case.
+
+## Default Usage
+
+<Canvas of={ActionBarStories.DualActions} />
+
+```tsx
+import { ActionBar } from '@design-system/components';
+
+<ActionBar type="dualActions" primaryLabel="Continue" secondaryLabel="Back" />
+```
+
+The default stories use Storybook-only state so clicking either action shows the pressed feedback. The component itself stays controlled by `primaryState` and `secondaryState`.
+
+## Props
+
+<Controls />
+
+## Examples
+
+<Canvas of={ActionBarStories.TypeExamples} />
+
+## Interaction
+
+Pressed is a transient feedback style for the action being touched or clicked. It is shown as story-controlled visual state so the component still does not own application state.
+
+<Canvas of={ActionBarStories.InteractionExamples} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Accessible name</td>
+      <td>Provide visible text or an explicit label prop when the visual alone is not enough</td>
+    </tr>
+    <tr>
+      <td>Semantic role</td>
+      <td>Uses native controls or explicit roles based on the represented pattern</td>
+    </tr>
+    <tr>
+      <td>State</td>
+      <td>Visual state is controlled by props and does not own application state</td>
+    </tr>
+    <tr>
+      <td>Interaction</td>
+      <td>Pressed feedback is controlled by <code>primaryState</code> and <code>secondaryState</code>; behavior is supplied by parent event props</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Button</code></td>
+      <td>The user needs to trigger an action</td>
+    </tr>
+    <tr>
+      <td><code>StatusBadge</code></td>
+      <td>The UI needs a visible textual status</td>
+    </tr>
+    <tr>
+      <td><code>IconButton</code></td>
+      <td>The action is compact and icon-led</td>
+    </tr>
+    <tr>
+      <td><code>NavigationBar</code></td>
+      <td>The footer needs persistent app navigation rather than workflow actions</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Type=Dual Actions</code></td>
+      <td><code>type="dualActions"</code></td>
+      <td>Primary and secondary actions</td>
+    </tr>
+    <tr>
+      <td><code>Type=Single Action</code></td>
+      <td><code>type="singleAction"</code></td>
+      <td>Primary action only</td>
+    </tr>
+    <tr>
+      <td>User-approved interaction</td>
+      <td><code>primaryState="pressed"</code></td>
+      <td>Shows the pressed action feedback in Storybook</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

@@ -1,0 +1,147 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as OTPInputBoxStories from './OTPInputBox.stories';
+
+<Meta of={OTPInputBoxStories} />
+
+# OTPInputBox
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=7878-668)
+
+## Overview
+
+OTPInputBox renders one one-time-passcode digit slot. Use it as the primitive for OTP input patterns.
+
+**Use this component when:**
+- A one-time-passcode digit needs its own visual slot.
+- The field state matches a Figma-defined OTP box state.
+- A composed OTP input controls the value.
+
+**Do not use this component when:**
+- A full six-digit OTP field is needed. Use `OTPInput`.
+- The field should accept long text.
+- The state is not one of the sourced Figma states.
+
+## Default Usage
+
+<Canvas of={OTPInputBoxStories.Enabled} />
+
+```tsx
+import { OTPInputBox } from '@design-system/components';
+
+<OTPInputBox state="filled" value="2" ariaLabel="One-time passcode digit 1" />
+```
+
+## Props
+
+<Controls />
+
+## States
+
+<Canvas of={OTPInputBoxStories.StateExamples} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Native input</td>
+      <td>Renders an <code>input</code> with numeric input hints</td>
+    </tr>
+    <tr>
+      <td>Accessible name</td>
+      <td><code>ariaLabel</code> identifies the digit slot</td>
+    </tr>
+    <tr>
+      <td>Error state</td>
+      <td>Error variants set <code>aria-invalid</code></td>
+    </tr>
+    <tr>
+      <td>Controlled value</td>
+      <td>The visible digit is supplied through <code>value</code></td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>OTPInput</code></td>
+      <td>The UI needs the full six-digit OTP pattern</td>
+    </tr>
+    <tr>
+      <td><code>AmountSelector</code></td>
+      <td>The field changes a numeric amount with increment controls</td>
+    </tr>
+    <tr>
+      <td><code>CheckboxRadioButton</code></td>
+      <td>The input is a selection control rather than text entry</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>State=Enabled</code></td>
+      <td><code>state="enabled"</code></td>
+      <td>Empty gray slot</td>
+    </tr>
+    <tr>
+      <td><code>State=Active</code></td>
+      <td><code>state="active"</code></td>
+      <td>Focused slot with teal border and caret</td>
+    </tr>
+    <tr>
+      <td><code>State=Filled</code></td>
+      <td><code>state="filled"</code></td>
+      <td>Filled slot with digit</td>
+    </tr>
+    <tr>
+      <td><code>State=Filled Error</code></td>
+      <td><code>state="filledError"</code></td>
+      <td>Filled slot with red error border</td>
+    </tr>
+    <tr>
+      <td><code>State=Active Error</code></td>
+      <td><code>state="activeError"</code></td>
+      <td>Active slot with red error border and caret</td>
+    </tr>
+    <tr>
+      <td><code>No_Text</code></td>
+      <td><code>value</code></td>
+      <td>Single visible digit</td>
+    </tr>
+    <tr>
+      <td><code>Show_No</code></td>
+      <td><code>showValue</code></td>
+      <td>Controls digit visibility</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

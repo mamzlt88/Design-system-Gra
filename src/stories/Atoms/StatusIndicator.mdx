@@ -1,0 +1,132 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as StatusIndicatorStories from './StatusIndicator.stories';
+
+<Meta of={StatusIndicatorStories} />
+
+# StatusIndicator
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=7873-607)
+
+## Overview
+
+StatusIndicator communicates a compact list or step status. Use it when a small circular status marker is enough and surrounding text already explains the item.
+
+**Use this component when:**
+- A list, step, or information row needs a compact status marker.
+- The status is one of the Figma-defined values.
+- The marker is paired with visible row or step text.
+
+**Do not use this component when:**
+- The status needs visible label text inside the component. Use `StatusBadge`.
+- The indicator needs to trigger an action.
+- The icon needs a custom source that has not been mapped.
+
+## Default Usage
+
+<Canvas of={StatusIndicatorStories.Completed} />
+
+```tsx
+import { StatusIndicator } from '@design-system/components';
+
+<StatusIndicator status="completed" label="Completed status" />
+```
+
+## Props
+
+<Controls />
+
+## Statuses
+
+<Canvas of={StatusIndicatorStories.StatusExamples} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td>Uses <code>role="img"</code> because the marker communicates status visually</td>
+    </tr>
+    <tr>
+      <td>Accessible name</td>
+      <td><code>label</code> provides the status meaning for assistive technology</td>
+    </tr>
+    <tr>
+      <td>Color meaning</td>
+      <td>Pair the indicator with visible row or step text; color should not be the only cue</td>
+    </tr>
+    <tr>
+      <td>Interaction</td>
+      <td>Not interactive; use a button or link when action is needed</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>StatusBadge</code></td>
+      <td>The status needs visible text inside the component</td>
+    </tr>
+    <tr>
+      <td><code>ColorIndicator</code></td>
+      <td>The list item only needs a narrow color marker</td>
+    </tr>
+    <tr>
+      <td><code>NotificationIcon</code></td>
+      <td>The visual needs a larger icon surface</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Status=Completed</code></td>
+      <td><code>status="completed"</code></td>
+      <td>Teal background</td>
+    </tr>
+    <tr>
+      <td><code>Status=Neutral</code></td>
+      <td><code>status="neutral"</code></td>
+      <td>Neutral gray background</td>
+    </tr>
+    <tr>
+      <td><code>Status=Attention</code></td>
+      <td><code>status="attention"</code></td>
+      <td>Red attention background</td>
+    </tr>
+    <tr>
+      <td><code>Change_Icon</code></td>
+      <td>Not exposed</td>
+      <td>Figma default is <code>error_outline</code>; alternate preferred values still need icon mapping evidence</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

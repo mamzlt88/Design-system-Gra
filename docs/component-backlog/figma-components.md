@@ -263,71 +263,71 @@ Icon assets are split into `docs/icon-library/figma-icons.md`.
 
 | Name | Node ID | Type | Level | Status |
 |------|---------|------|-------|--------|
-| `Information Button` | `7521:7432` | `COMPONENT_SET` | `organisms` | `unmapped` |
+| `Information Button` | `7521:7432` | `COMPONENT_SET` | `organisms` | `implemented` |
 
 #### Cards
 
 | Name | Node ID | Type | Level | Status |
 |------|---------|------|-------|--------|
-| `Informational Card` | `9243:9011` | `COMPONENT_SET` | `organisms` | `unmapped` |
+| `Informational Card` | `9243:9011` | `COMPONENT_SET` | `organisms` | `implemented` |
 
 #### Headers Variations
 
 | Name | Node ID | Type | Level | Status |
 |------|---------|------|-------|--------|
-| `App Header` | `7591:5064` | `COMPONENT_SET` | `organisms` | `unmapped` |
-| `Web Header` | `7994:1560` | `COMPONENT_SET` | `organisms` | `unmapped` |
+| `App Header` | `7591:5064` | `COMPONENT_SET` | `organisms` | `implemented` |
+| `Web Header` | `7994:1560` | `COMPONENT_SET` | `organisms` | `implemented` |
 
 #### Illustrations
 
 | Name | Node ID | Type | Level | Status |
 |------|---------|------|-------|--------|
-| `Loan Approval In Progress` | `7575:11565` | `COMPONENT_SET` | `organisms` | `unmapped` |
+| `Loan Approval In Progress` | `7575:11565` | `COMPONENT_SET` | `organisms` | `implemented` |
 
 #### List Items
 
 | Name | Node ID | Type | Level | Status |
 |------|---------|------|-------|--------|
-| `Navigational List Item` | `7428:8728` | `COMPONENT_SET` | `organisms` | `unmapped` |
-| `Side Bar Item` | `7878:9372` | `COMPONENT_SET` | `organisms` | `unmapped` |
+| `Navigational List Item` | `7428:8728` | `COMPONENT_SET` | `organisms` | `implemented` |
+| `Side Bar Item` | `7878:9372` | `COMPONENT_SET` | `organisms` | `implemented` |
 
 #### Lists
 
 | Name | Node ID | Type | Level | Status |
 |------|---------|------|-------|--------|
-| `Navigational List` | `9229:6313` | `COMPONENT_SET` | `organisms` | `unmapped` |
+| `Navigational List` | `9229:6313` | `COMPONENT_SET` | `organisms` | `implemented` |
 
 #### Modals & Bottom Sheets
 
 | Name | Node ID | Type | Level | Status |
 |------|---------|------|-------|--------|
-| `Standard Bottom Sheet` | `7482:653` | `COMPONENT` | `organisms` | `unmapped` |
-| `Standard Modal` | `7478:9775` | `COMPONENT_SET` | `organisms` | `unmapped` |
+| `Standard Bottom Sheet` | `7482:653` | `COMPONENT` | `organisms` | `implemented` |
+| `Standard Modal` | `7478:9775` | `COMPONENT_SET` | `organisms` | `implemented` |
 
 #### Navigation Bars
 
 | Name | Node ID | Type | Level | Status |
 |------|---------|------|-------|--------|
-| `Navigation Bar` | `7407:2558` | `COMPONENT_SET` | `organisms` | `unmapped` |
-| `Section Nav Bar` | `7752:2780` | `COMPONENT_SET` | `organisms` | `unmapped` |
+| `Navigation Bar` | `7407:2558` | `COMPONENT_SET` | `organisms` | `implemented` |
+| `Section Nav Bar` | `7752:2780` | `COMPONENT_SET` | `organisms` | `implemented` |
 
 #### Side Bar
 
 | Name | Node ID | Type | Level | Status |
 |------|---------|------|-------|--------|
-| `Side Bar` | `9275:1994` | `COMPONENT` | `organisms` | `unmapped` |
+| `Side Bar` | `9275:1994` | `COMPONENT` | `organisms` | `implemented` |
 
 #### Tables
 
 | Name | Node ID | Type | Level | Status |
 |------|---------|------|-------|--------|
-| `Attendance Report Rows` | `7486:956` | `COMPONENT_SET` | `organisms` | `unmapped` |
-| `Last Payments Rows` | `8745:10511` | `COMPONENT_SET` | `organisms` | `unmapped` |
-| `Mambu Webview Table` | `8066:5933` | `COMPONENT_SET` | `organisms` | `unmapped` |
-| `Past Loans Rows` | `7484:1084` | `COMPONENT_SET` | `organisms` | `unmapped` |
-| `Payment State Rows/Table Header` | `7483:6447` | `COMPONENT` | `organisms` | `unmapped` |
-| `Payment Status Row` | `7484:1012` | `COMPONENT_SET` | `organisms` | `unmapped` |
-| `Pending Balance Rows` | `7489:926` | `COMPONENT_SET` | `organisms` | `unmapped` |
+| `Attendance Report Rows` | `7486:956` | `COMPONENT_SET` | `organisms` | `implemented` |
+| `Last Payments Rows` | `8745:10511` | `COMPONENT_SET` | `organisms` | `implemented` |
+| `Mambu Webview Table` | `8066:5933` | `COMPONENT_SET` | `organisms` | `implemented` |
+| `Past Loans Rows` | `7484:1084` | `COMPONENT_SET` | `organisms` | `implemented` |
+| `Payment State Rows/Table Header` | `7483:6447` | `COMPONENT` | `organisms` | `implemented` |
+| `Payment Status Row` | `7484:1012` | `COMPONENT_SET` | `organisms` | `implemented` |
+| `Pending Balance Rows` | `7489:926` | `COMPONENT_SET` | `organisms` | `implemented` |
 
 ### Pages
 

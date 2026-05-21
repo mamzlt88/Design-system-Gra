@@ -7,7 +7,7 @@ This is a fresh Step 00 workspace for the Design System Agent.
 - React component source folder: `src/components`
 - Storybook stories folder: `src/stories`
 - Storybook config: `.storybook/main.ts` and `.storybook/preview.ts`
-- Implemented atom components: `AmountSelector`, `Button`, `CheckboxRadioButton`, `DocumentUploadSlot`, `ExternalLinkButton`, `IconButton`, `IconContainer`, `LanguageImage`, `NotificationIcon`, `PillButton`, and `ValueAdjusterButton`
+- Implemented atom components: `ActionBar`, `AmountSelector`, `Button`, `CheckboxList`, `CheckboxRadioButton`, `CircularSpinner`, `ColorIndicator`, `DocumentUploadSlot`, `ExternalLinkButton`, `GuidanceAvatar`, `IconButton`, `IconContainer`, `LanguageImage`, `LanguageSelector`, `Logo`, `NavigationBar`, `NotificationBadge`, `NotificationIcon`, `OTPInput`, `OTPInputBox`, `OptionSelectionBottomSheet`, `PillButton`, `SavingsGoal`, `SavingsProgramLogo`, `SectionBar`, `SegmentedSpinner`, `StatusBadge`, `StatusIndicator`, `SubDetailsGroup`, `Switch`, `Tooltip`, `UserAvatar`, and `ValueAdjusterButton`
 - Agent state file: `.figma-storybook-agent-state.json`
 - Agent integration config placeholder: `.figma-storybook-agent.json`
 - Figma style tokens: `src/tokens/figma-tokens.json` and `src/tokens/figmaTokens.ts`
@@ -25,7 +25,7 @@ This is a fresh Step 00 workspace for the Design System Agent.
 
 ## Storybook Documentation Conventions
 
-- Keep component docs in `src/stories/Atoms/*.mdx` and stories in `src/stories/Atoms/*.stories.tsx`.
+- Keep component docs in `src/stories/<Level>/*.mdx` and stories in `src/stories/<Level>/*.stories.tsx`.
 - Group related examples into one section canvas. For example, a Variants section should show all variants inside one grouped story instead of stacking one canvas per variant.
 - Keep individual CSF stories available for direct review and interaction tests, but use grouped stories for docs sections when several examples belong together.
 - Render docs data as real MDX/HTML `<table>` markup in Storybook pages. Do not use Markdown pipe tables inside `.mdx` files because Storybook can render them as unreadable plain text.
@@ -64,6 +64,8 @@ In plain words: the current atom batch has been built, validated, and is being r
 
 Current review plan:
 
+- `docs/component-plans/accordions/LanguageSelector.planning.md`
+- `docs/component-plans/accordions/SubDetailsGroup.planning.md`
 - `docs/component-plans/buttons/README.md`
 - `docs/component-plans/buttons/Button.planning.md`
 - `docs/component-plans/buttons/IconButton.planning.md`
@@ -71,24 +73,66 @@ Current review plan:
 - `docs/component-plans/buttons/ExternalLinkButton.planning.md`
 - `docs/component-plans/buttons/PillButton.planning.md`
 - `docs/component-plans/buttons/ValueAdjusterButton.planning.md`
-- `docs/component-plans/input-components/AmountSelector.planning.md`
+- `docs/component-plans/badges-and-indicators/ColorIndicator.planning.md`
+- `docs/component-plans/badges-and-indicators/NotificationBadge.planning.md`
+- `docs/component-plans/badges-and-indicators/StatusBadge.planning.md`
+- `docs/component-plans/cards/NotificationIcon.planning.md`
 - `docs/component-plans/checkbox-radio-buttons/CheckboxRadioButton.planning.md`
 - `docs/component-plans/dropdowns/LanguageImage.planning.md`
 - `docs/component-plans/icon-containers/IconContainer.planning.md`
-- `docs/component-plans/cards/NotificationIcon.planning.md`
+- `docs/component-plans/illustrations/SavingsGoal.planning.md`
+- `docs/component-plans/input-components/AmountSelector.planning.md`
+- `docs/component-plans/lists/CheckboxList.planning.md`
+- `docs/component-plans/lists/StatusIndicator.planning.md`
+- `docs/component-plans/loading-progress-indicators/CircularSpinner.planning.md`
+- `docs/component-plans/loading-progress-indicators/SegmentedSpinner.planning.md`
+- `docs/component-plans/logo/Logo.planning.md`
+- `docs/component-plans/logo/SavingsProgramLogo.planning.md`
+- `docs/component-plans/modals-and-bottom-sheets/OptionSelectionBottomSheet.planning.md`
+- `docs/component-plans/navigation-bars/ActionBar.planning.md`
+- `docs/component-plans/navigation-bars/NavigationBar.planning.md`
+- `docs/component-plans/navigation-bars/SectionBar.planning.md`
+- `docs/component-plans/switches/Switch.planning.md`
+- `docs/component-plans/text-fields/OTPInput.planning.md`
+- `docs/component-plans/text-fields/OTPInputBox.planning.md`
+- `docs/component-plans/user-guidance/GuidanceAvatar.planning.md`
+- `docs/component-plans/user-guidance/Tooltip.planning.md`
+- `docs/component-plans/user-representation/UserAvatar.planning.md`
 
 Built and documented in Storybook:
 
-- `AmountSelector` under Input Components
+- `ActionBar`
+- `AmountSelector`
 - `Button`
+- `CheckboxList`
 - `CheckboxRadioButton`
+- `CircularSpinner`
+- `ColorIndicator`
 - `DocumentUploadSlot`
 - `ExternalLinkButton`
+- `GuidanceAvatar`
 - `IconButton`
 - `IconContainer`
 - `LanguageImage`
+- `LanguageSelector`
+- `Logo`
+- `NotificationBadge`
 - `NotificationIcon`
+- `NavigationBar`
+- `OTPInput`
+- `OTPInputBox`
+- `OptionSelectionBottomSheet`
 - `PillButton`
+- `SavingsGoal`
+- `SavingsProgramLogo`
+- `SectionBar`
+- `SegmentedSpinner`
+- `StatusBadge`
+- `StatusIndicator`
+- `SubDetailsGroup`
+- `Switch`
+- `Tooltip`
+- `UserAvatar`
 - `ValueAdjusterButton`
 
 Validation completed:
@@ -111,5 +155,5 @@ Current counts:
 - Component assets cataloged: 159
 - Review frames kept separate: 1,188
 - Needs-review items: 207
-- Components planned in current batch: 11
-- Components implemented in current batch: 11
+- Components planned in current batch: 33
+- Components implemented in current batch: 33

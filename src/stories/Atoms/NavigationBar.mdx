@@ -1,0 +1,162 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as NavigationBarStories from './NavigationBar.stories';
+
+<Meta of={NavigationBarStories} />
+
+# NavigationBar
+
+> **Storybook Group**: Atoms / Navigation Bars | **Figma Level**: Organism | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=7407-2558)
+
+## Overview
+
+NavigationBar is the mobile bottom navigation bar for switching between the main product sections. It is built from the `SectionBar` atom and does not include the status bar or home indicator.
+
+**Use this component when:**
+- The user needs persistent navigation between the main app sections.
+- The active section maps to the Figma `Section` variant.
+- The navigation remains presentational and route changes are handled by the parent through `onNavigate`.
+
+**Do not use this component when:**
+- The UI needs one or two workflow actions. Use `ActionBar`.
+- The page needs local tabs within a single view. Use a section navigation pattern instead.
+- The component would need to own routing, storage, auth, or fetched state internally.
+
+## Default Usage
+
+<Canvas of={NavigationBarStories.MyLoan} />
+
+```tsx
+import { NavigationBar } from '@design-system/components';
+
+<NavigationBar section="My Loan" onNavigate={(section) => navigate(section)} />
+```
+
+The default story uses Storybook-only state so clicking an item changes the selected section in the canvas. The component itself stays controlled by `section` and reports changes through `onNavigate`.
+
+## Props
+
+<Controls />
+
+## Language
+
+The Figma `Language` variant controls the visible item labels.
+
+<Canvas of={NavigationBarStories.LanguageExamples} />
+
+## Interaction
+
+Click any item in the canvas to make it selected. Pressed feedback remains available through `pressedSection` when a parent needs to show transient touch or mouse feedback.
+
+<Canvas of={NavigationBarStories.InteractionExamples} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Landmark</td>
+      <td>Uses native <code>nav</code> with an <code>aria-label</code></td>
+    </tr>
+    <tr>
+      <td>Current item</td>
+      <td>Active section uses <code>aria-current="page"</code></td>
+    </tr>
+    <tr>
+      <td>Keyboard</td>
+      <td><code>SectionBar</code> uses native <code>button</code> items that receive focus and activate with keyboard defaults</td>
+    </tr>
+    <tr>
+      <td>Labels</td>
+      <td>Each item has visible text in the selected language</td>
+    </tr>
+    <tr>
+      <td>Application state</td>
+      <td>The component does not own routing state; parents handle navigation through <code>onNavigate</code></td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ActionBar</code></td>
+      <td>The footer needs one or two workflow actions rather than persistent navigation</td>
+    </tr>
+    <tr>
+      <td><code>SectionBar</code></td>
+      <td>The UI needs a single navigation item with selected or pressed feedback</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Language=English</code> / <code>Language=Spanish</code></td>
+      <td><code>language</code></td>
+      <td>Controls the visible item labels</td>
+    </tr>
+    <tr>
+      <td><code>Section=My Loan</code></td>
+      <td><code>section="My Loan"</code></td>
+      <td>Marks My Loan as the current item</td>
+    </tr>
+    <tr>
+      <td><code>Section=Payments</code></td>
+      <td><code>section="Payments"</code></td>
+      <td>Marks Payments as the current item</td>
+    </tr>
+    <tr>
+      <td><code>Section=New Loan</code></td>
+      <td><code>section="New Loan"</code></td>
+      <td>Marks New Loan as the current item</td>
+    </tr>
+    <tr>
+      <td><code>Section=Approvals</code></td>
+      <td><code>section="Approvals"</code></td>
+      <td>Marks Approvals as the current item</td>
+    </tr>
+    <tr>
+      <td><code>Section=Resources</code></td>
+      <td><code>section="Resources"</code></td>
+      <td>Marks Resources as the current item</td>
+    </tr>
+    <tr>
+      <td><code>Section=None</code></td>
+      <td><code>section="None"</code></td>
+      <td>Renders the bar with no active item</td>
+    </tr>
+    <tr>
+      <td>User-approved interaction</td>
+      <td><code>pressedSection</code></td>
+      <td>Shows the transient pressed item feedback in Storybook</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

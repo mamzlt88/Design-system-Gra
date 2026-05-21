@@ -1,0 +1,170 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as StatusBadgeStories from './StatusBadge.stories';
+
+<Meta of={StatusBadgeStories} />
+
+# StatusBadge
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=7483-6154)
+
+## Overview
+
+StatusBadge communicates a compact status label. Use it when the status needs visible text and an approved status color treatment.
+
+**Use this component when:**
+- A row, card, or detail area needs a short visible status.
+- The status matches one of the Figma-defined meanings.
+- The text can stay short and scannable.
+
+**Do not use this component when:**
+- The status needs a long explanation.
+- The visual should only be an unread count. Use `NotificationBadge`.
+- The badge needs to trigger an action.
+
+## Default Usage
+
+<Canvas of={StatusBadgeStories.Informative} />
+
+```tsx
+import { StatusBadge } from '@design-system/components';
+
+<StatusBadge status="success" label="STATUS" />
+```
+
+## Props
+
+<Controls />
+
+## Statuses
+
+<Canvas of={StatusBadgeStories.StatusExamples} />
+
+## Styles
+
+<Canvas of={StatusBadgeStories.StyleExamples} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Visible text</td>
+      <td><code>label</code> provides the readable status text</td>
+    </tr>
+    <tr>
+      <td>Accessible name</td>
+      <td>The rendered badge includes status meaning and label</td>
+    </tr>
+    <tr>
+      <td>Loading</td>
+      <td>Loading state uses <code>role="status"</code> and an accessible label</td>
+    </tr>
+    <tr>
+      <td>Color meaning</td>
+      <td>Color is paired with text and should not be the only status cue</td>
+    </tr>
+    <tr>
+      <td>Interaction</td>
+      <td>Not interactive; use a button or link for actions</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>NotificationBadge</code></td>
+      <td>The badge represents unread count or notification presence</td>
+    </tr>
+    <tr>
+      <td><code>ColorIndicator</code></td>
+      <td>The row only needs a narrow color marker</td>
+    </tr>
+    <tr>
+      <td><code>NotificationIcon</code></td>
+      <td>The status-like meaning needs a larger icon surface</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Style=Default</code></td>
+      <td><code>styleVariant="default"</code></td>
+      <td>Regular text weight</td>
+    </tr>
+    <tr>
+      <td><code>Style=Emphasized</code></td>
+      <td><code>styleVariant="emphasized"</code></td>
+      <td>Semi-bold text weight</td>
+    </tr>
+    <tr>
+      <td><code>Status=Informative</code></td>
+      <td><code>status="informative"</code></td>
+      <td>Informational status color</td>
+    </tr>
+    <tr>
+      <td><code>Status=Success</code></td>
+      <td><code>status="success"</code></td>
+      <td>Success status color</td>
+    </tr>
+    <tr>
+      <td><code>Status=Warning</code></td>
+      <td><code>status="warning"</code></td>
+      <td>Warning status color</td>
+    </tr>
+    <tr>
+      <td><code>Status=Attention</code></td>
+      <td><code>status="attention"</code></td>
+      <td>Attention status color</td>
+    </tr>
+    <tr>
+      <td><code>Status=Critical</code></td>
+      <td><code>status="critical"</code></td>
+      <td>Critical status color</td>
+    </tr>
+    <tr>
+      <td><code>Status=Progress</code></td>
+      <td><code>status="progress"</code></td>
+      <td>Progress status color</td>
+    </tr>
+    <tr>
+      <td><code>Status=Loading</code></td>
+      <td><code>status="loading"</code></td>
+      <td>Gradient loading treatment</td>
+    </tr>
+    <tr>
+      <td><code>Status_Text</code></td>
+      <td><code>label</code></td>
+      <td>Visible status label</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

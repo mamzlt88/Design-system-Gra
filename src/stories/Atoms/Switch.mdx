@@ -1,0 +1,142 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as SwitchStories from './Switch.stories';
+
+<Meta of={SwitchStories} />
+
+# Switch
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=7521-6965)
+
+## Overview
+
+Switch controls a binary setting. Use it when a setting can be turned on or off immediately.
+
+**Use this component when:**
+- A user can enable or disable a setting.
+- The setting has clear on and off states.
+- The switch label is provided by surrounding text or `ariaLabel`.
+
+**Do not use this component when:**
+- The action submits a form or starts a task. Use a button.
+- The choice is one of many options. Use radio buttons or a selector.
+- The setting needs confirmation before it changes.
+
+## Default Usage
+
+<Canvas of={SwitchStories.Off} />
+
+```tsx
+import { Switch } from '@design-system/components';
+
+<Switch state="on" ariaLabel="Enable notifications" />
+```
+
+## Props
+
+<Controls />
+
+## States
+
+<Canvas of={SwitchStories.StateExamples} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td>Uses a native <code>button</code> with <code>role="switch"</code></td>
+    </tr>
+    <tr>
+      <td>State</td>
+      <td><code>aria-checked</code> maps to the on/off state</td>
+    </tr>
+    <tr>
+      <td>Disabled</td>
+      <td>Disabled variants use the native <code>disabled</code> attribute</td>
+    </tr>
+    <tr>
+      <td>Accessible name</td>
+      <td><code>ariaLabel</code> identifies the controlled setting</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>CheckboxRadioButton</code></td>
+      <td>The control is part of a form choice or checklist</td>
+    </tr>
+    <tr>
+      <td><code>Button</code></td>
+      <td>The user triggers an action rather than changing a setting</td>
+    </tr>
+    <tr>
+      <td><code>IconButton</code></td>
+      <td>The action is compact and represented by an icon</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>State=Off</code></td>
+      <td><code>state="off"</code></td>
+      <td>Gray track, left thumb</td>
+    </tr>
+    <tr>
+      <td><code>State=On</code></td>
+      <td><code>state="on"</code></td>
+      <td>Teal track, right thumb, optional check icon</td>
+    </tr>
+    <tr>
+      <td><code>State=Disabled On</code></td>
+      <td><code>state="disabledOn"</code></td>
+      <td>Disabled checked state</td>
+    </tr>
+    <tr>
+      <td><code>State=Disabled Off</code></td>
+      <td><code>state="disabledOff"</code></td>
+      <td>Disabled unchecked state</td>
+    </tr>
+    <tr>
+      <td><code>Show_Icon</code></td>
+      <td><code>showIcon</code></td>
+      <td>Displays the check icon for the on state</td>
+    </tr>
+    <tr>
+      <td><code>Dark_Mode=No</code></td>
+      <td>Not exposed</td>
+      <td>Only one Figma value exists in the source component</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

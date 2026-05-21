@@ -1,0 +1,142 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as ColorIndicatorStories from './ColorIndicator.stories';
+
+<Meta of={ColorIndicatorStories} />
+
+# ColorIndicator
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=9097-6463)
+
+## Overview
+
+ColorIndicator is a small vertical color marker. Use it beside list rows, cards, or compact content where color helps people scan related status or category information.
+
+**Use this component when:**
+- A row or card needs a compact color marker.
+- The color is paired with visible text or surrounding context.
+- The marker should not be interactive.
+
+**Do not use this component when:**
+- The color is the only way to understand meaning.
+- The pattern needs a full text badge. Use `StatusBadge`.
+- The marker needs to be clicked. Use a button or link pattern.
+
+## Default Usage
+
+<Canvas of={ColorIndicatorStories.Red} />
+
+```tsx
+import { ColorIndicator } from '@design-system/components';
+
+<ColorIndicator color="red" label="Late payment" />
+```
+
+## Props
+
+<Controls />
+
+## Colors
+
+<Canvas of={ColorIndicatorStories.AllColors} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td>Uses <code>role="img"</code> only when a label is provided</td>
+    </tr>
+    <tr>
+      <td>Decorative use</td>
+      <td>Without a label, the marker is hidden from assistive technology</td>
+    </tr>
+    <tr>
+      <td>Color meaning</td>
+      <td>Color should be paired with visible text or surrounding content</td>
+    </tr>
+    <tr>
+      <td>Interaction</td>
+      <td>Not interactive; use a button or link when action is needed</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>StatusBadge</code></td>
+      <td>The status needs visible text</td>
+    </tr>
+    <tr>
+      <td><code>NotificationBadge</code></td>
+      <td>The marker represents unread notification count</td>
+    </tr>
+    <tr>
+      <td><code>IconContainer</code></td>
+      <td>The marker needs an icon surface instead of a narrow color bar</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Color=Red</code></td>
+      <td><code>color="red"</code></td>
+      <td>Direct color variant</td>
+    </tr>
+    <tr>
+      <td><code>Color=Yellow</code></td>
+      <td><code>color="yellow"</code></td>
+      <td>Direct color variant</td>
+    </tr>
+    <tr>
+      <td><code>Color=Green</code></td>
+      <td><code>color="green"</code></td>
+      <td>Direct color variant</td>
+    </tr>
+    <tr>
+      <td><code>Color=Aquamarine</code></td>
+      <td><code>color="aquamarine"</code></td>
+      <td>Direct color variant</td>
+    </tr>
+    <tr>
+      <td><code>Color=Blue</code></td>
+      <td><code>color="blue"</code></td>
+      <td>Direct color variant</td>
+    </tr>
+    <tr>
+      <td><code>Color=Brand</code></td>
+      <td><code>color="brand"</code></td>
+      <td>Direct color variant</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

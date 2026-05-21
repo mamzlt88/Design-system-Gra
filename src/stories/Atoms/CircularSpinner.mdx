@@ -1,0 +1,156 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as CircularSpinnerStories from './CircularSpinner.stories';
+
+<Meta of={CircularSpinnerStories} />
+
+# CircularSpinner
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=9476-242)
+
+## Overview
+
+CircularSpinner communicates an indeterminate loading state. Use it where a compact circular loader is needed and the surrounding UI already explains what is loading.
+
+**Use this component when:**
+- A component, row, panel, or page region is waiting for work to complete.
+- The loading state is indeterminate.
+- A compact circular visual is preferred over a segmented loader.
+
+**Do not use this component when:**
+- The progress value is determinate and should show a percentage.
+- The loading state needs a text message as the primary content.
+- The UI needs user input while loading.
+
+## Default Usage
+
+<Canvas of={CircularSpinnerStories.Small} />
+
+```tsx
+import { CircularSpinner } from '@design-system/components';
+
+<CircularSpinner size="small" label="Loading transactions" />
+```
+
+## Props
+
+<Controls />
+
+## Sizes
+
+<Canvas of={CircularSpinnerStories.SizeExamples} />
+
+## Rotation Frames
+
+<Canvas of={CircularSpinnerStories.RotationExamples} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td>Uses <code>role="status"</code> for polite loading announcements</td>
+    </tr>
+    <tr>
+      <td>Accessible name</td>
+      <td><code>label</code> provides the loading message for assistive technology</td>
+    </tr>
+    <tr>
+      <td>Reduced motion</td>
+      <td>The CSS animation resolves immediately when <code>prefers-reduced-motion</code> is enabled</td>
+    </tr>
+    <tr>
+      <td>Interaction</td>
+      <td>Not interactive; keep actions outside the loading indicator</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>SegmentedSpinner</code></td>
+      <td>The design calls for the segmented opacity-frame loader</td>
+    </tr>
+    <tr>
+      <td><code>StatusBadge</code></td>
+      <td>The loading or progress state needs visible text</td>
+    </tr>
+    <tr>
+      <td><code>NotificationBadge</code></td>
+      <td>The visual represents unread count or notification presence</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Size=Small</code></td>
+      <td><code>size="small"</code></td>
+      <td>24px spinner</td>
+    </tr>
+    <tr>
+      <td><code>Size=Medium</code></td>
+      <td><code>size="medium"</code></td>
+      <td>28px spinner</td>
+    </tr>
+    <tr>
+      <td><code>Size=Large</code></td>
+      <td><code>size="large"</code></td>
+      <td>32px spinner</td>
+    </tr>
+    <tr>
+      <td><code>Rotation=1</code></td>
+      <td><code>rotation="1"</code></td>
+      <td>Initial static frame</td>
+    </tr>
+    <tr>
+      <td><code>Rotation=2</code></td>
+      <td><code>rotation="2"</code></td>
+      <td>90-degree static frame</td>
+    </tr>
+    <tr>
+      <td><code>Rotation=3</code></td>
+      <td><code>rotation="3"</code></td>
+      <td>180-degree static frame</td>
+    </tr>
+    <tr>
+      <td><code>Rotation=4</code></td>
+      <td><code>rotation="4"</code></td>
+      <td>270-degree static frame</td>
+    </tr>
+    <tr>
+      <td>Prototype auto-advance</td>
+      <td><code>animated</code></td>
+      <td>Figma loops frames with linear 0.2s smart animation</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />

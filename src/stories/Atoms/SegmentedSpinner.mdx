@@ -1,0 +1,132 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as SegmentedSpinnerStories from './SegmentedSpinner.stories';
+
+<Meta of={SegmentedSpinnerStories} />
+
+# SegmentedSpinner
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=9761-597)
+
+## Overview
+
+SegmentedSpinner communicates an indeterminate loading state using eight opacity-weighted segments. Use it where the segmented loader is the intended visual reference.
+
+**Use this component when:**
+- A compact loading indicator should use the segmented spinner pattern.
+- The loading state is indeterminate.
+- A parent or external controller chooses the active rotation frame.
+
+**Do not use this component when:**
+- The progress value is determinate and should show a percentage.
+- The surrounding UI needs a circular arc spinner. Use `CircularSpinner`.
+- The spinner should own application state or timing.
+
+## Default Usage
+
+<Canvas of={SegmentedSpinnerStories.RotationOne} />
+
+```tsx
+import { SegmentedSpinner } from '@design-system/components';
+
+<SegmentedSpinner label="Loading transfers" />
+```
+
+## Props
+
+<Controls />
+
+## Rotation Frames
+
+<Canvas of={SegmentedSpinnerStories.RotationExamples} />
+
+## Accessibility
+
+<table>
+  <thead>
+    <tr>
+      <th>Expectation</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Role</td>
+      <td>Uses <code>role="status"</code> for polite loading announcements</td>
+    </tr>
+    <tr>
+      <td>Accessible name</td>
+      <td><code>label</code> provides the loading message for assistive technology</td>
+    </tr>
+    <tr>
+      <td>State ownership</td>
+      <td>The component displays a supplied frame and does not manage timers or app state</td>
+    </tr>
+    <tr>
+      <td>Interaction</td>
+      <td>Not interactive; keep actions outside the loading indicator</td>
+    </tr>
+  </tbody>
+</table>
+
+## Related Components
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use it when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>CircularSpinner</code></td>
+      <td>The design calls for the circular arc loader</td>
+    </tr>
+    <tr>
+      <td><code>StatusBadge</code></td>
+      <td>The loading or progress state needs visible text</td>
+    </tr>
+    <tr>
+      <td><code>ColorIndicator</code></td>
+      <td>The UI only needs a static color marker</td>
+    </tr>
+  </tbody>
+</table>
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Property</th>
+      <th>Prop</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Rotation=1</code></td>
+      <td><code>rotation="1"</code></td>
+      <td>Full opacity starts at the top segment</td>
+    </tr>
+    <tr>
+      <td><code>Rotation=2</code></td>
+      <td><code>rotation="2"</code></td>
+      <td>Full opacity starts at the 270-degree segment</td>
+    </tr>
+    <tr>
+      <td><code>Rotation=3</code></td>
+      <td><code>rotation="3"</code></td>
+      <td>Full opacity starts at the 180-degree segment</td>
+    </tr>
+    <tr>
+      <td><code>Rotation=4</code></td>
+      <td><code>rotation="4"</code></td>
+      <td>Full opacity starts at the 90-degree segment</td>
+    </tr>
+  </tbody>
+</table>
+
+## All Stories
+
+<Stories />
