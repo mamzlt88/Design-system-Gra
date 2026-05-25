@@ -5,7 +5,7 @@ import { Logo } from '../../components/Logo';
 const types = ['iconOnly', 'full'] as const;
 
 const meta = {
-  title: 'Atoms/Logo/Logo',
+  title: 'Classic Components/Identity/Logo',
   component: Logo,
   tags: ['autodocs'],
   args: { type: 'iconOnly', label: 'Grameen logo' },
@@ -15,7 +15,7 @@ const meta = {
   },
   parameters: {
     design: { type: 'figma', url: 'https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=2760-487' },
-    docs: { description: { component: 'Logo represents the source icon-only and full logo variants. Artwork is a code approximation until approved exported assets are available.' } },
+    docs: { description: { component: 'Logo represents the source icon-only and full logo variants using the approved logo token assets.' } },
   },
 } satisfies Meta<typeof Logo>;
 

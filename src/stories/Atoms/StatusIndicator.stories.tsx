@@ -5,7 +5,7 @@ import { StatusIndicator } from '../../components/StatusIndicator';
 const statusOptions = ['completed', 'neutral', 'attention'] as const;
 
 const meta = {
-  title: 'Atoms/Lists/StatusIndicator',
+  title: 'Classic Components/Feedback/StatusIndicator',
   component: StatusIndicator,
   tags: ['autodocs'],
   args: {

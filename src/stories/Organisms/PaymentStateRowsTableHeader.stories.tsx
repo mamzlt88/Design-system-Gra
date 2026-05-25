@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { PaymentStateRowsTableHeader } from '../../components/PaymentStateRowsTableHeader';
 
 const meta = {
-  title: 'Organisms/Tables/PaymentStateRowsTableHeader',
+  title: 'Domain Components/Payments & Loans/PaymentStateRowsTableHeader',
   component: PaymentStateRowsTableHeader,
   tags: ['autodocs'],
   args: { firstColumn: 'Payment', secondColumn: 'Due date', thirdColumn: 'Status' },

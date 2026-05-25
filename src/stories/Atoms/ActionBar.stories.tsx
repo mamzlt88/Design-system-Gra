@@ -7,7 +7,7 @@ const types = ['dualActions', 'singleAction'] as const;
 const buttonStates = ['enabled', 'pressed', 'disabled'] as const;
 
 const meta = {
-  title: 'Atoms/Navigation Bars/ActionBar',
+  title: 'Classic Components/Navigation/ActionBar',
   component: ActionBar,
   tags: ['autodocs'],
   args: { type: 'dualActions', primaryLabel: 'Continue', secondaryLabel: 'Back', primaryState: 'enabled', secondaryState: 'enabled' },
@@ -85,10 +85,5 @@ export const TypeExamples: Story = {
 
 export const InteractionExamples: Story = {
   tags: ['!test', '!dev'],
-  render: () => (
-    <div style={{ display: 'grid', gap: 24 }}>
-      <ActionBar />
-      <ActionBar primaryState="pressed" />
-    </div>
-  ),
+  render: (args) => <InteractiveActionBar {...args} />,
 };

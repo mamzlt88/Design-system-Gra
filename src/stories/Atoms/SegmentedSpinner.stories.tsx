@@ -5,7 +5,7 @@ import { SegmentedSpinner } from '../../components/SegmentedSpinner';
 const rotationOptions = ['1', '2', '3', '4'] as const;
 
 const meta = {
-  title: 'Atoms/Loading & Progress Indicators/SegmentedSpinner',
+  title: 'Classic Components/Feedback/SegmentedSpinner',
   component: SegmentedSpinner,
   tags: ['autodocs'],
   args: {

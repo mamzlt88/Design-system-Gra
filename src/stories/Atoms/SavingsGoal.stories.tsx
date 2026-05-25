@@ -5,7 +5,7 @@ import { SavingsGoal } from '../../components/SavingsGoal';
 const types = ['inProgress', 'completed'] as const;
 
 const meta = {
-  title: 'Atoms/Illustrations/SavingsGoal',
+  title: 'Domain Components/Illustrations/SavingsGoal',
   component: SavingsGoal,
   tags: ['autodocs'],
   args: { type: 'inProgress', label: 'Savings goal in progress' },
@@ -14,7 +14,7 @@ const meta = {
     label: { control: 'text', table: { category: 'Accessibility' } },
   },
   parameters: {
-    design: { type: 'figma', url: 'https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=8550-10588' },
+    design: { type: 'figma', url: 'https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=1908-4646' },
     docs: { description: { component: 'SavingsGoal represents in-progress and completed savings-goal illustration states.' } },
   },
 } satisfies Meta<typeof SavingsGoal>;

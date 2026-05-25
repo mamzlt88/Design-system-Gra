@@ -5,7 +5,7 @@ import { StatusBadge } from '../../components/StatusBadge';
 const statusOptions = ['informative', 'success', 'warning', 'attention', 'critical', 'progress', 'loading'] as const;
 
 const meta = {
-  title: 'Atoms/Badges and Indicators/StatusBadge',
+  title: 'Classic Components/Feedback/StatusBadge',
   component: StatusBadge,
   tags: ['autodocs'],
   args: {

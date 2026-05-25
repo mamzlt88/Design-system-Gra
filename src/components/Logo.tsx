@@ -7,8 +7,12 @@ export type LogoProps = {
   label?: string;
 } & Omit<HTMLAttributes<HTMLSpanElement>, 'children'>;
 
+const fullLogoSrc = new URL('../assets/logos/grameen-america-logo.png', import.meta.url).href;
+const iconOnlyLogoSrc = new URL('../assets/logos/type-icon-only.svg', import.meta.url).href;
+
 export function Logo({ type = 'iconOnly', label = 'Grameen logo', style, ...spanProps }: LogoProps) {
   const full = type === 'full';
+  const width = full ? 133 : 54;
 
   return (
     <span
@@ -17,24 +21,19 @@ export function Logo({ type = 'iconOnly', label = 'Grameen logo', style, ...span
       role="img"
       style={{
         alignItems: 'center',
-        color: '#0C6466',
         display: 'inline-flex',
-        fontFamily: 'Open Sans, Arial, sans-serif',
-        fontSize: 16,
-        fontWeight: 700,
-        gap: 8,
         height: 48,
-        width: full ? 115 : 54,
+        width,
         ...style,
       }}
       {...spanProps}
     >
-      <svg aria-hidden="true" focusable="false" height="48" viewBox="0 0 54 48" width="54">
-        <circle cx="24" cy="24" fill="#0C6466" r="18" />
-        <path d="M14 26c7-14 20-14 27 0-8-4-18-4-27 0Z" fill="#FFFFFF" />
-        <path d="M18 29c5 5 12 5 18 0" fill="none" stroke="#FFFFFF" strokeLinecap="round" strokeWidth="3" />
-      </svg>
-      {full ? <span>Grameen</span> : null}
+      <img
+        alt=""
+        aria-hidden="true"
+        src={full ? fullLogoSrc : iconOnlyLogoSrc}
+        style={{ display: 'block', height: '100%', objectFit: 'contain', width: '100%' }}
+      />
     </span>
   );
 }

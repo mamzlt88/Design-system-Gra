@@ -1,0 +1,84 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as SideBarStories from './SideBar.stories';
+import { SideBarItem } from '../../components/SideBarItem';
+
+<Meta of={SideBarStories} />
+
+# SideBar
+
+> **Storybook Group**: Classic Components / Navigation | **Figma SideBar**: [View](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=9229-6716) | **Figma Side Bar Item List**: [View](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=7878-9389)
+
+## Overview
+
+SideBar is the mobile drawer navigation pattern from the Figma component. It combines the profile header, grouped navigation rows, accordion row, footer row, and overlay area into one component.
+
+`SideBarItem` remains exported for code consumers, but it is documented here because it is the internal row primitive used to build the SideBar groups.
+
+## Default Usage
+
+<Canvas of={SideBarStories.Default} />
+
+```tsx
+import { SideBar } from '@design-system/components';
+
+<SideBar name="Full Name" detailLabel="Label 1" detailValue="Value 1" />
+```
+
+## Props
+
+<Controls />
+
+## Side Bar Item List
+
+The Figma `Side Bar Item List` frame contains the `Side Bar Item` component set. The component set exposes `State`, `Pressed_Style`, `Section_Text`, `Badge_Text`, `Show_Badge`, and `Change_Icon`.
+
+<div style={{ width: 300, background: '#FFFFFF', display: 'grid', gap: 32, boxSizing: 'border-box', fontFamily: 'Open Sans, Arial, sans-serif' }}>
+  <div style={{ background: '#FFFFFF', borderRadius: 8, display: 'grid', gap: 20, padding: 20 }}>
+    <SideBarItem icon="person" label="Section" pressedStyle="nA" showBadge={false} state="default" />
+    <SideBarItem icon="person" label="Section" pressedStyle="standard" showBadge state="pressed" />
+    <SideBarItem icon="person" label="Section" pressedStyle="emphasis" showBadge state="pressed" />
+  </div>
+  <div style={{ background: '#FFFFFF', borderRadius: 8, display: 'grid', gap: 20, padding: 20 }}>
+    <SideBarItem badgeText="NEW" icon="globe" label="Accordion Title" pressedStyle="nA" showBadge trailingIcon="chevronDown" />
+    <SideBarItem icon="person" label="Section" pressedStyle="nA" showBadge={false} />
+  </div>
+</div>
+
+```tsx
+import { SideBarItem } from '@design-system/components';
+
+<SideBarItem icon="person" label="Section" showBadge badgeText="BADGE" />
+```
+
+## Figma Mapping
+
+<table>
+  <thead>
+    <tr>
+      <th>Figma Part</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Profile header</td>
+      <td><code>SideBar</code> header with <code>UserAvatar</code>, name, detail row, and back action</td>
+    </tr>
+    <tr>
+      <td>Grouped section rows</td>
+      <td><code>SideBarItem</code> rows composed inside <code>SideBar</code>; badges are disabled in the drawer reference</td>
+    </tr>
+    <tr>
+      <td>Accordion row</td>
+      <td><code>SideBarItem</code> with <code>icon="globe"</code> and <code>trailingIcon="chevronDown"</code></td>
+    </tr>
+    <tr>
+      <td><code>Side Bar Item List</code> frame</td>
+      <td>Documented in this page with the list frame spacing and the row variants from node <code>7878:9389</code></td>
+    </tr>
+    <tr>
+      <td>Overlay area</td>
+      <td>Right-side grey overlay rendered by <code>SideBar</code></td>
+    </tr>
+  </tbody>
+</table>

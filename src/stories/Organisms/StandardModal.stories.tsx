@@ -5,7 +5,7 @@ import { StandardModal } from '../../components/StandardModal';
 const types = ['verticalActions', 'horizontalActions', 'bullets', 'illustration', 'mediaTop'] as const;
 
 const meta = {
-  title: 'Organisms/Modals & Bottom Sheets/StandardModal',
+  title: 'Classic Components/Overlays/StandardModal',
   component: StandardModal,
   tags: ['autodocs'],
   args: { type: 'verticalActions', title: 'Confirm action', description: 'Review the information before continuing.' },

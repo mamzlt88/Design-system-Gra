@@ -34,7 +34,7 @@ function InteractiveDocumentUploadSlot(args: DocumentUploadSlotProps) {
 }
 
 const meta = {
-  title: 'Atoms/Buttons/DocumentUploadSlot',
+  title: 'Classic Components/Inputs/DocumentUploadSlot',
   component: DocumentUploadSlot,
   tags: ['autodocs'],
   args: {

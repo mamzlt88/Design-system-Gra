@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { NotificationBadge } from '../../components/NotificationBadge';
 
 const meta = {
-  title: 'Atoms/Badges and Indicators/NotificationBadge',
+  title: 'Classic Components/Feedback/NotificationBadge',
   component: NotificationBadge,
   tags: ['autodocs'],
   args: {

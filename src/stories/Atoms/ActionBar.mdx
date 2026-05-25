@@ -43,7 +43,7 @@ The default stories use Storybook-only state so clicking either action shows the
 
 ## Interaction
 
-Pressed is a transient feedback style for the action being touched or clicked. It is shown as story-controlled visual state so the component still does not own application state.
+Click either action in the canvas to move the pressed feedback to that button. The story owns only the demo state; the component remains controlled by `primaryState` and `secondaryState`.
 
 <Canvas of={ActionBarStories.InteractionExamples} />
 

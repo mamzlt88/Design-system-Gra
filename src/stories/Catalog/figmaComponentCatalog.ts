@@ -302,7 +302,7 @@ export const figmaComponentCatalog: FigmaComponentCatalogItem[] = [
   },
   {
     "name": "Checkbox & Radio Button",
-    "componentName": "CheckboxRadioButton",
+    "componentName": "CheckboxButton / RadioButton",
     "nodeId": "7521:6940",
     "nodeType": "COMPONENT_SET",
     "level": "atoms",

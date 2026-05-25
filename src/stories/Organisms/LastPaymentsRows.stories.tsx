@@ -5,7 +5,7 @@ import { LastPaymentsRows } from '../../components/LastPaymentsRows';
 const types = ['title', 'header', 'content'] as const;
 
 const meta = {
-  title: 'Organisms/Tables/LastPaymentsRows',
+  title: 'Domain Components/Payments & Loans/LastPaymentsRows',
   component: LastPaymentsRows,
   tags: ['autodocs'],
   args: { type: 'content', dueDate: 'May 20', amount: '$125.00', statusLabel: 'PAID' },

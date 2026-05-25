@@ -5,7 +5,7 @@ import { GuidanceAvatar } from '../../components/GuidanceAvatar';
 const typeOptions = ['1', '2'] as const;
 
 const meta = {
-  title: 'Atoms/User Guidance/GuidanceAvatar',
+  title: 'Classic Components/Identity/GuidanceAvatar',
   component: GuidanceAvatar,
   tags: ['autodocs'],
   args: { typeAvatar: '1', showBackground: true, label: 'Guidance avatar' },

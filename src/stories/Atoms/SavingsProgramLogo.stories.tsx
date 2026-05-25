@@ -5,7 +5,7 @@ import { SavingsProgramLogo } from '../../components/SavingsProgramLogo';
 const types = ['small', 'medium'] as const;
 
 const meta = {
-  title: 'Atoms/Logo/SavingsProgramLogo',
+  title: 'Domain Components/Brand/SavingsProgramLogo',
   component: SavingsProgramLogo,
   tags: ['autodocs'],
   args: { type: 'small', label: 'Savings Program logo' },

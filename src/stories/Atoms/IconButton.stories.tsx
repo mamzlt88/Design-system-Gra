@@ -29,7 +29,7 @@ function InteractiveIconButton(args: IconButtonProps) {
 }
 
 const meta = {
-  title: 'Atoms/Buttons/IconButton',
+  title: 'Classic Components/Actions/IconButton',
   component: IconButton,
   tags: ['autodocs'],
   args: {

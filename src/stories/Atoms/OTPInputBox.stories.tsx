@@ -5,7 +5,7 @@ import { OTPInputBox } from '../../components/OTPInputBox';
 const stateOptions = ['enabled', 'active', 'filled', 'filledError', 'activeError'] as const;
 
 const meta = {
-  title: 'Atoms/Text Fields/OTPInputBox',
+  title: 'Classic Components/Inputs/OTPInputBox',
   component: OTPInputBox,
   tags: ['autodocs'],
   args: {

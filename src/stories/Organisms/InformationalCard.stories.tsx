@@ -5,7 +5,7 @@ import { InformationalCard } from '../../components/InformationalCard';
 const bgColors = ['blue', 'yellow'] as const;
 
 const meta = {
-  title: 'Organisms/Cards/InformationalCard',
+  title: 'Domain Components/Cards & Info/InformationalCard',
   component: InformationalCard,
   tags: ['autodocs'],
   args: {

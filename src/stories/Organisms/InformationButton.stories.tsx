@@ -7,7 +7,7 @@ const states = ['enabled', 'pressed', 'tooltipOpen'] as const;
 const textSizes = ['medium', 'small'] as const;
 
 const meta = {
-  title: 'Organisms/Buttons/InformationButton',
+  title: 'Domain Components/Financial Inputs/InformationButton',
   component: InformationButton,
   tags: ['autodocs'],
   args: {

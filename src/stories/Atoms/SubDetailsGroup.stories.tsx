@@ -5,7 +5,7 @@ import { SubDetailsGroup } from '../../components/SubDetailsGroup';
 const rowOptions = [1, 2, 3] as const;
 
 const meta = {
-  title: 'Atoms/Accordions/SubDetailsGroup',
+  title: 'Domain Components/Financial Inputs/SubDetailsGroup',
   component: SubDetailsGroup,
   tags: ['autodocs'],
   args: { rows: 1, labelPrefix: 'Label', valuePrefix: 'Value' },

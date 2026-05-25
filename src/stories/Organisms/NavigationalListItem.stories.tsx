@@ -6,7 +6,7 @@ const states = ['default', 'pressed'] as const;
 const leadings = ['iconContainer', 'iconPlain', 'none'] as const;
 
 const meta = {
-  title: 'Organisms/List Items/NavigationalListItem',
+  title: 'Classic Components/Navigation/NavigationalListItem',
   component: NavigationalListItem,
   tags: ['autodocs'],
   args: { state: 'default', leading: 'iconContainer', label: 'Payments', supportingText: 'View payment information' },

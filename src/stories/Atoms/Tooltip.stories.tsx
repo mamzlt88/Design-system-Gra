@@ -6,7 +6,7 @@ const placements = ['top', 'bottom'] as const;
 const alignments = ['left', 'middle', 'right'] as const;
 
 const meta = {
-  title: 'Atoms/User Guidance/Tooltip',
+  title: 'Classic Components/Overlays/Tooltip',
   component: Tooltip,
   tags: ['autodocs'],
   args: { text: 'Tooltip Text', arrowPlacement: 'top', arrowAlignment: 'left', showRightIcon: true },

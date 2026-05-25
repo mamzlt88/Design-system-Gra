@@ -5,7 +5,7 @@ import { AttendanceReportRows } from '../../components/AttendanceReportRows';
 const types = ['content', 'header'] as const;
 
 const meta = {
-  title: 'Organisms/Tables/AttendanceReportRows',
+  title: 'Domain Components/Payments & Loans/AttendanceReportRows',
   component: AttendanceReportRows,
   tags: ['autodocs'],
   args: { type: 'content', memberName: 'Maria Lopez', attendedLabel: '8', missedLabel: '1' },

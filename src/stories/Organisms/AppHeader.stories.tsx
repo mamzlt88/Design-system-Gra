@@ -6,7 +6,7 @@ const sizes = ['large', 'medium', 'mediumRounded', 'small'] as const;
 const types = ['standard', 'informative', 'navigational', 'profile'] as const;
 
 const meta = {
-  title: 'Organisms/Headers Variations/AppHeader',
+  title: 'Classic Components/Navigation/AppHeader',
   component: AppHeader,
   tags: ['autodocs'],
   args: {

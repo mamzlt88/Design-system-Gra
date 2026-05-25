@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import { useEffect, useMemo, useState, type HTMLAttributes } from 'react';
 
 export type UserAvatarSize = 'big' | 'medium' | 'small' | 'xSmall';
 export type UserAvatarType = 'avatar' | 'initials';
@@ -8,6 +8,12 @@ export type UserAvatarProps = {
   size?: UserAvatarSize;
   type?: UserAvatarType;
   avatar?: UserAvatarVariant;
+  src?: string;
+  imageSrc?: string;
+  alt?: string;
+  name?: string;
+  firstName?: string;
+  lastName?: string;
   initialsText?: string;
   showStar?: boolean;
   label?: string;
@@ -20,80 +26,154 @@ const sizeMap: Record<UserAvatarSize, number> = {
   xSmall: 40,
 };
 
-const avatarColors: Record<UserAvatarVariant, string> = {
-  '1': '#0C6466',
-  '2': '#AB241F',
-  '3': '#3A7D1D',
-  '4': '#735425',
-  '5': '#244555',
-  '6': '#6F4BA8',
-  none: '#A4A4A4',
+const avatarSources: Record<Exclude<UserAvatarVariant, 'none'>, Record<UserAvatarSize, string>> = {
+  '1': {
+    big: new URL('../assets/avatars/avatar-1-big.png', import.meta.url).href,
+    medium: new URL('../assets/avatars/avatar-1-medium.png', import.meta.url).href,
+    small: new URL('../assets/avatars/avatar-1-small.png', import.meta.url).href,
+    xSmall: new URL('../assets/avatars/avatar-1-xSmall.png', import.meta.url).href,
+  },
+  '2': {
+    big: new URL('../assets/avatars/avatar-2-big.png', import.meta.url).href,
+    medium: new URL('../assets/avatars/avatar-2-medium.png', import.meta.url).href,
+    small: new URL('../assets/avatars/avatar-2-small.png', import.meta.url).href,
+    xSmall: new URL('../assets/avatars/avatar-2-xSmall.png', import.meta.url).href,
+  },
+  '3': {
+    big: new URL('../assets/avatars/avatar-3-big.png', import.meta.url).href,
+    medium: new URL('../assets/avatars/avatar-3-medium.png', import.meta.url).href,
+    small: new URL('../assets/avatars/avatar-3-small.png', import.meta.url).href,
+    xSmall: new URL('../assets/avatars/avatar-3-xSmall.png', import.meta.url).href,
+  },
+  '4': {
+    big: new URL('../assets/avatars/avatar-4-big.png', import.meta.url).href,
+    medium: new URL('../assets/avatars/avatar-4-medium.png', import.meta.url).href,
+    small: new URL('../assets/avatars/avatar-4-small.png', import.meta.url).href,
+    xSmall: new URL('../assets/avatars/avatar-4-xSmall.png', import.meta.url).href,
+  },
+  '5': {
+    big: new URL('../assets/avatars/avatar-5-big.png', import.meta.url).href,
+    medium: new URL('../assets/avatars/avatar-5-medium.png', import.meta.url).href,
+    small: new URL('../assets/avatars/avatar-5-small.png', import.meta.url).href,
+    xSmall: new URL('../assets/avatars/avatar-5-xSmall.png', import.meta.url).href,
+  },
+  '6': {
+    big: new URL('../assets/avatars/avatar-6-big.png', import.meta.url).href,
+    medium: new URL('../assets/avatars/avatar-6-medium.png', import.meta.url).href,
+    small: new URL('../assets/avatars/avatar-6-small.png', import.meta.url).href,
+    xSmall: new URL('../assets/avatars/avatar-6-xSmall.png', import.meta.url).href,
+  },
 };
+
+const initialsTypography: Record<UserAvatarSize, { fontFamily: string; fontSize: number; lineHeight: string }> = {
+  big: { fontFamily: 'Open Sans, Arial, sans-serif', fontSize: 40, lineHeight: '50px' },
+  medium: { fontFamily: 'Raleway, Open Sans, Arial, sans-serif', fontSize: 34, lineHeight: '42.5px' },
+  small: { fontFamily: 'Open Sans, Arial, sans-serif', fontSize: 24, lineHeight: '30px' },
+  xSmall: { fontFamily: 'Raleway, Open Sans, Arial, sans-serif', fontSize: 20, lineHeight: '25px' },
+};
+
+function getInitials({ firstName, lastName, name, initialsText }: Pick<UserAvatarProps, 'firstName' | 'lastName' | 'name' | 'initialsText'>) {
+  if (initialsText?.trim()) return initialsText.trim().slice(0, 2).toUpperCase();
+
+  const parts = [firstName, lastName].filter(Boolean);
+  if (parts.length === 0 && name) {
+    parts.push(...name.trim().split(/\s+/).filter(Boolean));
+  }
+
+  const first = parts[0]?.[0] ?? '';
+  const last = parts.length > 1 ? parts[parts.length - 1]?.[0] : '';
+  return `${first}${last}`.toUpperCase() || 'AS';
+}
 
 export function UserAvatar({
   size = 'big',
   type = 'avatar',
   avatar = '1',
-  initialsText = 'AS',
+  src,
+  imageSrc,
+  alt,
+  name,
+  firstName,
+  lastName,
+  initialsText,
   showStar = true,
-  label = 'User avatar',
+  label,
   style,
   ...spanProps
 }: UserAvatarProps) {
   const pixelSize = sizeMap[size];
-  const color = avatarColors[avatar];
+  const imageSource = imageSrc ?? src ?? (avatar === 'none' ? undefined : avatarSources[avatar][size]);
+  const [imageFailed, setImageFailed] = useState(false);
+  const shouldShowImage = type === 'avatar' && avatar !== 'none' && imageSource && !imageFailed;
+  const initials = useMemo(() => getInitials({ firstName, lastName, name, initialsText }), [firstName, initialsText, lastName, name]);
+  const typography = initialsTypography[size];
+  const accessibleName = label ?? name ?? alt ?? (shouldShowImage ? 'User avatar' : `${initials} avatar`);
+
+  useEffect(() => {
+    setImageFailed(false);
+  }, [imageSource]);
 
   return (
     <span
-      aria-label={label}
+      aria-label={accessibleName}
       data-figma-node-id="1640:11011"
       role="img"
       style={{
         alignItems: 'center',
-        backgroundColor: color,
+        backgroundColor: shouldShowImage ? 'transparent' : '#DBEBEB',
+        border: shouldShowImage ? '0' : `${size === 'small' ? 1.375 : 1}px solid #EDF6F6`,
         borderRadius: 999,
-        color: '#FFFFFF',
+        boxShadow: shouldShowImage && avatar !== '1' ? '0 2px 4px rgba(0, 0, 0, 0.16)' : undefined,
+        boxSizing: 'border-box',
+        color: '#0C6466',
         display: 'inline-flex',
-        fontFamily: 'Open Sans, Arial, sans-serif',
-        fontSize: Math.max(12, pixelSize * 0.28),
-        fontWeight: 700,
+        flexShrink: 0,
+        fontFamily: typography.fontFamily,
+        fontSize: typography.fontSize,
+        fontWeight: 600,
         height: pixelSize,
         justifyContent: 'center',
+        lineHeight: typography.lineHeight,
+        overflow: 'visible',
         position: 'relative',
+        textAlign: 'center',
         width: pixelSize,
         ...style,
       }}
       {...spanProps}
     >
-      {type === 'initials' || avatar === 'none' ? (
-        initialsText
+      {shouldShowImage ? (
+        <img
+          alt=""
+          aria-hidden="true"
+          onError={() => setImageFailed(true)}
+          src={imageSource}
+          style={{ borderRadius: 'inherit', display: 'block', height: '100%', objectFit: 'cover', width: '100%' }}
+        />
       ) : (
-        <svg aria-hidden="true" focusable="false" height={pixelSize * 0.72} viewBox="0 0 64 64" width={pixelSize * 0.72}>
-          <circle cx="32" cy="25" fill="#F2B896" r="14" />
-          <path d="M12 62c3-16 14-24 20-24s17 8 20 24H12Z" fill="#FFFFFF" opacity="0.92" />
-          <path d="M19 23c4-14 25-14 27 2-8-5-17-5-27-2Z" fill="#434343" />
-        </svg>
+        initials
       )}
       {showStar && size === 'xSmall' ? (
         <span
           aria-hidden="true"
           style={{
             alignItems: 'center',
-            backgroundColor: '#F7C04A',
-            border: '2px solid #FFFFFF',
-            borderRadius: 100,
-            bottom: -2,
-            color: '#735425',
+            backgroundColor: '#FFFFFF',
+            borderRadius: 8,
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.16)',
+            color: '#8F6A16',
             display: 'inline-flex',
-            fontSize: 10,
-            height: 16,
+            height: 14,
             justifyContent: 'center',
             position: 'absolute',
-            right: -2,
-            width: 16,
+            right: -1,
+            top: -2,
+            width: 14,
           }}
         >
-          *
+          <svg aria-hidden="true" focusable="false" height="12" viewBox="0 0 16 16" width="12">
+            <path d="M8 1.8l1.7 3.5 3.9.6-2.8 2.7.7 3.9L8 10.7l-3.5 1.8.7-3.9-2.8-2.7 3.9-.6L8 1.8z" fill="currentColor" />
+          </svg>
         </span>
       ) : null}
     </span>

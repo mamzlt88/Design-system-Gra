@@ -3,6 +3,7 @@
 ## Source
 
 - Figma node: `8550:10588`
+- Figma page: `1908:4646`
 - Figma name: `Savings Goal`
 - Atomic level: atoms
 
@@ -19,6 +20,10 @@
     <tr>
       <td>Component metadata and variant axes from `docs/component-backlog/figma-components.json`</td>
       <td>Type maps to inProgress and completed illustration treatments.</td>
+    </tr>
+    <tr>
+      <td>Snapshot geometry from `design/figma-file.snapshot.json` under page node `1908:4646`</td>
+      <td>SVG dimensions, target circles, done-task state, and confetti colors align to the local Figma snapshot.</td>
     </tr>
   </tbody>
 </table>

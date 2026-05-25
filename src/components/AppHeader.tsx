@@ -38,10 +38,11 @@ const colors = {
   text: '#FFFFFF',
   mutedText: 'rgba(255, 255, 255, 0.78)',
   chip: 'rgba(255, 255, 255, 0.16)',
-  chipStrong: 'rgba(255, 255, 255, 0.24)',
   blush: '#FFD8D1',
   cyan: '#D8F7F2',
 };
+
+const helpIllustrationSrc = new URL('../assets/illustrations/Help Illustration.svg', import.meta.url).href;
 
 const baseStyle: CSSProperties = {
   background: colors.headerGradient,
@@ -74,26 +75,9 @@ const dimensions: Record<AppHeaderSize, { minHeight: number; radius: string; pad
   small: { minHeight: 56, radius: '0', paddingBottom: 12 },
 };
 
-function StatusBar() {
-  return (
-    <div style={{ alignItems: 'center', display: 'flex', fontSize: 12, fontWeight: 600, height: 24, justifyContent: 'space-between', padding: '0 18px' }}>
-      <span>9:41</span>
-      <span aria-hidden="true" style={{ alignItems: 'center', display: 'inline-flex', gap: 5 }}>
-        <span style={{ display: 'inline-flex', gap: 2 }}>
-          {[4, 6, 8].map((height) => (
-            <span key={height} style={{ backgroundColor: colors.text, borderRadius: 1, height, width: 3 }} />
-          ))}
-        </span>
-        <span style={{ border: `1.5px solid ${colors.text}`, borderRadius: 999, height: 10, width: 10 }} />
-        <span style={{ border: `1.5px solid ${colors.text}`, borderRadius: 2, height: 9, width: 18 }} />
-      </span>
-    </div>
-  );
-}
-
 function LabelPill({ label, value }: { label: string; value: string }) {
   return (
-    <span style={{ backgroundColor: colors.chip, borderRadius: 4, color: colors.text, display: 'inline-flex', fontSize: 11, gap: 2, lineHeight: '16px', padding: '1px 5px' }}>
+    <span style={{ backgroundColor: colors.chip, borderRadius: 4, color: colors.text, display: 'inline-flex', fontSize: 11, gap: 4, lineHeight: '15px', padding: '4px 8px' }}>
       <strong>{label}</strong>
       <span>{value}</span>
     </span>
@@ -131,16 +115,18 @@ function TopBar({
   right = true,
   counter,
   showLanguage = false,
+  minHeight = 36,
   onBack,
 }: {
   left?: 'menu' | 'back' | 'none';
   right?: boolean;
   counter?: string;
   showLanguage?: boolean;
+  minHeight?: number;
   onBack?: () => void;
 }) {
   return (
-    <div style={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', minHeight: 36, padding: '0 18px' }}>
+    <div style={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', minHeight, padding: '0 18px' }}>
       {left === 'back' ? (
         <button aria-label="Go back" onClick={onBack} style={topIconStyle} type="button">
           <Icon name="arrowLeft" width={18} height={18} />
@@ -219,11 +205,50 @@ function Stepper() {
 
 function HeaderIllustration() {
   return (
-    <div aria-hidden="true" style={{ alignSelf: 'end', height: 84, justifySelf: 'end', position: 'relative', width: 90 }}>
-      <span style={{ backgroundColor: '#EAF6FF', borderRadius: '44px 44px 12px 12px', bottom: 0, height: 62, left: 18, position: 'absolute', width: 54 }} />
-      <span style={{ backgroundColor: '#FFD3B6', borderRadius: 999, height: 26, left: 32, position: 'absolute', top: 4, width: 26 }} />
-      <span style={{ backgroundColor: '#141414', borderRadius: '999px 999px 999px 0', height: 36, left: 24, position: 'absolute', top: 0, width: 36 }} />
-      <span style={{ backgroundColor: colors.chipStrong, borderRadius: 4, height: 22, left: 0, position: 'absolute', top: 24, width: 32 }} />
+    <img
+      alt=""
+      aria-hidden="true"
+      src={helpIllustrationSrc}
+      style={{ alignSelf: 'start', display: 'block', height: 159, justifySelf: 'end', objectFit: 'contain', width: 134 }}
+    />
+  );
+}
+
+function InformativeMediumTitleBar({ title }: { title: string }) {
+  return (
+    <div style={{ alignItems: 'center', display: 'flex', gap: 16, height: 40, padding: '0 16px' }}>
+      <IconButton ariaLabel="Open menu" icon="menu" variant="filled" />
+      <h1
+        style={{
+          color: colors.text,
+          fontFamily: 'Raleway, Open Sans, Arial, sans-serif',
+          fontSize: 20,
+          fontWeight: 700,
+          letterSpacing: '0px',
+          lineHeight: '25px',
+          margin: 0,
+          textAlign: 'center',
+          width: 246,
+        }}
+      >
+        {title}
+      </h1>
+    </div>
+  );
+}
+
+function LoanRequestInfo({ label, value }: { label: string; value: string }) {
+  return (
+    <div style={{ alignItems: 'center', display: 'flex', height: 18, width: '100%' }}>
+      <span style={{ color: '#E6E6E6', fontFamily: 'Open Sans, Arial, sans-serif', fontSize: 14, fontWeight: 400, letterSpacing: '0px', lineHeight: '17.5px' }}>
+        {label.endsWith(' ') ? label : `${label} `}
+      </span>
+      <span style={{ color: colors.text, fontFamily: 'Open Sans, Arial, sans-serif', fontSize: 14, fontWeight: 400, letterSpacing: '0px', lineHeight: '17.5px' }}>
+        |
+      </span>
+      <span style={{ color: colors.text, fontFamily: 'Open Sans, Arial, sans-serif', fontSize: 14, fontWeight: 600, letterSpacing: '0px', lineHeight: '17.5px' }}>
+        {value}
+      </span>
     </div>
   );
 }
@@ -261,11 +286,11 @@ function InformativeHeader({
   if (size === 'medium') {
     return (
       <>
-        <TopBar />
-        <div style={{ alignItems: 'end', display: 'grid', gap: 12, gridTemplateColumns: '1fr 104px', padding: '0 24px' }}>
-          <div style={{ display: 'grid', gap: 6 }}>
-            <h1 style={{ fontSize: 16, lineHeight: '22px', margin: 0 }}>{title2}</h1>
-            <strong style={{ fontFamily: 'Raleway, Open Sans, Arial, sans-serif', fontSize: 22, lineHeight: '28px' }}>{mainMessage}</strong>
+        <InformativeMediumTitleBar title={title1} />
+        <div style={{ alignItems: 'stretch', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 134px', marginTop: 12, minHeight: 159, padding: '0 16px' }}>
+          <div style={{ alignContent: 'center', display: 'grid', gap: 0, minHeight: 159, paddingLeft: 4 }}>
+            <h1 style={{ fontFamily: 'Raleway, Open Sans, Arial, sans-serif', fontSize: 20, fontWeight: 700, letterSpacing: '0px', lineHeight: '25px', margin: 0, textAlign: 'left' }}>{title2}</h1>
+            <strong style={{ fontFamily: 'Raleway, Open Sans, Arial, sans-serif', fontSize: 24, letterSpacing: '0px', lineHeight: '30px', textAlign: 'left' }}>{mainMessage}</strong>
           </div>
           <HeaderIllustration />
         </div>
@@ -275,21 +300,25 @@ function InformativeHeader({
 
   if (size === 'mediumRounded') {
     return (
-      <>
-        <TopBar />
-        <div style={{ alignItems: 'center', display: 'grid', gap: 12, gridTemplateColumns: '52px 1fr', padding: '0 24px' }}>
-          <UserAvatar label={name} size="small" type="initials" />
-          <div style={{ display: 'grid', gap: 3 }}>
-            <strong style={{ fontSize: 14 }}>{name}</strong>
-            <span style={{ color: colors.mutedText, fontSize: 12 }}>{business}</span>
-            <LabelPill label={label1} value={value1} />
+      <div style={{ display: 'flex', gap: 12, minHeight: 133, padding: '0 16px' }}>
+        <IconButton ariaLabel="Go back" darkMode icon="arrowLeft" onClick={onBack} variant="standard" />
+        <div style={{ display: 'grid', flex: 1, gap: 20, paddingRight: 8 }}>
+          <div style={{ alignItems: 'start', display: 'flex', gap: 16, minHeight: 69 }}>
+            <UserAvatar avatar="1" label={name} size="small" type="avatar" />
+            <div style={{ display: 'grid', flex: 1, gap: 12 }}>
+              <div style={{ display: 'grid', gap: 4 }}>
+                <strong style={{ color: colors.text, fontFamily: 'Raleway, Open Sans, Arial, sans-serif', fontSize: 16, fontWeight: 700, letterSpacing: '0px', lineHeight: '20px' }}>{name}</strong>
+                <span style={{ color: '#E6E6E6', fontFamily: 'Open Sans, Arial, sans-serif', fontSize: 12, fontWeight: 600, letterSpacing: '0px', lineHeight: '15px' }}>{business}</span>
+              </div>
+              <LoanRequestInfo label={label1} value={value1} />
+            </div>
+          </div>
+          <div style={{ alignItems: 'center', display: 'flex', gap: 12, height: 44 }}>
+            <Button darkMode label="Button" onClick={onSecondaryClick} style={{ boxSizing: 'border-box', color: '#AB241F', height: 44, minHeight: 44, width: 143 }} tone="red" variant="filled" />
+            <Button darkMode label="Button" onClick={onPrimaryClick} style={{ boxSizing: 'border-box', height: 44, minHeight: 44, width: 143 }} tone="primary" variant="filled" />
           </div>
         </div>
-        <div style={{ display: 'grid', gap: 8, gridTemplateColumns: '1fr 1fr', padding: '10px 24px 0' }}>
-          <Button label="Button" onClick={onSecondaryClick} tone="red" variant="filled" />
-          <Button label="Button" onClick={onPrimaryClick} darkMode tone="primary" variant="filled" />
-        </div>
-      </>
+      </div>
     );
   }
 
@@ -437,6 +466,13 @@ export function AppHeader({
         : effectiveType === 'navigational' && size === 'large'
           ? 184
           : dim.minHeight;
+  const paddingBottom =
+    effectiveType === 'informative' && size === 'medium'
+      ? 0
+      : effectiveType === 'informative' && size === 'mediumRounded'
+        ? 20
+        : dim.paddingBottom;
+  const paddingTop = effectiveType === 'informative' && size === 'medium' ? 12 : undefined;
 
   return (
     <header
@@ -445,12 +481,12 @@ export function AppHeader({
         ...baseStyle,
         borderRadius: dim.radius,
         minHeight,
-        paddingBottom: dim.paddingBottom,
+        paddingBottom,
+        paddingTop,
         ...style,
       }}
       {...headerProps}
     >
-      <StatusBar />
       {effectiveType === 'standard' ? (
         <StandardHeader label1={label1} label2={label2} showLanguage={showLanguage} size={size} title1={title1} value1={value1} value2={value2} />
       ) : null}

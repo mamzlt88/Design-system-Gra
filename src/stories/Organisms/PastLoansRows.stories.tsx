@@ -5,7 +5,7 @@ import { PastLoansRows } from '../../components/PastLoansRows';
 const types = ['content', 'header'] as const;
 
 const meta = {
-  title: 'Organisms/Tables/PastLoansRows',
+  title: 'Domain Components/Payments & Loans/PastLoansRows',
   component: PastLoansRows,
   tags: ['autodocs'],
   args: { type: 'content', loanLabel: 'Loan 2048', amount: '$500.00', statusLabel: 'CLOSED' },

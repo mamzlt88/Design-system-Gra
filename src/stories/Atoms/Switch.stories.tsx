@@ -5,7 +5,7 @@ import { Switch } from '../../components/Switch';
 const stateOptions = ['off', 'on', 'disabledOn', 'disabledOff'] as const;
 
 const meta = {
-  title: 'Atoms/Switches/Switch',
+  title: 'Classic Components/Inputs/Switch',
   component: Switch,
   tags: ['autodocs'],
   args: {

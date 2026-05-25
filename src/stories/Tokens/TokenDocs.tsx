@@ -1,7 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react';
 
 import { Icon, type IconName } from '../../components/Icon';
-import { Logo } from '../../components/Logo';
 import { figmaTokenMeta, figmaTokenStyles } from '../../tokens';
 
 type TokenCategory = 'color' | 'text' | 'effect' | 'grid';
@@ -23,7 +22,114 @@ type TokenReference = {
   url: string;
 };
 
+type SizeToken = {
+  name: string;
+  px: number;
+  rem: string;
+};
+
+const illustrationGroupOrder = [
+  'Loan Proposal',
+  'Recommend a Friend',
+  'Proof of Investment',
+  'Disbursement',
+  'Approvals',
+  'Sign In/Sign Up',
+  'Instructions',
+  'Credit',
+  'Feedback',
+  'New Feature Announcement',
+  'Savings',
+  'Header Cards Illustrations',
+  'Payments',
+] as const;
+
+type IllustrationGroup = (typeof illustrationGroupOrder)[number];
+
+type IllustrationAsset = {
+  name: string;
+  group: IllustrationGroup;
+  file: string;
+  src: string;
+};
+
 const styles = figmaTokenStyles as unknown as TokenStyle[];
+const grameenAmericaLogoPng = new URL('../../assets/logos/grameen-america-logo.png', import.meta.url).href;
+const grameenAmericaIconSvg = new URL('../../assets/logos/type-icon-only.svg', import.meta.url).href;
+
+const illustrationAssets: IllustrationAsset[] = [
+  { name: 'Content=Center Approval', group: 'Loan Proposal', file: 'src/assets/illustrations/Content=Center Approval.svg', src: new URL('../../assets/illustrations/Content=Center Approval.svg', import.meta.url).href },
+  { name: 'Content=Complete', group: 'Proof of Investment', file: 'src/assets/illustrations/Content=Complete.svg', src: new URL('../../assets/illustrations/Content=Complete.svg', import.meta.url).href },
+  { name: 'Content=Continue Process', group: 'Loan Proposal', file: 'src/assets/illustrations/Content=Continue Process.svg', src: new URL('../../assets/illustrations/Content=Continue Process.svg', import.meta.url).href },
+  { name: 'Content=Disbursed', group: 'Disbursement', file: 'src/assets/illustrations/Content=Disbursed.svg', src: new URL('../../assets/illustrations/Content=Disbursed.svg', import.meta.url).href },
+  { name: 'Content=Eligible', group: 'Payments', file: 'src/assets/illustrations/Content=Eligible.svg', src: new URL('../../assets/illustrations/Content=Eligible.svg', import.meta.url).href },
+  { name: 'Content=Error Persists-1', group: 'Payments', file: 'src/assets/illustrations/Content=Error Persists-1.svg', src: new URL('../../assets/illustrations/Content=Error Persists-1.svg', import.meta.url).href },
+  { name: 'Content=Error Persists-2', group: 'Payments', file: 'src/assets/illustrations/Content=Error Persists-2.svg', src: new URL('../../assets/illustrations/Content=Error Persists-2.svg', import.meta.url).href },
+  { name: 'Content=Error Persists', group: 'Proof of Investment', file: 'src/assets/illustrations/Content=Error Persists.svg', src: new URL('../../assets/illustrations/Content=Error Persists.svg', import.meta.url).href },
+  { name: 'Content=Error-1', group: 'Disbursement', file: 'src/assets/illustrations/Content=Error-1.svg', src: new URL('../../assets/illustrations/Content=Error-1.svg', import.meta.url).href },
+  { name: 'Content=Error-2', group: 'Payments', file: 'src/assets/illustrations/Content=Error-2.svg', src: new URL('../../assets/illustrations/Content=Error-2.svg', import.meta.url).href },
+  { name: 'Content=Error-3', group: 'Payments', file: 'src/assets/illustrations/Content=Error-3.svg', src: new URL('../../assets/illustrations/Content=Error-3.svg', import.meta.url).href },
+  { name: 'Content=Error', group: 'Proof of Investment', file: 'src/assets/illustrations/Content=Error.svg', src: new URL('../../assets/illustrations/Content=Error.svg', import.meta.url).href },
+  { name: 'Content=ID Verification', group: 'Loan Proposal', file: 'src/assets/illustrations/Content=ID Verification.svg', src: new URL('../../assets/illustrations/Content=ID Verification.svg', import.meta.url).href },
+  { name: 'Content=Invite', group: 'Recommend a Friend', file: 'src/assets/illustrations/Content=Invite.svg', src: new URL('../../assets/illustrations/Content=Invite.svg', import.meta.url).href },
+  { name: 'Content=Loan Amount Change', group: 'Loan Proposal', file: 'src/assets/illustrations/Content=Loan Amount Change.svg', src: new URL('../../assets/illustrations/Content=Loan Amount Change.svg', import.meta.url).href },
+  { name: 'Content=Loan Amount', group: 'Loan Proposal', file: 'src/assets/illustrations/Content=Loan Amount.svg', src: new URL('../../assets/illustrations/Content=Loan Amount.svg', import.meta.url).href },
+  { name: 'Content=Not Eligible', group: 'Payments', file: 'src/assets/illustrations/Content=Not Eligible.svg', src: new URL('../../assets/illustrations/Content=Not Eligible.svg', import.meta.url).href },
+  { name: 'Content=Pending', group: 'Disbursement', file: 'src/assets/illustrations/Content=Pending.svg', src: new URL('../../assets/illustrations/Content=Pending.svg', import.meta.url).href },
+  { name: 'Content=Questionnaire Complete', group: 'Loan Proposal', file: 'src/assets/illustrations/Content=Questionnaire Complete.svg', src: new URL('../../assets/illustrations/Content=Questionnaire Complete.svg', import.meta.url).href },
+  { name: 'Content=Questionnaire', group: 'Loan Proposal', file: 'src/assets/illustrations/Content=Questionnaire.svg', src: new URL('../../assets/illustrations/Content=Questionnaire.svg', import.meta.url).href },
+  { name: 'Content=Ready', group: 'Disbursement', file: 'src/assets/illustrations/Content=Ready.svg', src: new URL('../../assets/illustrations/Content=Ready.svg', import.meta.url).href },
+  { name: 'Content=Shortcut', group: 'Recommend a Friend', file: 'src/assets/illustrations/Content=Shortcut.svg', src: new URL('../../assets/illustrations/Content=Shortcut.svg', import.meta.url).href },
+  { name: 'Content=Submit', group: 'Proof of Investment', file: 'src/assets/illustrations/Content=Submit.svg', src: new URL('../../assets/illustrations/Content=Submit.svg', import.meta.url).href },
+  { name: 'Content=Submitting', group: 'Proof of Investment', file: 'src/assets/illustrations/Content=Submitting.svg', src: new URL('../../assets/illustrations/Content=Submitting.svg', import.meta.url).href },
+  { name: 'Content=Vertcial Steps', group: 'Payments', file: 'src/assets/illustrations/Content=Vertcial Steps.svg', src: new URL('../../assets/illustrations/Content=Vertcial Steps.svg', import.meta.url).href },
+  { name: 'Content=Vertical Steps', group: 'Loan Proposal', file: 'src/assets/illustrations/Content=Vertical Steps.svg', src: new URL('../../assets/illustrations/Content=Vertical Steps.svg', import.meta.url).href },
+  { name: 'Credit Announcement Illustration', group: 'Credit', file: 'src/assets/illustrations/Credit Announcement Illustration.svg', src: new URL('../../assets/illustrations/Credit Announcement Illustration.svg', import.meta.url).href },
+  { name: 'Credit Collection Illustration', group: 'Credit', file: 'src/assets/illustrations/Credit Collection Illustration.svg', src: new URL('../../assets/illustrations/Credit Collection Illustration.svg', import.meta.url).href },
+  { name: 'Credit Insights Illustration', group: 'Credit', file: 'src/assets/illustrations/Credit Insights Illustration.svg', src: new URL('../../assets/illustrations/Credit Insights Illustration.svg', import.meta.url).href },
+  { name: 'Credit Report Illustration', group: 'Credit', file: 'src/assets/illustrations/Credit Report Illustration.svg', src: new URL('../../assets/illustrations/Credit Report Illustration.svg', import.meta.url).href },
+  { name: 'Empty State Loan Approvals in Progress', group: 'Header Cards Illustrations', file: 'src/assets/illustrations/Empty State Loan Approvals in Progress.svg', src: new URL('../../assets/illustrations/Empty State Loan Approvals in Progress.svg', import.meta.url).href },
+  { name: 'Help Illustration', group: 'Header Cards Illustrations', file: 'src/assets/illustrations/Help Illustration.svg', src: new URL('../../assets/illustrations/Help Illustration.svg', import.meta.url).href },
+  { name: 'New feature Announcement', group: 'New Feature Announcement', file: 'src/assets/illustrations/New feature Announcement.svg', src: new URL('../../assets/illustrations/New feature Announcement.svg', import.meta.url).href },
+  { name: 'Purpose=Not Eligible', group: 'Approvals', file: 'src/assets/illustrations/Purpose=Not Eligible.svg', src: new URL('../../assets/illustrations/Purpose=Not Eligible.svg', import.meta.url).href },
+  { name: 'Purpose=Overdue Payment', group: 'Approvals', file: 'src/assets/illustrations/Purpose=Overdue Payment.svg', src: new URL('../../assets/illustrations/Purpose=Overdue Payment.svg', import.meta.url).href },
+  { name: 'Savings Beneficiary', group: 'Savings', file: 'src/assets/illustrations/Savings Beneficiary.svg', src: new URL('../../assets/illustrations/Savings Beneficiary.svg', import.meta.url).href },
+  { name: 'Savings Locked', group: 'Savings', file: 'src/assets/illustrations/Savings Locked.svg', src: new URL('../../assets/illustrations/Savings Locked.svg', import.meta.url).href },
+  { name: 'Sign In', group: 'Sign In/Sign Up', file: 'src/assets/illustrations/Sign In/Sign In.svg', src: new URL('../../assets/illustrations/Sign In/Sign In.svg', import.meta.url).href },
+  { name: 'Type=Community', group: 'Sign In/Sign Up', file: 'src/assets/illustrations/Sign In/Type=Community.svg', src: new URL('../../assets/illustrations/Sign In/Type=Community.svg', import.meta.url).href },
+  { name: 'Type=Grameen Experience', group: 'Sign In/Sign Up', file: 'src/assets/illustrations/Sign In/Type=Grameen Experience.svg', src: new URL('../../assets/illustrations/Sign In/Type=Grameen Experience.svg', import.meta.url).href },
+  { name: 'Type=Manage Loan', group: 'Sign In/Sign Up', file: 'src/assets/illustrations/Sign In/Type=Manage Loan.svg', src: new URL('../../assets/illustrations/Sign In/Type=Manage Loan.svg', import.meta.url).href },
+  { name: 'Type=Request & Approve', group: 'Sign In/Sign Up', file: 'src/assets/illustrations/Sign In/Type=Request & Approve.svg', src: new URL('../../assets/illustrations/Sign In/Type=Request & Approve.svg', import.meta.url).href },
+  { name: 'Type=Resources', group: 'Sign In/Sign Up', file: 'src/assets/illustrations/Sign In/Type=Resources.svg', src: new URL('../../assets/illustrations/Sign In/Type=Resources.svg', import.meta.url).href },
+  { name: 'Update or Maintenance', group: 'Sign In/Sign Up', file: 'src/assets/illustrations/Sign In/Update or Maintenance.svg', src: new URL('../../assets/illustrations/Sign In/Update or Maintenance.svg', import.meta.url).href },
+  { name: 'Type=Center, Size=Large', group: 'Recommend a Friend', file: 'src/assets/illustrations/Type=Center, Size=Large.svg', src: new URL('../../assets/illustrations/Type=Center, Size=Large.svg', import.meta.url).href },
+  { name: 'Type=Center, Size=Medium', group: 'Recommend a Friend', file: 'src/assets/illustrations/Type=Center, Size=Medium.svg', src: new URL('../../assets/illustrations/Type=Center, Size=Medium.svg', import.meta.url).href },
+  { name: 'Type=Center, Size=Small', group: 'Recommend a Friend', file: 'src/assets/illustrations/Type=Center, Size=Small.svg', src: new URL('../../assets/illustrations/Type=Center, Size=Small.svg', import.meta.url).href },
+  { name: 'Type=Complete', group: 'Payments', file: 'src/assets/illustrations/Type=Complete.svg', src: new URL('../../assets/illustrations/Type=Complete.svg', import.meta.url).href },
+  { name: 'Type=Completed', group: 'Savings', file: 'src/assets/illustrations/Type=Completed.svg', src: new URL('../../assets/illustrations/Type=Completed.svg', import.meta.url).href },
+  { name: 'Type=Error, Size=Large', group: 'Feedback', file: 'src/assets/illustrations/Type=Error, Size=Large.svg', src: new URL('../../assets/illustrations/Type=Error, Size=Large.svg', import.meta.url).href },
+  { name: 'Type=Error, Size=Medium', group: 'Feedback', file: 'src/assets/illustrations/Type=Error, Size=Medium.svg', src: new URL('../../assets/illustrations/Type=Error, Size=Medium.svg', import.meta.url).href },
+  { name: 'Type=Error, Size=Small', group: 'Feedback', file: 'src/assets/illustrations/Type=Error, Size=Small.svg', src: new URL('../../assets/illustrations/Type=Error, Size=Small.svg', import.meta.url).href },
+  { name: 'Type=Grameen App, Size=Large', group: 'Recommend a Friend', file: 'src/assets/illustrations/Type=Grameen App, Size=Large.svg', src: new URL('../../assets/illustrations/Type=Grameen App, Size=Large.svg', import.meta.url).href },
+  { name: 'Type=Grameen App, Size=Medium', group: 'Recommend a Friend', file: 'src/assets/illustrations/Type=Grameen App, Size=Medium.svg', src: new URL('../../assets/illustrations/Type=Grameen App, Size=Medium.svg', import.meta.url).href },
+  { name: 'Type=Grameen App, Size=Small', group: 'Recommend a Friend', file: 'src/assets/illustrations/Type=Grameen App, Size=Small.svg', src: new URL('../../assets/illustrations/Type=Grameen App, Size=Small.svg', import.meta.url).href },
+  { name: 'Type=ID', group: 'Instructions', file: 'src/assets/illustrations/Type=ID.svg', src: new URL('../../assets/illustrations/Type=ID.svg', import.meta.url).href },
+  { name: 'Type=In Progress-1', group: 'Payments', file: 'src/assets/illustrations/Type=In Progress-1.svg', src: new URL('../../assets/illustrations/Type=In Progress-1.svg', import.meta.url).href },
+  { name: 'Type=In Progress', group: 'Savings', file: 'src/assets/illustrations/Type=In Progress.svg', src: new URL('../../assets/illustrations/Type=In Progress.svg', import.meta.url).href },
+  { name: 'Type=Information, Size=Large', group: 'Feedback', file: 'src/assets/illustrations/Type=Information, Size=Large.svg', src: new URL('../../assets/illustrations/Type=Information, Size=Large.svg', import.meta.url).href },
+  { name: 'Type=Information, Size=Medium', group: 'Feedback', file: 'src/assets/illustrations/Type=Information, Size=Medium.svg', src: new URL('../../assets/illustrations/Type=Information, Size=Medium.svg', import.meta.url).href },
+  { name: 'Type=Information, Size=Small', group: 'Feedback', file: 'src/assets/illustrations/Type=Information, Size=Small.svg', src: new URL('../../assets/illustrations/Type=Information, Size=Small.svg', import.meta.url).href },
+  { name: 'Type=Journey, Size=Large', group: 'Recommend a Friend', file: 'src/assets/illustrations/Type=Journey, Size=Large.svg', src: new URL('../../assets/illustrations/Type=Journey, Size=Large.svg', import.meta.url).href },
+  { name: 'Type=Journey, Size=Medium', group: 'Recommend a Friend', file: 'src/assets/illustrations/Type=Journey, Size=Medium.svg', src: new URL('../../assets/illustrations/Type=Journey, Size=Medium.svg', import.meta.url).href },
+  { name: 'Type=Journey, Size=Small', group: 'Recommend a Friend', file: 'src/assets/illustrations/Type=Journey, Size=Small.svg', src: new URL('../../assets/illustrations/Type=Journey, Size=Small.svg', import.meta.url).href },
+  { name: 'Type=Next Weekly Payment', group: 'Payments', file: 'src/assets/illustrations/Type=Next Weekly Payment.svg', src: new URL('../../assets/illustrations/Type=Next Weekly Payment.svg', import.meta.url).href },
+  { name: 'Type=Payment Complete', group: 'Payments', file: 'src/assets/illustrations/Type=Payment Complete.svg', src: new URL('../../assets/illustrations/Type=Payment Complete.svg', import.meta.url).href },
+  { name: 'Type=Proof of Address', group: 'Instructions', file: 'src/assets/illustrations/Type=Proof of Address.svg', src: new URL('../../assets/illustrations/Type=Proof of Address.svg', import.meta.url).href },
+  { name: 'Type=Proof of Investment', group: 'Instructions', file: 'src/assets/illustrations/Type=Proof of Investment.svg', src: new URL('../../assets/illustrations/Type=Proof of Investment.svg', import.meta.url).href },
+  { name: 'Type=Success, Size=Large', group: 'Feedback', file: 'src/assets/illustrations/Type=Success, Size=Large.svg', src: new URL('../../assets/illustrations/Type=Success, Size=Large.svg', import.meta.url).href },
+  { name: 'Type=Success, Size=Medium', group: 'Feedback', file: 'src/assets/illustrations/Type=Success, Size=Medium.svg', src: new URL('../../assets/illustrations/Type=Success, Size=Medium.svg', import.meta.url).href },
+  { name: 'Type=Success, Size=Small', group: 'Feedback', file: 'src/assets/illustrations/Type=Success, Size=Small.svg', src: new URL('../../assets/illustrations/Type=Success, Size=Small.svg', import.meta.url).href },
+];
 
 const references: Record<string, TokenReference> = {
   gutenberg: {
@@ -67,6 +173,79 @@ const references: Record<string, TokenReference> = {
     url: 'https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=30-17051',
   },
 };
+
+const spacingTokens: SizeToken[] = [
+  { name: 'spacing-null', px: 0, rem: '0 rem' },
+  { name: 'spacing-2px', px: 2, rem: '0.125 rem' },
+  { name: 'spacing-4px', px: 4, rem: '0.25 rem' },
+  { name: 'spacing-6px', px: 6, rem: '0.375 rem' },
+  { name: 'spacing-8px', px: 8, rem: '0.5 rem' },
+  { name: 'spacing-12px', px: 12, rem: '0.75 rem' },
+  { name: 'spacing-16px', px: 16, rem: '1 rem' },
+  { name: 'spacing-20px', px: 20, rem: '1.25 rem' },
+  { name: 'spacing-24px', px: 24, rem: '1.5 rem' },
+  { name: 'spacing-32px', px: 32, rem: '2 rem' },
+  { name: 'spacing-40px', px: 40, rem: '2.5 rem' },
+  { name: 'spacing-48px', px: 48, rem: '3 rem' },
+  { name: 'spacing-56px', px: 56, rem: '3.5 rem' },
+  { name: 'spacing-64px', px: 64, rem: '4 rem' },
+  { name: 'spacing-72px', px: 72, rem: '4.5 rem' },
+  { name: 'spacing-80px', px: 80, rem: '5 rem' },
+  { name: 'spacing-88px', px: 88, rem: '5.5 rem' },
+  { name: 'spacing-96px', px: 96, rem: '6 rem' },
+  { name: 'spacing-104px', px: 104, rem: '6.5 rem' },
+];
+
+const paddingTokens: SizeToken[] = [
+  { name: 'padding-null', px: 0, rem: '0 rem' },
+  { name: 'padding-2px', px: 2, rem: '0.125 rem' },
+  { name: 'padding-4px', px: 4, rem: '0.25 rem' },
+  { name: 'padding-6px', px: 6, rem: '0.375 rem' },
+  { name: 'padding-8px', px: 8, rem: '0.5 rem' },
+  { name: 'padding-12px', px: 12, rem: '0.75 rem' },
+  { name: 'padding-16px', px: 16, rem: '1 rem' },
+  { name: 'padding-20px', px: 20, rem: '1.25 rem' },
+  { name: 'padding-24px', px: 24, rem: '1.5 rem' },
+  { name: 'padding-32px', px: 32, rem: '2 rem' },
+  { name: 'padding-40px', px: 40, rem: '2.5 rem' },
+  { name: 'padding-48px', px: 48, rem: '3 rem' },
+  { name: 'padding-56px', px: 56, rem: '3.5 rem' },
+  { name: 'padding-64px', px: 64, rem: '4 rem' },
+  { name: 'padding-72px', px: 72, rem: '4.5 rem' },
+  { name: 'padding-80px', px: 80, rem: '5 rem' },
+  { name: 'padding-88px', px: 88, rem: '5.5 rem' },
+  { name: 'padding-96px', px: 96, rem: '6 rem' },
+  { name: 'padding-104px', px: 104, rem: '6.5 rem' },
+  { name: 'padding-112px', px: 112, rem: '7 rem' },
+  { name: 'padding-120px', px: 120, rem: '7.5 rem' },
+];
+
+const strokeTokens: SizeToken[] = [
+  { name: 'stroke-xs', px: 0.5, rem: '0.03125 rem' },
+  { name: 'stroke-1', px: 1, rem: '0.0625 rem' },
+  { name: 'stroke-2', px: 2, rem: '0.125 rem' },
+  { name: 'stroke-3', px: 3, rem: '0.1875 rem' },
+  { name: 'stroke-4', px: 4, rem: '0.25 rem' },
+  { name: 'stroke-5', px: 5, rem: '0.3125 rem' },
+  { name: 'stroke-6', px: 6, rem: '0.375 rem' },
+  { name: 'stroke-7', px: 7, rem: '0.4375 rem' },
+  { name: 'stroke-8', px: 8, rem: '0.5 rem' },
+  { name: 'stroke-9', px: 9, rem: '0.5625 rem' },
+  { name: 'stroke-10', px: 10, rem: '0.625 rem' },
+];
+
+const radiusTokens: SizeToken[] = [
+  { name: 'radius-2', px: 2, rem: '0.125 rem' },
+  { name: 'radius-4', px: 4, rem: '0.25 rem' },
+  { name: 'radius-8', px: 8, rem: '0.5 rem' },
+  { name: 'radius-16', px: 16, rem: '1 rem' },
+  { name: 'radius-24', px: 24, rem: '1.5 rem' },
+  { name: 'radius-32', px: 32, rem: '2 rem' },
+  { name: 'radius-40', px: 40, rem: '2.5 rem' },
+  { name: 'radius-48', px: 48, rem: '3 rem' },
+  { name: 'radius-56', px: 56, rem: '3.5 rem' },
+  { name: 'radius-64', px: 64, rem: '4 rem' },
+];
 
 const pageStyle: CSSProperties = {
   color: '#313131',
@@ -787,13 +966,13 @@ export function TokensOverviewPage() {
           rows={[
             ['Color', `${sourceStatus('color').count} code-backed styles`, <a href={references.color.url}>Color</a>],
             ['Typography', `${sourceStatus('text').count} code-backed styles`, <a href={references.typography.url}>Typography</a>],
-            ['Spacing', 'Figma source linked, no exported spacing token values yet', <a href={references.spacing.url}>Spacing</a>],
+            ['Spacing', `${spacingTokens.length} spacing values and ${paddingTokens.length} padding values documented from Figma`, <a href={references.spacing.url}>Spacing</a>],
             ['Layout grid', `${sourceStatus('grid').count} code-backed styles`, <a href={references.layoutGrid.url}>Layout grid</a>],
-            ['Radius and stroke', 'Figma source linked, no exported radius/stroke token values yet', <a href={references.radiusStroke.url}>Radius and Stroke</a>],
+            ['Radius and stroke', `${radiusTokens.length} radius values and ${strokeTokens.length} stroke widths documented from Figma`, <a href={references.radiusStroke.url}>Radius and Stroke</a>],
             ['Icons', 'Local Icon component gallery plus Figma source', <a href={references.icons.url}>Icons</a>],
             ['Elevations', `${sourceStatus('effect').count} code-backed effect styles`, <a href={references.elevations.url}>Elevations</a>],
-            ['Illustrations', 'Local usage guidance plus Figma source', <a href={references.illustrations.url}>Illustrations</a>],
-            ['Logo', 'Local Logo component preview plus Figma source', <a href={references.logo.url}>Logo</a>],
+            ['Illustrations', `${illustrationAssets.length} SVG assets grouped into ${illustrationGroupOrder.length} Figma sections`, <a href={references.illustrations.url}>Illustrations</a>],
+            ['Logo', 'PNG logo asset gallery plus Figma source', <a href={references.logo.url}>Logo</a>],
           ]}
         />
       </TokenSection>
@@ -1339,70 +1518,330 @@ export function IconsTokensPage() {
 export function LogoTokensPage() {
   return (
     <TokenDocPage
-      description="Logo styles represent the core brand mark and lockup. This page shows the local logo component variants and links back to the source frame."
+      description="Logo styles represent the core brand mark and lockup. This page documents the imported logo assets and links back to the source frame."
       references={[references.logo]}
       title="Logo tokens"
     >
       <TokenSection
-        description={<p style={{ margin: 0 }}>The Logo component currently supports icon-only and full logo presentations.</p>}
-        title="Semantic tokens"
+        description={<p style={{ margin: 0 }}>Logo exports live in <span style={codeStyle}>src/assets/logos</span> for documentation, handoff, and cases where the brand asset is required.</p>}
+        title="Logo assets"
       >
-        <div style={{ display: 'grid', gap: 16, gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
+        <div style={{ display: 'grid', gap: 16, gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
           <TokenExamplePanel>
-            <strong style={{ display: 'block', marginBottom: 16 }}>Icon only</strong>
-            <Logo type="iconOnly" />
+            <div style={{ display: 'grid', gap: 14 }}>
+              <strong style={{ display: 'block' }}>Full logo</strong>
+              <div
+                style={{
+                  alignItems: 'center',
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #E6E6E6',
+                  borderRadius: 4,
+                  display: 'flex',
+                  minHeight: 124,
+                  padding: 20,
+                }}
+              >
+                <img
+                  alt="Grameen America logo"
+                  src={grameenAmericaLogoPng}
+                  style={{
+                    display: 'block',
+                    height: 'auto',
+                    maxWidth: '100%',
+                    width: 260,
+                  }}
+                />
+              </div>
+              <span style={codeStyle}>src/assets/logos/grameen-america-logo.png</span>
+            </div>
           </TokenExamplePanel>
           <TokenExamplePanel>
-            <strong style={{ display: 'block', marginBottom: 16 }}>Full</strong>
-            <Logo type="full" />
+            <div style={{ display: 'grid', gap: 14 }}>
+              <strong style={{ display: 'block' }}>Icon</strong>
+              <div
+                style={{
+                  alignItems: 'center',
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #E6E6E6',
+                  borderRadius: 4,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  minHeight: 124,
+                  padding: 20,
+                }}
+              >
+                <img
+                  alt="Grameen America icon"
+                  src={grameenAmericaIconSvg}
+                  style={{
+                    display: 'block',
+                    height: 48,
+                    width: 54,
+                  }}
+                />
+              </div>
+              <span style={codeStyle}>src/assets/logos/type-icon-only.svg</span>
+            </div>
           </TokenExamplePanel>
         </div>
+
+        <Table
+          headers={['Asset', 'Format', 'Size', 'Usage']}
+          rows={[
+            ['grameen-america-logo', 'PNG', '374 x 135', 'Full logo lockup for documentation and handoff'],
+            ['type-icon-only', 'SVG', '54 x 48', 'Icon-only logo mark for compact brand placements'],
+          ]}
+        />
       </TokenSection>
     </TokenDocPage>
+  );
+}
+
+function SpacingTokenCard({
+  token,
+  tone,
+}: {
+  token: SizeToken;
+  tone: 'spacing' | 'padding';
+}) {
+  const color = tone === 'spacing' ? '#0C6466' : '#95D0C8';
+  const width = token.px === 0 ? 2 : token.px;
+
+  return (
+    <TokenExamplePanel>
+      <div style={{ display: 'grid', gap: 12, minWidth: 0 }}>
+        <div style={{ alignItems: 'start', display: 'grid', gap: 8, gridTemplateColumns: 'minmax(0, 1fr) auto' }}>
+          <span style={{ ...codeStyle, minWidth: 0, overflowWrap: 'anywhere' }}>{token.name}</span>
+          <strong style={{ color: '#0C6466', fontSize: 14, lineHeight: 1.4 }}>{token.px}px</strong>
+        </div>
+        <div
+          aria-label={`${token.name} visual scale`}
+          style={{
+            alignItems: 'center',
+            backgroundColor: '#F5F7F8',
+            border: '1px solid #E1E8EA',
+            borderRadius: 4,
+            display: 'flex',
+            height: 32,
+            padding: '0 10px',
+          }}
+        >
+          <span
+            style={{
+              backgroundColor: token.px === 0 ? '#6F6F6F' : color,
+              borderRadius: 2,
+              display: 'inline-block',
+              height: token.px === 0 ? 18 : 12,
+              width,
+            }}
+          />
+        </div>
+        <span style={{ color: '#5C5C5C', fontSize: 13 }}>{token.rem}</span>
+      </div>
+    </TokenExamplePanel>
+  );
+}
+
+function SpacingScale({
+  tokens,
+  tone,
+}: {
+  tokens: SizeToken[];
+  tone: 'spacing' | 'padding';
+}) {
+  return (
+    <div style={{ display: 'grid', gap: 12, gridTemplateColumns: 'repeat(auto-fit, minmax(188px, 1fr))' }}>
+      {tokens.map((token) => (
+        <SpacingTokenCard key={token.name} token={token} tone={tone} />
+      ))}
+    </div>
   );
 }
 
 export function SpacingTokensPage() {
   return (
     <TokenDocPage
-      description="Spacing and padding styles set the rhythm between interface elements. The current Storybook page keeps the Figma source visible until numeric values are exported to code."
+      description="Spacing and padding styles set the rhythm between interface elements. These values are extracted from the Figma Spacing & Padding canvas so the Storybook page shows the working scale even before the token JSON export includes spacing."
       references={[references.spacing]}
       title="Spacing tokens"
     >
       <TokenSection
-        description={<p style={{ margin: 0 }}>No spacing token category is present in <span style={codeStyle}>src/tokens/figma-tokens.json</span> yet. This page keeps the gap visible until spacing values are exported.</p>}
-        title="Primitive tokens"
+        description={
+          <p style={{ margin: 0 }}>
+            The source frame separates external gaps as <span style={codeStyle}>spacing-*</span> and internal insets as <span style={codeStyle}>padding-*</span>. Both scales use pixel values with rem equivalents for implementation.
+          </p>
+        }
+        title="Primitive spacing scale"
+      >
+        <SpacingScale tokens={spacingTokens} tone="spacing" />
+      </TokenSection>
+
+      <TokenSection
+        description={<p style={{ margin: 0 }}>Padding follows the same early increments as spacing, then extends to larger section-level values through <span style={codeStyle}>padding-120px</span>.</p>}
+        title="Padding scale"
+      >
+        <SpacingScale tokens={paddingTokens} tone="padding" />
+      </TokenSection>
+
+      <TokenSection
+        description={<p style={{ margin: 0 }}>Use the smallest token that preserves readability and touch comfort. Avoid one-off numeric gaps when a matching token already exists.</p>}
+        title="Usage guidance"
       >
         <Table
-          headers={['Expected documentation', 'Current status', 'Next action']}
+          headers={['Use case', 'Recommended tokens', 'Notes']}
           rows={[
-            ['Spacing scale', 'Linked to Figma only', 'Export numeric spacing variables into src/tokens'],
-            ['Padding usage', 'Linked to Figma only', 'Map Figma padding tokens to component layout rules'],
-            ['Component examples', 'Pending token export', 'Add usage examples once values are code-backed'],
+            ['Hairline separation', 'spacing-null, spacing-2px, spacing-4px', 'Use for dense icon alignment, label offsets, and divider-adjacent adjustments.'],
+            ['Control interiors', 'padding-8px, padding-12px, padding-16px', 'Use for compact buttons, chips, inputs, list items, and small grouped controls.'],
+            ['Component rhythm', 'spacing-12px, spacing-16px, spacing-20px, spacing-24px', 'Use between labels, helper text, rows, cards, and repeated content.'],
+            ['Grouped sections', 'spacing-32px, spacing-40px, spacing-48px', 'Use between form groups, dashboard panels, and page content bands.'],
+            ['Large page spacing', 'padding-64px through padding-120px', 'Use for page shells, section bands, and large responsive layouts.'],
+          ]}
+        />
+      </TokenSection>
+
+      <TokenSection title="Token table">
+        <Table
+          headers={['Token', 'Pixel size', 'Rem size', 'Role']}
+          rows={[
+            ...spacingTokens.map((token) => [token.name, `${token.px}px`, token.rem, 'Gap between elements']),
+            ...paddingTokens.map((token) => [token.name, `${token.px}px`, token.rem, 'Inset inside containers']),
           ]}
         />
       </TokenSection>
     </TokenDocPage>
+  );
+}
+
+function StrokeTokenCard({ token }: { token: SizeToken }) {
+  return (
+    <TokenExamplePanel>
+      <div style={{ display: 'grid', gap: 12, minWidth: 0 }}>
+        <div style={{ alignItems: 'start', display: 'grid', gap: 8, gridTemplateColumns: 'minmax(0, 1fr) auto' }}>
+          <span style={{ ...codeStyle, minWidth: 0, overflowWrap: 'anywhere' }}>{token.name}</span>
+          <strong style={{ color: '#0C6466', fontSize: 14, lineHeight: 1.4 }}>{token.px}px</strong>
+        </div>
+        <div
+          aria-label={`${token.name} stroke width preview`}
+          style={{
+            alignItems: 'center',
+            backgroundColor: '#F5F7F8',
+            border: '1px solid #E1E8EA',
+            borderRadius: 4,
+            display: 'flex',
+            height: 40,
+            padding: '0 12px',
+          }}
+        >
+          <span
+            style={{
+              backgroundColor: '#0C6466',
+              borderRadius: 999,
+              display: 'inline-block',
+              height: Math.max(token.px, 1),
+              width: '100%',
+            }}
+          />
+        </div>
+        <span style={{ color: '#5C5C5C', fontSize: 13 }}>{token.rem}</span>
+      </div>
+    </TokenExamplePanel>
+  );
+}
+
+function RadiusTokenCard({ token }: { token: SizeToken }) {
+  return (
+    <TokenExamplePanel>
+      <div style={{ display: 'grid', gap: 12, minWidth: 0 }}>
+        <div style={{ alignItems: 'start', display: 'grid', gap: 8, gridTemplateColumns: 'minmax(0, 1fr) auto' }}>
+          <span style={{ ...codeStyle, minWidth: 0, overflowWrap: 'anywhere' }}>{token.name}</span>
+          <strong style={{ color: '#0C6466', fontSize: 14, lineHeight: 1.4 }}>{token.px}px</strong>
+        </div>
+        <div
+          aria-label={`${token.name} radius preview`}
+          style={{
+            alignItems: 'center',
+            backgroundColor: '#F5F7F8',
+            border: '1px solid #E1E8EA',
+            borderRadius: 4,
+            display: 'flex',
+            height: 76,
+            justifyContent: 'center',
+          }}
+        >
+          <span
+            style={{
+              backgroundColor: '#DDEEEB',
+              border: '2px solid #0C6466',
+              borderRadius: token.px,
+              display: 'inline-block',
+              height: 48,
+              width: 72,
+            }}
+          />
+        </div>
+        <span style={{ color: '#5C5C5C', fontSize: 13 }}>{token.rem}</span>
+      </div>
+    </TokenExamplePanel>
+  );
+}
+
+function RadiusStrokeScale({
+  tokens,
+  type,
+}: {
+  tokens: SizeToken[];
+  type: 'radius' | 'stroke';
+}) {
+  return (
+    <div style={{ display: 'grid', gap: 12, gridTemplateColumns: 'repeat(auto-fit, minmax(188px, 1fr))' }}>
+      {tokens.map((token) => (type === 'radius' ? <RadiusTokenCard key={token.name} token={token} /> : <StrokeTokenCard key={token.name} token={token} />))}
+    </div>
   );
 }
 
 export function RadiusStrokeTokensPage() {
   return (
     <TokenDocPage
-      description="Radius and stroke styles define shape, borders, and outline consistency. Dedicated code-backed values are still pending export from Figma."
+      description="Radius and stroke styles define shape, borders, and outline consistency. These values are extracted from the Figma Radius & Stroke canvas and normalized to the token names and rem scale."
       references={[references.radiusStroke]}
       title="Radius and stroke tokens"
     >
       <TokenSection
-        description={<p style={{ margin: 0 }}>Dedicated radius and stroke tokens still need to be exported before this page can render a code-backed value table.</p>}
-        title="Primitive tokens"
+        description={<p style={{ margin: 0 }}>Stroke tokens cover border widths from a hairline <span style={codeStyle}>stroke-xs</span> through strong 10px outlines. Pair stroke width with color tokens from the Color page.</p>}
+        title="Stroke width scale"
+      >
+        <RadiusStrokeScale tokens={strokeTokens} type="stroke" />
+      </TokenSection>
+
+      <TokenSection
+        description={<p style={{ margin: 0 }}>Radius tokens start at 2px for subtle UI corners and extend to large rounded shapes through <span style={codeStyle}>radius-64</span>.</p>}
+        title="Radius scale"
+      >
+        <RadiusStrokeScale tokens={radiusTokens} type="radius" />
+      </TokenSection>
+
+      <TokenSection
+        description={<p style={{ margin: 0 }}>Use radius and stroke together to keep component shapes and boundaries consistent across buttons, cards, fields, tables, and overlays.</p>}
+        title="Usage guidance"
       >
         <Table
-          headers={['Expected token', 'Current status', 'Storybook behavior']}
+          headers={['Use case', 'Recommended tokens', 'Notes']}
           rows={[
-            ['Radius scale', 'Linked to Figma only', 'Visible as a documented gap'],
-            ['Stroke widths', 'Linked to Figma only', 'Visible as a documented gap'],
-            ['Stroke colors', 'Partially represented through color styles', 'Use Color Tokens for current color values'],
+            ['Subtle corners', 'radius-2, radius-4', 'Use on compact controls, icon containers, indicators, and dense table elements.'],
+            ['Standard components', 'radius-8, radius-16', 'Use for buttons, cards, inputs, sheets, and repeated product UI containers.'],
+            ['Expressive shapes', 'radius-24 through radius-64', 'Use for avatars, large media frames, decorative containers, and highly rounded surfaces.'],
+            ['Thin borders', 'stroke-xs, stroke-1', 'Use for dividers, default input outlines, card borders, and low-emphasis boundaries.'],
+            ['Strong outlines', 'stroke-2 through stroke-10', 'Use for focus rings, selected states, illustrations, and high-emphasis boundaries.'],
+          ]}
+        />
+      </TokenSection>
+
+      <TokenSection title="Token table">
+        <Table
+          headers={['Token', 'Pixel size', 'Rem size', 'Role']}
+          rows={[
+            ...strokeTokens.map((token) => [token.name, `${token.px}px`, token.rem, 'Border or outline width']),
+            ...radiusTokens.map((token) => [token.name, `${token.px}px`, token.rem, 'Corner radius']),
           ]}
         />
       </TokenSection>
@@ -1410,24 +1849,107 @@ export function RadiusStrokeTokensPage() {
   );
 }
 
+function IllustrationAssetCard({ asset }: { asset: IllustrationAsset }) {
+  return (
+    <TokenExamplePanel>
+      <div style={{ display: 'grid', gap: 12, minWidth: 0 }}>
+        <div
+          style={{
+            alignItems: 'center',
+            backgroundColor: '#F8FBFB',
+            border: '1px solid #E1E8EA',
+            borderRadius: 4,
+            display: 'flex',
+            height: 176,
+            justifyContent: 'center',
+            padding: 16,
+          }}
+        >
+          <img
+            alt={asset.name}
+            src={asset.src}
+            style={{
+              display: 'block',
+              height: '100%',
+              maxWidth: '100%',
+              objectFit: 'contain',
+              width: '100%',
+            }}
+          />
+        </div>
+        <div style={{ display: 'grid', gap: 6, minWidth: 0 }}>
+          <strong style={{ color: '#111827', fontSize: 14, lineHeight: 1.35 }}>{asset.name}</strong>
+          <span style={{ color: '#5C5C5C', fontSize: 13 }}>{asset.group}</span>
+          <span style={{ ...codeStyle, minWidth: 0, overflowWrap: 'anywhere' }}>{asset.file}</span>
+        </div>
+      </div>
+    </TokenExamplePanel>
+  );
+}
+
+function IllustrationAssetGallery({ assets }: { assets: IllustrationAsset[] }) {
+  return (
+    <div style={{ display: 'grid', gap: 16, gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
+      {assets.map((asset) => (
+        <IllustrationAssetCard key={asset.file} asset={asset} />
+      ))}
+    </div>
+  );
+}
+
+function assetDirectory(file: string) {
+  return file.split('/').slice(0, -1).join('/');
+}
+
+function illustrationGroupLocation(group: IllustrationGroup) {
+  const directories = Array.from(
+    new Set(illustrationAssets.filter((asset) => asset.group === group).map((asset) => assetDirectory(asset.file))),
+  );
+
+  if (directories.length === 1) {
+    return directories[0];
+  }
+
+  return `${directories.length} folders under src/assets/illustrations`;
+}
+
 export function IllustrationsTokensPage() {
+  const groups = illustrationGroupOrder.filter((group) => illustrationAssets.some((asset) => asset.group === group));
+
   return (
     <TokenDocPage
-      description="Illustrations are brand assets used for guidance, feedback, and empty states. This page links the Figma source and documents the current export gap."
+      description="Illustrations are brand assets used for guidance, feedback, onboarding, empty states, and product status moments. This page follows the Figma illustration structure from the UI Kit source and documents the local SVG exports bundled with Storybook."
       references={[references.illustrations]}
       title="Illustration tokens"
     >
       <TokenSection
-        description={<p style={{ margin: 0 }}>No exported illustration asset manifest is available yet. Add a manifest before documenting individual illustration names, sizes, and usage rules as code-backed tokens.</p>}
-        title="Semantic tokens"
+        description={<p style={{ margin: 0 }}>SVG illustration exports live in <span style={codeStyle}>src/assets/illustrations</span>. The sections below mirror the Figma frame order from <span style={codeStyle}>1908:4646</span>.</p>}
+        title="Figma structure"
       >
         <Table
-          headers={['Asset area', 'Current status', 'Expected documentation']}
-          rows={[
-            ['Figma illustrations', 'Source linked', 'Asset name, intended use, dimensions, and export format'],
-            ['Local illustration components', 'Available in component stories', 'Cross-link each component to its Figma asset source'],
-            ['Brand usage rules', 'Pending asset manifest', 'Document when to use full illustrations versus icons or avatars'],
-          ]}
+          headers={['Group', 'Assets', 'Format', 'Location']}
+          rows={groups.map((group) => [
+            group,
+            illustrationAssets.filter((asset) => asset.group === group).length,
+            'SVG',
+            illustrationGroupLocation(group),
+          ])}
+        />
+      </TokenSection>
+
+      {groups.map((group) => (
+        <TokenSection key={group} title={`${group} assets`}>
+          <IllustrationAssetGallery assets={illustrationAssets.filter((asset) => asset.group === group)} />
+        </TokenSection>
+      ))}
+
+      <TokenSection
+        description={<p style={{ margin: 0 }}>Use the file path as the implementation reference when a product surface needs a specific illustration token.</p>}
+        title="Asset inventory"
+      >
+        <Table
+          headers={['Asset', 'Group', 'Format', 'Path']}
+          rows={illustrationAssets.map((asset) => [asset.name, asset.group, 'SVG', <span style={codeStyle}>{asset.file}</span>])}
         />
       </TokenSection>
     </TokenDocPage>

@@ -9,11 +9,11 @@ import * as UserAvatarStories from './UserAvatar.stories';
 
 ## Overview
 
-Covers sourced size, avatar, initials, and x-small star variants.
+Renders a circular user image when a source is available, then falls back to initials from the user's first and last name.
 
 **Use this component when:**
-- The surrounding workflow matches the sourced Figma component purpose.
-- The visible state maps to a documented Figma variant.
+- You have a user photo, profile image, or Figma avatar variant to show.
+- You need a fallback made from the user's first and last initials.
 - The component can stay presentational and controlled by props.
 
 **Do not use this component when:**
@@ -28,7 +28,8 @@ Covers sourced size, avatar, initials, and x-small star variants.
 ```tsx
 import { UserAvatar } from '@design-system/components';
 
-<UserAvatar size="medium" avatar="3" />
+<UserAvatar size="medium" imageSrc={user.profileImageUrl} name="Ana Silva" />
+<UserAvatar size="medium" type="initials" name="Ana Silva" />
 ```
 
 ## Props
@@ -38,6 +39,8 @@ import { UserAvatar } from '@design-system/components';
 ## Examples
 
 <Canvas of={UserAvatarStories.SizeExamples} />
+
+<Canvas of={UserAvatarStories.InitialsSizeExamples} />
 
 ## Accessibility
 
@@ -111,13 +114,13 @@ import { UserAvatar } from '@design-system/components';
     </tr>
     <tr>
       <td><code>Type=Avatar</code></td>
-      <td><code>type="avatar"</code></td>
-      <td>Illustrated avatar</td>
+      <td><code>type="avatar"</code>, <code>src</code>, or <code>imageSrc</code></td>
+      <td>Image avatar. Uses the sourced Figma PNG variants by default, or a custom image URL when supplied.</td>
     </tr>
     <tr>
       <td><code>Type=Initials</code></td>
-      <td><code>type="initials"</code></td>
-      <td>Initials avatar</td>
+      <td><code>type="initials"</code>, <code>name</code>, <code>firstName</code>, <code>lastName</code></td>
+      <td>Initials fallback from first and last name. <code>initialsText</code> can override it.</td>
     </tr>
     <tr>
       <td><code>Avatar=1..6/None</code></td>

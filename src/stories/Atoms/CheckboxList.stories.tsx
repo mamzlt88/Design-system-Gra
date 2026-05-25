@@ -5,7 +5,7 @@ import { CheckboxList } from '../../components/CheckboxList';
 const itemCounts = [1, 2, 3, 4, 5, 6, 7] as const;
 
 const meta = {
-  title: 'Atoms/Lists/CheckboxList',
+  title: 'Classic Components/Inputs/CheckboxList',
   component: CheckboxList,
   tags: ['autodocs'],
   args: {
@@ -28,7 +28,7 @@ const meta = {
   },
   parameters: {
     design: { type: 'figma', url: 'https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=7673-5287' },
-    docs: { description: { component: 'CheckboxList stacks sourced CheckboxRadioButton rows with optional scroll indicators and text field.' } },
+    docs: { description: { component: 'CheckboxList stacks CheckboxButton rows with optional scroll indicators and text field.' } },
   },
 } satisfies Meta<typeof CheckboxList>;
 

@@ -4,7 +4,7 @@ import { expect, fn, userEvent, within } from '@storybook/test';
 import { ExternalLinkButton } from '../../components/ExternalLinkButton';
 
 const meta = {
-  title: 'Atoms/Buttons/ExternalLinkButton',
+  title: 'Classic Components/Actions/ExternalLinkButton',
   component: ExternalLinkButton,
   tags: ['autodocs'],
   args: {

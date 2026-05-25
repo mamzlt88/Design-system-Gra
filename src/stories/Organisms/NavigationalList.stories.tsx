@@ -6,7 +6,7 @@ import { NavigationalList } from '../../components/NavigationalList';
 const itemCounts = [2, 3, 4, 5, 6, 7] as const;
 
 const meta = {
-  title: 'Organisms/Lists/NavigationalList',
+  title: 'Classic Components/Navigation/NavigationalList',
   component: NavigationalList,
   tags: ['autodocs'],
   args: { numberOfItems: 4, activeIndex: 0 },

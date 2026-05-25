@@ -1,0 +1,194 @@
+[
+  {
+    "avatar": "1",
+    "size": "big",
+    "componentNodeId": "2287:11890",
+    "nodeId": "2287:11891",
+    "file": "avatar-1-big.png",
+    "bytes": 193008
+  },
+  {
+    "avatar": "1",
+    "size": "medium",
+    "componentNodeId": "3233:14667",
+    "nodeId": "3233:14668",
+    "file": "avatar-1-medium.png",
+    "bytes": 111639
+  },
+  {
+    "avatar": "1",
+    "size": "small",
+    "componentNodeId": "1638:5980",
+    "nodeId": "1638:5979",
+    "file": "avatar-1-small.png",
+    "bytes": 53764
+  },
+  {
+    "avatar": "1",
+    "size": "xSmall",
+    "componentNodeId": "7586:8142",
+    "nodeId": "7586:8143",
+    "file": "avatar-1-xSmall.png",
+    "bytes": 30203
+  },
+  {
+    "avatar": "2",
+    "size": "big",
+    "componentNodeId": "2287:11856",
+    "nodeId": "2287:11857",
+    "file": "avatar-2-big.png",
+    "bytes": 136903
+  },
+  {
+    "avatar": "2",
+    "size": "medium",
+    "componentNodeId": "3233:14669",
+    "nodeId": "3233:14670",
+    "file": "avatar-2-medium.png",
+    "bytes": 89621
+  },
+  {
+    "avatar": "2",
+    "size": "small",
+    "componentNodeId": "1640:11012",
+    "nodeId": "1640:11014",
+    "file": "avatar-2-small.png",
+    "bytes": 47377
+  },
+  {
+    "avatar": "2",
+    "size": "xSmall",
+    "componentNodeId": "7586:8144",
+    "nodeId": "7586:8145",
+    "file": "avatar-2-xSmall.png",
+    "bytes": 28197
+  },
+  {
+    "avatar": "3",
+    "size": "big",
+    "componentNodeId": "2287:11892",
+    "nodeId": "2287:11893",
+    "file": "avatar-3-big.png",
+    "bytes": 142156
+  },
+  {
+    "avatar": "3",
+    "size": "medium",
+    "componentNodeId": "3233:14671",
+    "nodeId": "3233:14672",
+    "file": "avatar-3-medium.png",
+    "bytes": 87950
+  },
+  {
+    "avatar": "3",
+    "size": "small",
+    "componentNodeId": "1640:11015",
+    "nodeId": "1640:11017",
+    "file": "avatar-3-small.png",
+    "bytes": 45303
+  },
+  {
+    "avatar": "3",
+    "size": "xSmall",
+    "componentNodeId": "7586:8146",
+    "nodeId": "7586:8147",
+    "file": "avatar-3-xSmall.png",
+    "bytes": 26401
+  },
+  {
+    "avatar": "4",
+    "size": "big",
+    "componentNodeId": "2287:11894",
+    "nodeId": "2287:11895",
+    "file": "avatar-4-big.png",
+    "bytes": 172303
+  },
+  {
+    "avatar": "4",
+    "size": "medium",
+    "componentNodeId": "3233:14673",
+    "nodeId": "3233:14674",
+    "file": "avatar-4-medium.png",
+    "bytes": 104469
+  },
+  {
+    "avatar": "4",
+    "size": "small",
+    "componentNodeId": "1640:11020",
+    "nodeId": "1640:10951",
+    "file": "avatar-4-small.png",
+    "bytes": 52001
+  },
+  {
+    "avatar": "4",
+    "size": "xSmall",
+    "componentNodeId": "7586:8148",
+    "nodeId": "7586:8149",
+    "file": "avatar-4-xSmall.png",
+    "bytes": 30090
+  },
+  {
+    "avatar": "5",
+    "size": "big",
+    "componentNodeId": "2287:11896",
+    "nodeId": "2287:11897",
+    "file": "avatar-5-big.png",
+    "bytes": 158655
+  },
+  {
+    "avatar": "5",
+    "size": "medium",
+    "componentNodeId": "3233:14675",
+    "nodeId": "3233:14676",
+    "file": "avatar-5-medium.png",
+    "bytes": 98985
+  },
+  {
+    "avatar": "5",
+    "size": "small",
+    "componentNodeId": "1642:11024",
+    "nodeId": "1642:11023",
+    "file": "avatar-5-small.png",
+    "bytes": 50946
+  },
+  {
+    "avatar": "5",
+    "size": "xSmall",
+    "componentNodeId": "7586:8150",
+    "nodeId": "7586:8151",
+    "file": "avatar-5-xSmall.png",
+    "bytes": 29609
+  },
+  {
+    "avatar": "6",
+    "size": "big",
+    "componentNodeId": "2287:11898",
+    "nodeId": "2287:11899",
+    "file": "avatar-6-big.png",
+    "bytes": 112064
+  },
+  {
+    "avatar": "6",
+    "size": "medium",
+    "componentNodeId": "3233:14677",
+    "nodeId": "3233:14678",
+    "file": "avatar-6-medium.png",
+    "bytes": 70246
+  },
+  {
+    "avatar": "6",
+    "size": "small",
+    "componentNodeId": "1642:11026",
+    "nodeId": "1642:11022",
+    "file": "avatar-6-small.png",
+    "bytes": 37259
+  },
+  {
+    "avatar": "6",
+    "size": "xSmall",
+    "componentNodeId": "7586:8152",
+    "nodeId": "7586:8153",
+    "file": "avatar-6-xSmall.png",
+    "bytes": 22448
+  }
+]

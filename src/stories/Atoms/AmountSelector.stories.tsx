@@ -35,7 +35,7 @@ function InteractiveAmountSelector(args: AmountSelectorProps) {
 }
 
 const meta = {
-  title: 'Atoms/Input Components/AmountSelector',
+  title: 'Domain Components/Financial Inputs/AmountSelector',
   component: AmountSelector,
   tags: ['autodocs'],
   args: {

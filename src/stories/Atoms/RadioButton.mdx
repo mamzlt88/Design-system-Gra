@@ -1,0 +1,46 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as RadioButtonStories from './RadioButton.stories';
+
+<Meta of={RadioButtonStories} />
+
+# RadioButton
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=7521-6940)
+
+## Overview
+
+RadioButton is the radio control for choosing one option from a named group. Use it when only one option in a set can be selected.
+
+## Default Usage
+
+<Canvas of={RadioButtonStories.Default} />
+
+```tsx
+import { RadioButton } from '@design-system/components';
+
+<RadioButton itemText="Item" name="loan-purpose" />
+```
+
+## Props
+
+<Controls />
+
+## States
+
+<Canvas of={RadioButtonStories.StateExamples} />
+
+## Interaction
+
+<Canvas of={RadioButtonStories.InteractiveDemo} />
+
+## Accessibility
+
+Use RadioButton inside a named radio group. It renders a native `radio` input, keeps the visible `itemText` as the input label, and should share a `name` with related options.
+
+## Related Components
+
+Use `CheckboxButton` when each option can be selected independently. Use buttons when the control submits or performs an immediate action.
+
+## All Stories
+
+<Stories />

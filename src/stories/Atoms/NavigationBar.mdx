@@ -49,6 +49,28 @@ Click any item in the canvas to make it selected. Pressed feedback remains avail
 
 <Canvas of={NavigationBarStories.InteractionExamples} />
 
+## SectionBar Atom
+
+`SectionBar` remains exported for code consumers, but it is documented here because it is the navigation item atom used inside `NavigationBar`.
+
+```tsx
+import { SectionBar } from '@design-system/components';
+
+<SectionBar label="Payments" icon="payments" state="selected" />
+```
+
+### SectionBar States
+
+Use the Controls panel to switch the SectionBar state, icon, label, and badge.
+
+<Canvas of={NavigationBarStories.SectionBarStates} />
+
+### SectionBar Interaction
+
+Pressed is a transient touch or pointer feedback style. This Storybook example holds the last clicked item in the pressed state so review can compare the interaction color.
+
+<Canvas of={NavigationBarStories.SectionBarInteractions} />
+
 ## Accessibility
 
 <table>
@@ -95,10 +117,6 @@ Click any item in the canvas to make it selected. Pressed feedback remains avail
     <tr>
       <td><code>ActionBar</code></td>
       <td>The footer needs one or two workflow actions rather than persistent navigation</td>
-    </tr>
-    <tr>
-      <td><code>SectionBar</code></td>
-      <td>The UI needs a single navigation item with selected or pressed feedback</td>
     </tr>
   </tbody>
 </table>
@@ -153,6 +171,26 @@ Click any item in the canvas to make it selected. Pressed feedback remains avail
       <td>User-approved interaction</td>
       <td><code>pressedSection</code></td>
       <td>Shows the transient pressed item feedback in Storybook</td>
+    </tr>
+    <tr>
+      <td><code>SectionBar / State=Default</code></td>
+      <td><code>state="default"</code></td>
+      <td>Inactive internal navigation item</td>
+    </tr>
+    <tr>
+      <td><code>SectionBar / State=Selected</code></td>
+      <td><code>state="selected"</code></td>
+      <td>Current internal navigation item</td>
+    </tr>
+    <tr>
+      <td><code>SectionBar / Show_Badge</code></td>
+      <td><code>showBadge</code></td>
+      <td>Shows activity indicator on a navigation item</td>
+    </tr>
+    <tr>
+      <td><code>SectionBar / Change_Icon</code></td>
+      <td><code>icon</code></td>
+      <td>Configured icon option for the internal item</td>
     </tr>
   </tbody>
 </table>

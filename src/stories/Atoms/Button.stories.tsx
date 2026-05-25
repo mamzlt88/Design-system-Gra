@@ -29,7 +29,7 @@ function InteractiveButton(args: ButtonProps) {
 }
 
 const meta = {
-  title: 'Atoms/Buttons/Button',
+  title: 'Classic Components/Actions/Button',
   component: Button,
   tags: ['autodocs'],
   args: {

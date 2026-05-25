@@ -5,7 +5,7 @@ import { LanguageSelector } from '../../components/LanguageSelector';
 const states = ['default', 'pressed', 'selected'] as const;
 
 const meta = {
-  title: 'Atoms/Accordions/LanguageSelector',
+  title: 'Classic Components/Media/LanguageSelector',
   component: LanguageSelector,
   tags: ['autodocs'],
   args: { state: 'default', langText: 'Eng', imageLabel: 'English' },

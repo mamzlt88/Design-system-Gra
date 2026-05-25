@@ -46,7 +46,7 @@ const barStyle: CSSProperties = {
   boxSizing: 'border-box',
   display: 'grid',
   gridTemplateColumns: 'repeat(5, minmax(0, 1fr))',
-  minHeight: 72,
+  minHeight: 66,
   width: '100%',
 };
 

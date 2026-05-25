@@ -5,7 +5,7 @@ import { PendingBalanceRows } from '../../components/PendingBalanceRows';
 const types = ['paymentContent', 'header', 'interestContent'] as const;
 
 const meta = {
-  title: 'Organisms/Tables/PendingBalanceRows',
+  title: 'Domain Components/Payments & Loans/PendingBalanceRows',
   component: PendingBalanceRows,
   tags: ['autodocs'],
   args: { type: 'paymentContent', label: 'Pending payment', dueDate: 'May 20', amount: '$125.00' },

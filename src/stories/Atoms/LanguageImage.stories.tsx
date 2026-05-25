@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { LanguageImage } from '../../components/LanguageImage';
 
 const meta = {
-  title: 'Atoms/Dropdowns/LanguageImage',
+  title: 'Classic Components/Media/LanguageImage',
   component: LanguageImage,
   tags: ['autodocs'],
   args: {

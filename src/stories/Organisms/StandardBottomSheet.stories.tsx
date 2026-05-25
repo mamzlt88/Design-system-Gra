@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { StandardBottomSheet } from '../../components/StandardBottomSheet';
 
 const meta = {
-  title: 'Organisms/Modals & Bottom Sheets/StandardBottomSheet',
+  title: 'Classic Components/Overlays/StandardBottomSheet',
   component: StandardBottomSheet,
   tags: ['autodocs'],
   args: { title: 'Confirm action', description: 'Review the information before continuing.', primaryLabel: 'Continue', secondaryLabel: 'Cancel' },

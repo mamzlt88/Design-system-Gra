@@ -1,0 +1,36 @@
+import { Meta, Canvas, Stories } from '@storybook/addon-docs/blocks';
+import * as IllustrationCanvasStories from './IllustrationCanvases.stories';
+
+<Meta of={IllustrationCanvasStories} />
+
+# Figma Canvases
+
+> **Atomic Level**: Atom support | **Status**: Draft | **Figma**: [Illustrations page](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=1908-4646)
+
+## Overview
+
+These canvases document the Illustration page sections that are present in Figma but do not yet have dedicated exported React atoms. Each Canvas lists the available variant groups and Figma node targets so the exact SVG assets can be exported and reviewed as local files.
+
+## All Linked Canvases
+
+<Canvas of={IllustrationCanvasStories.AllCanvases} />
+
+## Proof of Investment
+
+<Canvas of={IllustrationCanvasStories.ProofOfInvestment} />
+
+## Loan Proposal
+
+<Canvas of={IllustrationCanvasStories.LoanProposal} />
+
+## Disbursement
+
+<Canvas of={IllustrationCanvasStories.Disbursement} />
+
+## Approvals
+
+<Canvas of={IllustrationCanvasStories.Approvals} />
+
+## All Stories
+
+<Stories />

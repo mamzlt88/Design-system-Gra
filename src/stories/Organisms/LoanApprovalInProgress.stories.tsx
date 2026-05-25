@@ -5,7 +5,7 @@ import { LoanApprovalInProgress } from '../../components/LoanApprovalInProgress'
 const types = ['centerApprovalInProgress', 'centerApprovalOnHold', 'amountNeedsApproval', 'resubmitDocuments'] as const;
 
 const meta = {
-  title: 'Organisms/Illustrations/LoanApprovalInProgress',
+  title: 'Domain Components/Illustrations/LoanApprovalInProgress',
   component: LoanApprovalInProgress,
   tags: ['autodocs'],
   args: { type: 'centerApprovalInProgress' },

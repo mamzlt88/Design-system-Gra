@@ -34,7 +34,7 @@ function InteractivePillButton(args: PillButtonProps) {
 }
 
 const meta = {
-  title: 'Atoms/Buttons/PillButton',
+  title: 'Classic Components/Actions/PillButton',
   component: PillButton,
   tags: ['autodocs'],
   args: {

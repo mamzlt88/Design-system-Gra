@@ -5,7 +5,7 @@ import { ColorIndicator } from '../../components/ColorIndicator';
 const colorOptions = ['red', 'yellow', 'green', 'aquamarine', 'blue', 'brand'] as const;
 
 const meta = {
-  title: 'Atoms/Badges and Indicators/ColorIndicator',
+  title: 'Classic Components/Feedback/ColorIndicator',
   component: ColorIndicator,
   tags: ['autodocs'],
   args: {

@@ -5,7 +5,7 @@ import { OptionSelectionBottomSheet } from '../../components/OptionSelectionBott
 const optionCounts = [1, 2, 3, 4] as const;
 
 const meta = {
-  title: 'Atoms/Modals & Bottom Sheets/OptionSelectionBottomSheet',
+  title: 'Domain Components/Cards & Info/OptionSelectionBottomSheet',
   component: OptionSelectionBottomSheet,
   tags: ['autodocs'],
   args: {

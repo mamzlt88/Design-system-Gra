@@ -4,7 +4,7 @@ import { expect, fn, userEvent, within } from '@storybook/test';
 import { ValueAdjusterButton } from '../../components/ValueAdjusterButton';
 
 const meta = {
-  title: 'Atoms/Buttons/ValueAdjusterButton',
+  title: 'Classic Components/Actions/ValueAdjusterButton',
   component: ValueAdjusterButton,
   tags: ['autodocs'],
   args: {

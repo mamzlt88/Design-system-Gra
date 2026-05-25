@@ -1,15 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { WebHeader } from '../../components/WebHeader';
+import { WebHeader, type WebHeaderProps } from '../../components/WebHeader';
 
 const sizes = ['mobile', 'tabletDesktop'] as const;
 const states = ['default', 'loading'] as const;
 
+function WebHeaderCanvas(args: WebHeaderProps) {
+  const targetWidth = args.size === 'mobile' ? 390 : 520;
+  const { style, ...webHeaderProps } = args;
+
+  return (
+    <div style={{ boxSizing: 'border-box', maxWidth: '100%', width: targetWidth }}>
+      <WebHeader {...webHeaderProps} style={{ ...style, width: '100%' }} />
+    </div>
+  );
+}
+
 const meta = {
-  title: 'Organisms/Headers Variations/WebHeader',
+  title: 'Classic Components/Navigation/WebHeader',
   component: WebHeader,
   tags: ['autodocs'],
   args: { size: 'tabletDesktop', state: 'default', countryLabel: 'US', languageLabel: 'Eng' },
+  render: (args) => <WebHeaderCanvas {...args} />,
   argTypes: {
     size: { control: { type: 'select' }, options: sizes, table: { category: 'Variant' } },
     state: { control: { type: 'select' }, options: states, table: { category: 'State' } },
@@ -52,7 +64,7 @@ export const ReferenceMatrix: Story = {
             {states.map((state) => (
               <div key={`${size}-${state}`} style={{ display: 'grid', gap: 6 }}>
                 <span style={{ color: '#5C5C5C', fontFamily: 'Open Sans, Arial, sans-serif', fontSize: 12, fontWeight: 700 }}>{state}</span>
-                <WebHeader {...args} size={size} state={state} />
+                <WebHeaderCanvas {...args} size={size} state={state} />
               </div>
             ))}
           </div>

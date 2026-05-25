@@ -6,7 +6,7 @@ const types = ['content', 'header', 'total'] as const;
 const sizes = ['small', 'medium'] as const;
 
 const meta = {
-  title: 'Organisms/Tables/MambuWebviewTable',
+  title: 'Domain Components/Payments & Loans/MambuWebviewTable',
   component: MambuWebviewTable,
   tags: ['autodocs'],
   args: { type: 'content', size: 'medium', label: 'Principal', value: '$200.00', balance: '$1,250.00' },

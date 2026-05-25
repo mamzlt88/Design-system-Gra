@@ -1,0 +1,46 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as CheckboxButtonStories from './CheckboxButton.stories';
+
+<Meta of={CheckboxButtonStories} />
+
+# CheckboxButton
+
+> **Atomic Level**: Atom | **Status**: Draft | **Figma**: [View in Figma](https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=7521-6940)
+
+## Overview
+
+CheckboxButton is the checkbox control for single confirmations and multi-select lists. Use it when a person can turn an option on or off independently.
+
+## Default Usage
+
+<Canvas of={CheckboxButtonStories.Default} />
+
+```tsx
+import { CheckboxButton } from '@design-system/components';
+
+<CheckboxButton itemText="Item" />
+```
+
+## Props
+
+<Controls />
+
+## States
+
+<Canvas of={CheckboxButtonStories.StateExamples} />
+
+## Interaction
+
+<Canvas of={CheckboxButtonStories.InteractiveDemo} />
+
+## Accessibility
+
+Use CheckboxButton for independent selections. It renders a native `checkbox` input and keeps the visible `itemText` as the input label.
+
+## Related Components
+
+Use `RadioButton` when a person must choose one option from a group. Use `CheckboxList` when multiple checkbox rows appear together.
+
+## All Stories
+
+<Stories />

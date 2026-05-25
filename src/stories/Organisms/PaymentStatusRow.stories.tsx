@@ -5,7 +5,7 @@ import { PaymentStatusRow } from '../../components/PaymentStatusRow';
 const states = ['open', 'closed'] as const;
 
 const meta = {
-  title: 'Organisms/Tables/PaymentStatusRow',
+  title: 'Domain Components/Payments & Loans/PaymentStatusRow',
   component: PaymentStatusRow,
   tags: ['autodocs'],
   args: { state: 'open', paymentLabel: 'Payment 1', dueDate: 'May 20', amount: '$125.00' },

@@ -2,21 +2,18 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from '@storybook/test';
 
-import { CheckboxRadioButton, type CheckboxRadioButtonProps } from '../../components/CheckboxRadioButton';
+import { CheckboxButton, type CheckboxButtonProps } from '../../components/CheckboxButton';
 
-// Story-only state keeps CheckboxRadioButton controlled by props while demonstrating selectable behavior.
-function InteractiveCheckboxRadioButton(args: CheckboxRadioButtonProps) {
+function InteractiveCheckboxButton(args: CheckboxButtonProps) {
   const [selected, setSelected] = useState(args.state === 'selected');
-  const type = args.type ?? 'radioText';
-  const isRadio = type === 'radio' || type === 'radioText';
   const state = args.disabled ? 'disabled' : selected ? 'selected' : 'default';
 
   return (
-    <CheckboxRadioButton
+    <CheckboxButton
       {...args}
       state={state}
       onChange={(event) => {
-        setSelected((current) => (isRadio ? true : !current));
+        setSelected((current) => !current);
         args.onChange?.(event);
       }}
     />
@@ -24,29 +21,19 @@ function InteractiveCheckboxRadioButton(args: CheckboxRadioButtonProps) {
 }
 
 const meta = {
-  title: 'Atoms/Checkbox & Radio Buttons/CheckboxRadioButton',
-  component: CheckboxRadioButton,
+  title: 'Classic Components/Inputs/CheckboxButton',
+  component: CheckboxButton,
   tags: ['autodocs'],
   args: {
-    type: 'radioText',
     state: 'default',
     itemText: 'Item',
     supportiveText: 'Supportive text',
     showSupportiveText: false,
+    tone: 'default',
     disabled: false,
     onChange: fn(),
   },
   argTypes: {
-    type: {
-      description: 'The control type from Figma.',
-      control: { type: 'select' },
-      options: ['radioText', 'radio', 'square', 'squareRed'],
-      table: {
-        category: 'Content',
-        defaultValue: { summary: 'radioText' },
-        type: { summary: "'radioText' | 'radio' | 'square' | 'squareRed'" },
-      },
-    },
     state: {
       description: 'Figma visual state.',
       control: { type: 'radio' },
@@ -72,13 +59,23 @@ const meta = {
       control: { type: 'boolean' },
       table: { category: 'Content', defaultValue: { summary: 'false' }, type: { summary: 'boolean' } },
     },
+    tone: {
+      description: 'Sets the selected checkbox color.',
+      control: { type: 'radio' },
+      options: ['default', 'danger'],
+      table: {
+        category: 'Appearance',
+        defaultValue: { summary: 'default' },
+        type: { summary: "'default' | 'danger'" },
+      },
+    },
     disabled: {
       description: 'Prevents selection.',
       control: { type: 'boolean' },
       table: { category: 'State', defaultValue: { summary: 'false' }, type: { summary: 'boolean' } },
     },
     onChange: {
-      description: 'Runs when the control changes.',
+      description: 'Runs when the checkbox changes.',
       table: { category: 'Events', type: { summary: '(event: React.ChangeEvent<HTMLInputElement>) => void' } },
     },
   },
@@ -89,28 +86,16 @@ const meta = {
     },
     docs: {
       description: {
-        component: 'CheckboxRadioButton covers the checkbox and radio states from the Figma control set.',
+        component: 'CheckboxButton is the checkbox control for single confirmations and multi-select lists.',
       },
     },
   },
-} satisfies Meta<typeof CheckboxRadioButton>;
+} satisfies Meta<typeof CheckboxButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const RadioText: Story = {};
-
-export const RadioOnly: Story = {
-  args: { type: 'radio', itemText: 'Radio option' },
-};
-
-export const Square: Story = {
-  args: { type: 'square' },
-};
-
-export const SquareRed: Story = {
-  args: { type: 'squareRed', itemText: 'Required confirmation' },
-};
+export const Default: Story = {};
 
 export const Selected: Story = {
   args: { state: 'selected' },
@@ -120,47 +105,27 @@ export const Disabled: Story = {
   args: { state: 'disabled', disabled: true },
 };
 
+export const Danger: Story = {
+  args: { itemText: 'Required confirmation', state: 'selected', tone: 'danger' },
+};
+
 export const WithSupportiveText: Story = {
   args: { showSupportiveText: true },
 };
 
 export const InteractiveDemo: Story = {
-  render: (args) => <InteractiveCheckboxRadioButton {...args} />,
-};
-
-export const TypeExamples: Story = {
-  tags: ['!test', '!dev'],
-  render: () => (
-    <div style={{ display: 'grid', gap: 14 }}>
-      <CheckboxRadioButton type="radioText" itemText="Radio with text" />
-      <CheckboxRadioButton type="radio" itemText="Radio only" />
-      <CheckboxRadioButton type="square" itemText="Square checkbox" />
-      <CheckboxRadioButton type="squareRed" itemText="Square red checkbox" />
-    </div>
-  ),
+  render: (args) => <InteractiveCheckboxButton {...args} />,
 };
 
 export const StateExamples: Story = {
   tags: ['!test', '!dev'],
   render: () => (
     <div style={{ display: 'grid', gap: 14 }}>
-      <CheckboxRadioButton type="radioText" itemText="Selected option" state="selected" />
-      <CheckboxRadioButton type="radioText" itemText="Disabled option" state="disabled" disabled />
-      <CheckboxRadioButton type="radioText" itemText="With supportive text" showSupportiveText supportiveText="Supportive text" />
-    </div>
-  ),
-};
-
-export const AllTypes: Story = {
-  tags: ['!test', '!dev'],
-  render: () => (
-    <div style={{ display: 'grid', gap: 14 }}>
-      <CheckboxRadioButton type="radioText" itemText="Radio with text" />
-      <CheckboxRadioButton type="radio" itemText="Radio only" />
-      <CheckboxRadioButton type="square" itemText="Square checkbox" />
-      <CheckboxRadioButton type="squareRed" itemText="Square red checkbox" />
-      <CheckboxRadioButton type="radioText" itemText="Selected option" state="selected" />
-      <CheckboxRadioButton type="radioText" itemText="Disabled option" state="disabled" />
+      <CheckboxButton itemText="Default checkbox" />
+      <CheckboxButton itemText="Selected checkbox" state="selected" />
+      <CheckboxButton disabled itemText="Disabled checkbox" state="disabled" />
+      <CheckboxButton itemText="Danger checkbox" state="selected" tone="danger" />
+      <CheckboxButton itemText="With supportive text" showSupportiveText supportiveText="Supportive text" />
     </div>
   ),
 };

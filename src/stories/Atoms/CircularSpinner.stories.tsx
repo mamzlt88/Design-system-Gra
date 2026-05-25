@@ -6,7 +6,7 @@ const sizeOptions = ['small', 'medium', 'large'] as const;
 const rotationOptions = ['1', '2', '3', '4'] as const;
 
 const meta = {
-  title: 'Atoms/Loading & Progress Indicators/CircularSpinner',
+  title: 'Classic Components/Feedback/CircularSpinner',
   component: CircularSpinner,
   tags: ['autodocs'],
   args: {

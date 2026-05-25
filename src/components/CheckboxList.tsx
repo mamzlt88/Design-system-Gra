@@ -1,6 +1,6 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
 
-import { CheckboxRadioButton } from './CheckboxRadioButton';
+import { CheckboxButton } from './CheckboxButton';
 
 export type CheckboxListProps = {
   itemCount?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
@@ -51,11 +51,10 @@ export function CheckboxList({
     >
       {itemCount >= 6 && showTopScrollIndicator ? <span aria-hidden="true" style={{ ...scrollIndicatorStyle, top: 0 }} /> : null}
       {Array.from({ length: itemCount }).map((_, index) => (
-        <CheckboxRadioButton
+        <CheckboxButton
           itemText={`${itemLabelPrefix} ${index + 1}`}
           key={index}
           state={index < selectedCount ? 'selected' : 'default'}
-          type="square"
         />
       ))}
       {showTextField ? (

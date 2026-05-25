@@ -6,7 +6,7 @@ const colors = ['red', 'yellow', 'green', 'brand', 'blue', 'purple', 'pink'] as 
 const icons = ['check', 'info', 'settings', 'plus', 'minus', 'document', 'externalLink', 'upload', 'arrowRight'] as const;
 
 const meta = {
-  title: 'Atoms/Icon Containers/IconContainer',
+  title: 'Classic Components/Media/IconContainer',
   component: IconContainer,
   tags: ['autodocs'],
   args: {
