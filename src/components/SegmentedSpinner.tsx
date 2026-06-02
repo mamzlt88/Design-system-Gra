@@ -1,4 +1,5 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type SegmentedSpinnerRotation = '1' | '2' | '3' | '4';
 
@@ -15,7 +16,7 @@ const opacityFrames: Record<SegmentedSpinnerRotation, number[]> = {
 };
 
 const segmentAngles = [0, 45, 90, 135, 180, 225, 270, 315];
-const teal = '#0C6466';
+const teal = tokens.color.primary90;
 const size = 25;
 
 const baseStyle: CSSProperties = {

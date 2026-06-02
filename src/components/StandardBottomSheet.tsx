@@ -1,6 +1,7 @@
-import type { HTMLAttributes } from 'react';
+import { useId, type HTMLAttributes } from 'react';
 
 import { Button } from './Button';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type StandardBottomSheetProps = {
   title?: string;
@@ -21,35 +22,37 @@ export function StandardBottomSheet({
   style,
   ...divProps
 }: StandardBottomSheetProps) {
+  const titleId = useId();
+
   return (
     <div
       role="dialog"
       aria-modal="true"
-      aria-label={title}
+      aria-labelledby={titleId}
       data-figma-node-id="7482:653"
       style={{
-        backgroundColor: '#FFFFFF',
-        border: '1px solid #E6E6E6',
+        backgroundColor: tokens.color.grey00,
+        border: `1px solid ${tokens.color.grey10}`,
         borderTopLeftRadius: 24,
         borderTopRightRadius: 24,
-        boxShadow: '0 -8px 24px rgba(20, 20, 20, 0.14)',
+        boxShadow: tokens.effect.bottomSheetElevation,
         boxSizing: 'border-box',
         display: 'grid',
-        fontFamily: 'Open Sans, Arial, sans-serif',
-        gap: 16,
+        fontFamily: tokens.typography.bodyRegular.fontFamily,
+        gap: tokens.spacing.xxl,
         maxWidth: 390,
-        padding: 24,
+        padding: tokens.spacing['3xl'],
         width: '100%',
         ...style,
       }}
       {...divProps}
     >
-      <span aria-hidden="true" style={{ backgroundColor: '#D3D3D3', borderRadius: 999, height: 4, justifySelf: 'center', width: 48 }} />
-      <div style={{ display: 'grid', gap: 8 }}>
-        <h2 style={{ color: '#141414', fontFamily: 'Raleway, Open Sans, Arial, sans-serif', fontSize: 22, lineHeight: '28px', margin: 0 }}>{title}</h2>
-        <p style={{ color: '#434343', fontSize: 14, lineHeight: '20px', margin: 0 }}>{description}</p>
+      <span aria-hidden="true" style={{ backgroundColor: tokens.color.grey20, borderRadius: tokens.radius.circle, height: 4, justifySelf: 'center', width: 48 }} />
+      <div style={{ display: 'grid', gap: tokens.spacing.sm }}>
+        <h2 id={titleId} style={{ color: tokens.color.grey80, fontFamily: tokens.typography.subHeadingSemiBold.fontFamily, fontSize: 22, lineHeight: '28px', margin: 0 }}>{title}</h2>
+        <p style={{ color: tokens.color.grey50, fontSize: tokens.typography.bodyRegular.fontSize, lineHeight: tokens.typography.subHeadingSemiBold.lineHeight, margin: 0 }}>{description}</p>
       </div>
-      <div style={{ display: 'grid', gap: 8 }}>
+      <div style={{ display: 'grid', gap: tokens.spacing.sm }}>
         <Button fullWidth label={primaryLabel} onClick={onPrimaryClick} />
         <Button fullWidth label={secondaryLabel} onClick={onSecondaryClick} variant="outlined" />
       </div>

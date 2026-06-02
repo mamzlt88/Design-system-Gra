@@ -1,4 +1,5 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type NotificationIconType = 'requestedLoan' | 'loanRenewal' | 'loanApprovalPending' | 'weeklyPayment' | 'centerMeeting';
 
@@ -9,10 +10,10 @@ export type NotificationIconProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 const colors = {
-  grey30: '#A4A4A4',
-  grey60: '#313131',
-  grey05: '#F5F5F5',
-  primary90: '#0C6466',
+  grey30: tokens.color.grey30,
+  grey60: tokens.color.grey60,
+  grey05: tokens.color.grey05,
+  primary90: tokens.color.primary90,
 };
 
 const typeLabels: Record<NotificationIconType, string> = {
@@ -26,7 +27,7 @@ const typeLabels: Record<NotificationIconType, string> = {
 const baseStyle: CSSProperties = {
   alignItems: 'center',
   backgroundColor: colors.grey30,
-  borderRadius: 100,
+  borderRadius: tokens.radius.pill,
   color: colors.grey60,
   display: 'inline-flex',
   flexShrink: 0,
@@ -79,7 +80,7 @@ function RequestedLoanBadge() {
       style={{
         alignItems: 'center',
         backgroundColor: colors.grey05,
-        borderRadius: 100,
+        borderRadius: tokens.radius.pill,
         bottom: 9,
         color: colors.primary90,
         display: 'inline-flex',
@@ -104,7 +105,7 @@ function ApprovalPendingBadge() {
       style={{
         backgroundColor: colors.primary90,
         border: `3px solid ${colors.grey05}`,
-        borderRadius: 100,
+        borderRadius: tokens.radius.pill,
         height: 14,
         position: 'absolute',
         right: 13,

@@ -1,4 +1,5 @@
 import type { HTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type TooltipArrowPlacement = 'top' | 'bottom';
 export type TooltipArrowAlignment = 'left' | 'middle' | 'right';
@@ -28,7 +29,7 @@ export function Tooltip({
     <span
       aria-hidden="true"
       style={{
-        backgroundColor: '#244555',
+        backgroundColor: tokens.color.secondary90,
         height: 12,
         left: alignmentMap[arrowAlignment],
         position: 'absolute',
@@ -45,10 +46,10 @@ export function Tooltip({
       data-figma-node-id="7443:9977"
       role="tooltip"
       style={{
-        color: '#FFFFFF',
+        color: tokens.color.grey00,
         display: 'inline-block',
-        fontFamily: 'Open Sans, Arial, sans-serif',
-        fontSize: 14,
+        fontFamily: tokens.typography.bodyRegular.fontFamily,
+        fontSize: tokens.typography.bodyRegular.fontSize,
         lineHeight: '18px',
         padding: arrowPlacement === 'top' ? '10px 0 0' : '0 0 10px',
         position: 'relative',
@@ -61,10 +62,10 @@ export function Tooltip({
       <div
         style={{
           alignItems: 'center',
-          backgroundColor: '#244555',
-          borderRadius: 8,
+          backgroundColor: tokens.color.secondary90,
+          borderRadius: tokens.radius.md,
           display: 'flex',
-          gap: 8,
+          gap: tokens.spacing.sm,
           minHeight: 48,
           padding: '0 16px',
         }}

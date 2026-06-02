@@ -1,4 +1,5 @@
 import type { HTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type SavingsProgramLogoType = 'small' | 'medium';
 
@@ -27,15 +28,15 @@ export function SavingsProgramLogo({
       role="img"
       style={{
         alignItems: 'center',
-        backgroundColor: '#EDF6F6',
-        borderRadius: 12,
-        color: '#0C6466',
+        backgroundColor: tokens.color.primary00,
+        borderRadius: tokens.radius.lg,
+        color: tokens.color.primary90,
         display: 'inline-grid',
-        fontFamily: 'Open Sans, Arial, sans-serif',
+        fontFamily: tokens.typography.bodyRegular.fontFamily,
         fontWeight: 700,
         height,
         justifyItems: 'center',
-        padding: 12,
+        padding: tokens.spacing.lg,
         textAlign: 'center',
         width,
         ...style,

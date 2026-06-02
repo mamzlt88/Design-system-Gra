@@ -13,6 +13,7 @@ const meta = {
   argTypes: {
     type: { control: { type: 'select' }, options: types, table: { category: 'Variant' } },
     size: { control: { type: 'select' }, options: sizes, table: { category: 'Variant' } },
+    semantic: { control: 'boolean', table: { category: 'Accessibility' } },
     label: { control: 'text', table: { category: 'Content' } },
     value: { control: 'text', table: { category: 'Content' } },
     balance: { control: 'text', table: { category: 'Content' } },
@@ -34,9 +35,9 @@ export const TypeExamples: Story = {
   tags: ['!test', '!dev'],
   render: () => (
     <div role="table" style={{ border: '1px solid #E6E6E6', maxWidth: 620 }}>
-      <MambuWebviewTable type="header" />
-      <MambuWebviewTable />
-      <MambuWebviewTable type="total" />
+      <MambuWebviewTable semantic type="header" />
+      <MambuWebviewTable semantic />
+      <MambuWebviewTable semantic type="total" />
     </div>
   ),
 };

@@ -1,7 +1,8 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import { useId, type HTMLAttributes, type ReactNode } from 'react';
 
 import { Button } from './Button';
 import { IconContainer } from './IconContainer';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type StandardModalType = 'verticalActions' | 'horizontalActions' | 'bullets' | 'illustration' | 'mediaTop';
 
@@ -18,7 +19,7 @@ export type StandardModalProps = {
 function ModalBody({ type, description }: { type: StandardModalType; description: string }) {
   if (type === 'bullets') {
     return (
-      <ul style={{ color: '#434343', fontSize: 14, lineHeight: '20px', margin: 0, paddingLeft: 18 }}>
+      <ul style={{ color: tokens.color.grey50, fontSize: tokens.typography.bodyRegular.fontSize, lineHeight: tokens.typography.subHeadingSemiBold.lineHeight, margin: 0, paddingLeft: 18 }}>
         <li>Review the information carefully.</li>
         <li>Confirm that the details are correct.</li>
         <li>Continue when the user is ready.</li>
@@ -26,7 +27,7 @@ function ModalBody({ type, description }: { type: StandardModalType; description
     );
   }
 
-  return <p style={{ color: '#434343', fontSize: 14, lineHeight: '20px', margin: 0 }}>{description}</p>;
+  return <p style={{ color: tokens.color.grey50, fontSize: tokens.typography.bodyRegular.fontSize, lineHeight: tokens.typography.subHeadingSemiBold.lineHeight, margin: 0 }}>{description}</p>;
 }
 
 function Media({ type }: { type: StandardModalType }) {
@@ -35,7 +36,7 @@ function Media({ type }: { type: StandardModalType }) {
   }
 
   return (
-    <div style={{ alignItems: 'center', backgroundColor: '#EDF6F6', borderRadius: type === 'mediaTop' ? '8px 8px 0 0' : 8, display: 'flex', justifyContent: 'center', minHeight: 120 }}>
+    <div style={{ alignItems: 'center', backgroundColor: tokens.color.primary00, borderRadius: type === 'mediaTop' ? '8px 8px 0 0' : 8, display: 'flex', justifyContent: 'center', minHeight: 120 }}>
       <IconContainer color="brand" icon="info" size={72} />
     </div>
   );
@@ -62,7 +63,7 @@ function Actions({
     </>
   );
 
-  return <div style={{ display: 'grid', gap: 8, gridTemplateColumns: horizontal ? '1fr 1fr' : '1fr' }}>{children}</div>;
+  return <div style={{ display: 'grid', gap: tokens.spacing.sm, gridTemplateColumns: horizontal ? '1fr 1fr' : '1fr' }}>{children}</div>;
 }
 
 export function StandardModal({
@@ -76,21 +77,23 @@ export function StandardModal({
   style,
   ...divProps
 }: StandardModalProps) {
+  const titleId = useId();
+
   return (
     <div
       role="dialog"
       aria-modal="true"
-      aria-label={title}
+      aria-labelledby={titleId}
       data-figma-node-id="7478:9775"
       style={{
-        backgroundColor: '#FFFFFF',
-        border: '1px solid #E6E6E6',
-        borderRadius: 12,
-        boxShadow: '0 12px 32px rgba(20, 20, 20, 0.16)',
+        backgroundColor: tokens.color.grey00,
+        border: `1px solid ${tokens.color.grey10}`,
+        borderRadius: tokens.radius.lg,
+        boxShadow: tokens.effect.modalElevation,
         boxSizing: 'border-box',
         display: 'grid',
-        fontFamily: 'Open Sans, Arial, sans-serif',
-        gap: 20,
+        fontFamily: tokens.typography.bodyRegular.fontFamily,
+        gap: tokens.spacing['2xl'],
         maxWidth: 390,
         overflow: 'hidden',
         padding: type === 'mediaTop' ? 0 : 24,
@@ -100,9 +103,9 @@ export function StandardModal({
       {...divProps}
     >
       <Media type={type} />
-      <div style={{ display: 'grid', gap: 16, padding: type === 'mediaTop' ? '0 24px 24px' : 0 }}>
-        <div style={{ display: 'grid', gap: 8 }}>
-          <h2 style={{ color: '#141414', fontFamily: 'Raleway, Open Sans, Arial, sans-serif', fontSize: 22, lineHeight: '28px', margin: 0 }}>{title}</h2>
+      <div style={{ display: 'grid', gap: tokens.spacing.xxl, padding: type === 'mediaTop' ? '0 24px 24px' : 0 }}>
+        <div style={{ display: 'grid', gap: tokens.spacing.sm }}>
+          <h2 id={titleId} style={{ color: tokens.color.grey80, fontFamily: tokens.typography.subHeadingSemiBold.fontFamily, fontSize: 22, lineHeight: '28px', margin: 0 }}>{title}</h2>
           <ModalBody description={description} type={type} />
         </div>
         <Actions

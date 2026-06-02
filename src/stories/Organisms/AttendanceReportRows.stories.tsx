@@ -11,6 +11,7 @@ const meta = {
   args: { type: 'content', memberName: 'Maria Lopez', attendedLabel: '8', missedLabel: '1' },
   argTypes: {
     type: { control: { type: 'select' }, options: types, table: { category: 'Variant' } },
+    semantic: { control: 'boolean', table: { category: 'Accessibility' } },
     memberName: { control: 'text', table: { category: 'Content' } },
     attendedLabel: { control: 'text', table: { category: 'Content' } },
     missedLabel: { control: 'text', table: { category: 'Content' } },
@@ -30,8 +31,8 @@ export const TypeExamples: Story = {
   tags: ['!test', '!dev'],
   render: () => (
     <div role="table" style={{ border: '1px solid #E6E6E6', maxWidth: 560 }}>
-      <AttendanceReportRows type="header" />
-      <AttendanceReportRows />
+      <AttendanceReportRows semantic type="header" />
+      <AttendanceReportRows semantic />
     </div>
   ),
 };

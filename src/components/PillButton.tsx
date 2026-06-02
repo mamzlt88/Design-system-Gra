@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, CSSProperties } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type PillButtonProps = {
   label: string;
@@ -6,28 +7,28 @@ export type PillButtonProps = {
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'>;
 
 const colors = {
-  grey00: '#FFFFFF',
-  grey10: '#E6E6E6',
-  grey30: '#A4A4A4',
-  grey40: '#5C5C5C',
-  grey50: '#434343',
-  primary05: '#DBEBEB',
-  primary20: '#CDFEFF',
-  primary90: '#0C6466',
-  primary100: '#0A5253',
+  grey00: tokens.color.grey00,
+  grey10: tokens.color.grey10,
+  grey30: tokens.color.grey30,
+  grey40: tokens.color.grey40,
+  grey50: tokens.color.grey50,
+  primary05: tokens.color.primary05,
+  primary20: tokens.color.primary20,
+  primary90: tokens.color.primary90,
+  primary100: tokens.color.primary100,
 };
 
 const baseStyle: CSSProperties = {
   alignItems: 'center',
   border: `1px solid ${colors.grey10}`,
-  borderRadius: 100,
+  borderRadius: tokens.radius.pill,
   cursor: 'pointer',
   display: 'inline-flex',
-  fontFamily: 'Open Sans, Arial, sans-serif',
-  fontSize: 12,
+  fontFamily: tokens.typography.bodyRegular.fontFamily,
+  fontSize: tokens.typography.bodySmallRegular.fontSize,
   fontWeight: 400,
   justifyContent: 'center',
-  lineHeight: '15px',
+  lineHeight: tokens.typography.bodySmallRegular.lineHeight,
   minHeight: 32,
   padding: '8px 16px',
   transition: 'background-color 120ms ease-in-out, border-color 120ms ease-in-out, color 120ms ease-in-out',

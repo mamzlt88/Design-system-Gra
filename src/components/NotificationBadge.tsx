@@ -1,4 +1,5 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type NotificationBadgeSize = 'small' | 'singleDigit' | 'multipleDigits';
 
@@ -8,21 +9,21 @@ export type NotificationBadgeProps = {
   label?: string;
 } & HTMLAttributes<HTMLSpanElement>;
 
-const red80 = '#AB241F';
-const white = '#FFFFFF';
+const red80 = tokens.color.red80;
+const white = tokens.color.grey00;
 
 const baseStyle: CSSProperties = {
   alignItems: 'center',
   backgroundColor: red80,
-  borderRadius: 100,
+  borderRadius: tokens.radius.pill,
   color: white,
   display: 'inline-flex',
   flexShrink: 0,
-  fontFamily: 'Open Sans, Arial, sans-serif',
-  fontSize: 12,
+  fontFamily: tokens.typography.bodyRegular.fontFamily,
+  fontSize: tokens.typography.bodySmallRegular.fontSize,
   fontWeight: 400,
   justifyContent: 'center',
-  lineHeight: '15px',
+  lineHeight: tokens.typography.bodySmallRegular.lineHeight,
 };
 
 const sizeStyles: Record<NotificationBadgeSize, CSSProperties> = {

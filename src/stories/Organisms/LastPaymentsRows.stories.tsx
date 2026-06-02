@@ -11,6 +11,7 @@ const meta = {
   args: { type: 'content', dueDate: 'May 20', amount: '$125.00', statusLabel: 'PAID' },
   argTypes: {
     type: { control: { type: 'select' }, options: types, table: { category: 'Variant' } },
+    semantic: { control: 'boolean', table: { category: 'Accessibility' } },
     title: { control: 'text', table: { category: 'Content' } },
     dueDate: { control: 'text', table: { category: 'Content' } },
     amount: { control: 'text', table: { category: 'Content' } },
@@ -33,8 +34,8 @@ export const TypeExamples: Story = {
   render: () => (
     <div role="table" style={{ border: '1px solid #E6E6E6', maxWidth: 560 }}>
       <LastPaymentsRows type="title" />
-      <LastPaymentsRows type="header" />
-      <LastPaymentsRows />
+      <LastPaymentsRows semantic type="header" />
+      <LastPaymentsRows semantic />
     </div>
   ),
 };

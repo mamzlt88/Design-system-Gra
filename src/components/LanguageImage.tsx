@@ -1,4 +1,5 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type LanguageImageLanguage = 'english' | 'spanish';
 
@@ -9,13 +10,13 @@ export type LanguageImageProps = {
 } & Omit<HTMLAttributes<HTMLSpanElement>, 'children'>;
 
 const colors = {
-  grey00: '#FFFFFF',
-  grey10: '#E6E6E6',
-  grey40: '#5C5C5C',
-  primary05: '#DBEBEB',
-  primary90: '#0C6466',
-  red50: '#FDE0E0',
-  red80: '#AB241F',
+  grey00: tokens.color.grey00,
+  grey10: tokens.color.grey10,
+  grey40: tokens.color.grey40,
+  primary05: tokens.color.primary05,
+  primary90: tokens.color.primary90,
+  red50: tokens.color.red50,
+  red80: tokens.color.red80,
 };
 
 const languageMeta: Record<
@@ -47,15 +48,15 @@ const languageMeta: Record<
 const baseStyle: CSSProperties = {
   alignItems: 'center',
   border: '1px solid transparent',
-  borderRadius: 100,
+  borderRadius: tokens.radius.pill,
   boxSizing: 'border-box',
   display: 'inline-flex',
   flexShrink: 0,
-  fontFamily: 'Open Sans, Arial, sans-serif',
-  fontSize: 12,
+  fontFamily: tokens.typography.bodyRegular.fontFamily,
+  fontSize: tokens.typography.bodySmallRegular.fontSize,
   fontWeight: 700,
   justifyContent: 'center',
-  letterSpacing: 0,
+  letterSpacing: tokens.typography.bodyRegular.letterSpacing,
   lineHeight: 1,
   overflow: 'hidden',
   textTransform: 'uppercase',

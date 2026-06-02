@@ -11,6 +11,7 @@ const meta = {
   args: { type: 'paymentContent', label: 'Pending payment', dueDate: 'May 20', amount: '$125.00' },
   argTypes: {
     type: { control: { type: 'select' }, options: types, table: { category: 'Variant' } },
+    semantic: { control: 'boolean', table: { category: 'Accessibility' } },
     label: { control: 'text', table: { category: 'Content' } },
     dueDate: { control: 'text', table: { category: 'Content' } },
     amount: { control: 'text', table: { category: 'Content' } },
@@ -31,9 +32,9 @@ export const TypeExamples: Story = {
   tags: ['!test', '!dev'],
   render: () => (
     <div role="table" style={{ border: '1px solid #E6E6E6', maxWidth: 560 }}>
-      <PendingBalanceRows type="header" />
-      <PendingBalanceRows />
-      <PendingBalanceRows type="interestContent" />
+      <PendingBalanceRows semantic type="header" />
+      <PendingBalanceRows semantic />
+      <PendingBalanceRows semantic type="interestContent" />
     </div>
   ),
 };

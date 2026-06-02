@@ -9,7 +9,7 @@ import * as CheckboxListStories from './CheckboxList.stories';
 
 ## Overview
 
-Stacks sourced checkbox rows with optional scroll indicators and text field.
+Stacks sourced checkbox rows from item data with optional scroll indicators and text field.
 
 **Use this component when:**
 - The surrounding workflow matches the sourced Figma component purpose.
@@ -23,12 +23,18 @@ Stacks sourced checkbox rows with optional scroll indicators and text field.
 
 ## Default Usage
 
-<Canvas of={CheckboxListStories.ThreeItems} />
+<Canvas of={CheckboxListStories.DataDriven} />
 
 ```tsx
 import { CheckboxList } from '@design-system/components';
 
-<CheckboxList itemCount={3} selectedCount={1} />
+<CheckboxList
+  items={[
+    { id: 'loan-purpose', label: 'Loan purpose', checked: true },
+    { id: 'business-plan', label: 'Business plan' },
+  ]}
+  onItemChange={(id, checked) => updateItem(id, checked)}
+/>
 ```
 
 ## Props
@@ -37,7 +43,7 @@ import { CheckboxList } from '@design-system/components';
 
 ## Examples
 
-<Canvas of={CheckboxListStories.CountExamples} />
+<Canvas of={CheckboxListStories.LegacyCountExamples} />
 
 ## Accessibility
 

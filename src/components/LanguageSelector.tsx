@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, CSSProperties } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type LanguageSelectorState = 'default' | 'pressed' | 'selected';
 
@@ -9,11 +10,11 @@ export type LanguageSelectorProps = {
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'>;
 
 const colors = {
-  grey00: '#FFFFFF',
-  grey10: '#E6E6E6',
-  grey30: '#A4A4A4',
-  grey50: '#434343',
-  primary90: '#0C6466',
+  grey00: tokens.color.grey00,
+  grey10: tokens.color.grey10,
+  grey30: tokens.color.grey30,
+  grey50: tokens.color.grey50,
+  primary90: tokens.color.primary90,
 };
 
 export function LanguageSelector({
@@ -34,14 +35,14 @@ export function LanguageSelector({
         alignItems: 'center',
         backgroundColor: pressed ? colors.grey10 : colors.grey00,
         border: `1px solid ${selected ? colors.primary90 : colors.grey10}`,
-        borderRadius: 8,
+        borderRadius: tokens.radius.md,
         color: colors.grey50,
         cursor: 'pointer',
         display: 'inline-flex',
-        fontFamily: 'Open Sans, Arial, sans-serif',
-        fontSize: 14,
+        fontFamily: tokens.typography.bodyRegular.fontFamily,
+        fontSize: tokens.typography.bodyRegular.fontSize,
         fontWeight: 600,
-        gap: 8,
+        gap: tokens.spacing.sm,
         height: 48,
         justifyContent: 'flex-start',
         padding: '0 12px',
@@ -56,22 +57,22 @@ export function LanguageSelector({
         style={{
           alignItems: 'center',
           border: `2px solid ${selected ? colors.primary90 : colors.grey30}`,
-          borderRadius: 100,
+          borderRadius: tokens.radius.pill,
           display: 'inline-flex',
           height: 18,
           justifyContent: 'center',
           width: 18,
         }}
       >
-        {selected ? <span style={{ backgroundColor: colors.primary90, borderRadius: 100, height: 8, width: 8 }} /> : null}
+        {selected ? <span style={{ backgroundColor: colors.primary90, borderRadius: tokens.radius.pill, height: 8, width: 8 }} /> : null}
       </span>
       <span
         aria-label={imageLabel}
         role="img"
         style={{
           alignItems: 'center',
-          backgroundColor: '#EDF6F6',
-          borderRadius: 100,
+          backgroundColor: tokens.color.primary00,
+          borderRadius: tokens.radius.pill,
           color: colors.primary90,
           display: 'inline-flex',
           height: 24,

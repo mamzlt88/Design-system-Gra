@@ -23,6 +23,8 @@ const meta = {
     name: 'Full Name',
     business: 'Type of Business',
     counter: '1 of 8',
+    primaryLabel: 'Approve',
+    secondaryLabel: 'Decline',
   },
   argTypes: {
     size: { control: { type: 'select' }, options: sizes, table: { category: 'Variant' } },
@@ -38,6 +40,8 @@ const meta = {
     name: { control: 'text', table: { category: 'Content' } },
     business: { control: 'text', table: { category: 'Content' } },
     counter: { control: 'text', table: { category: 'Content' } },
+    primaryLabel: { control: 'text', table: { category: 'Content' } },
+    secondaryLabel: { control: 'text', table: { category: 'Content' } },
     showLanguage: { control: 'boolean', table: { category: 'Content' } },
     showNotice: { control: 'boolean', table: { category: 'Content' } },
     notice: { control: 'text', table: { category: 'Content' } },

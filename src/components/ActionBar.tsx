@@ -1,6 +1,7 @@
 import type { HTMLAttributes } from 'react';
 
 import { Button } from './Button';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type ActionBarType = 'dualActions' | 'singleAction';
 export type ActionBarButtonState = 'enabled' | 'pressed' | 'disabled';
@@ -30,8 +31,8 @@ export function ActionBar({
     <div
       data-figma-node-id="8387:10564"
       style={{
-        backgroundColor: '#FFFFFF',
-        boxShadow: '0 -1px 0 #E6E6E6',
+        backgroundColor: tokens.color.grey00,
+        boxShadow: tokens.effect.actionBarDivider,
         display: 'inline-grid',
         padding: '12px 16px',
         width: 390,
@@ -39,7 +40,7 @@ export function ActionBar({
       }}
       {...divProps}
     >
-      <div style={{ display: 'flex', gap: 12 }}>
+      <div style={{ display: 'flex', gap: tokens.spacing.lg }}>
         {type === 'dualActions' ? (
           <Button label={secondaryLabel} onClick={onSecondaryClick} state={secondaryState} style={{ flex: 1 }} variant="outlined" />
         ) : null}

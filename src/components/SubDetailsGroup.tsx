@@ -1,4 +1,5 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type SubDetailsGroupProps = {
   rows?: 1 | 2 | 3;
@@ -9,11 +10,11 @@ export type SubDetailsGroupProps = {
 const rowStyle: CSSProperties = {
   alignItems: 'center',
   display: 'flex',
-  fontFamily: 'Open Sans, Arial, sans-serif',
-  fontSize: 12,
-  gap: 12,
+  fontFamily: tokens.typography.bodyRegular.fontFamily,
+  fontSize: tokens.typography.bodySmallRegular.fontSize,
+  gap: tokens.spacing.lg,
   justifyContent: 'space-between',
-  lineHeight: '15px',
+  lineHeight: tokens.typography.bodySmallRegular.lineHeight,
   width: 302,
 };
 
@@ -29,7 +30,7 @@ export function SubDetailsGroup({
       data-figma-node-id="7538:3968"
       style={{
         display: 'inline-grid',
-        gap: 4,
+        gap: tokens.spacing.xxs,
         margin: 0,
         width: 302,
         ...style,
@@ -38,8 +39,8 @@ export function SubDetailsGroup({
     >
       {Array.from({ length: rows }).map((_, index) => (
         <div key={index} style={rowStyle}>
-          <dt style={{ color: '#5C5C5C', margin: 0 }}>{`${labelPrefix} ${index + 1}`}</dt>
-          <dd style={{ color: '#141414', fontWeight: 600, margin: 0 }}>{`${valuePrefix} ${index + 1}`}</dd>
+          <dt style={{ color: tokens.color.grey40, margin: 0 }}>{`${labelPrefix} ${index + 1}`}</dt>
+          <dd style={{ color: tokens.color.grey80, fontWeight: 600, margin: 0 }}>{`${valuePrefix} ${index + 1}`}</dd>
         </div>
       ))}
     </dl>

@@ -1,6 +1,7 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
 
 import { OTPInputBox, type OTPInputBoxState } from './OTPInputBox';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type OTPInputProps = {
   value?: string;
@@ -15,8 +16,8 @@ export type OTPInputProps = {
 
 const baseStyle: CSSProperties = {
   display: 'inline-grid',
-  fontFamily: 'Open Sans, Arial, sans-serif',
-  gap: 16,
+  fontFamily: tokens.typography.bodyRegular.fontFamily,
+  gap: tokens.spacing.xxl,
   width: 334,
 };
 
@@ -62,7 +63,7 @@ export function OTPInput({
       }}
       {...divProps}
     >
-      <div style={{ display: 'flex', gap: 8, width: 334 }}>
+      <div style={{ display: 'flex', gap: tokens.spacing.sm, width: 334 }}>
         {Array.from({ length }).map((_, index) => {
           const digit = digits[index] ?? '';
           return (
@@ -88,10 +89,10 @@ export function OTPInput({
       {showSupportingText ? (
         <p
           style={{
-            color: '#921512',
-            fontSize: 12,
+            color: tokens.color.red90,
+            fontSize: tokens.typography.bodySmallRegular.fontSize,
             fontWeight: 600,
-            lineHeight: '15px',
+            lineHeight: tokens.typography.bodySmallRegular.lineHeight,
             margin: 0,
             width: 326,
           }}

@@ -9,7 +9,7 @@ import * as OptionSelectionBottomSheetStories from './OptionSelectionBottomSheet
 
 ## Overview
 
-Presents one to four selectable options in a mobile bottom sheet.
+Presents selectable options in a mobile bottom sheet from option data.
 
 **Use this component when:**
 - The surrounding workflow matches the sourced Figma component purpose.
@@ -23,12 +23,18 @@ Presents one to four selectable options in a mobile bottom sheet.
 
 ## Default Usage
 
-<Canvas of={OptionSelectionBottomSheetStories.TwoOptions} />
+<Canvas of={OptionSelectionBottomSheetStories.DataDriven} />
 
 ```tsx
 import { OptionSelectionBottomSheet } from '@design-system/components';
 
-<OptionSelectionBottomSheet optionCount={4} />
+<OptionSelectionBottomSheet
+  options={[
+    { id: 'weekly', label: 'Pay weekly' },
+    { id: 'monthly', label: 'Pay monthly' },
+  ]}
+  onOptionSelect={(id) => selectOption(id)}
+/>
 ```
 
 ## Props
@@ -37,7 +43,7 @@ import { OptionSelectionBottomSheet } from '@design-system/components';
 
 ## Examples
 
-<Canvas of={OptionSelectionBottomSheetStories.OptionExamples} />
+<Canvas of={OptionSelectionBottomSheetStories.LegacyOptionExamples} />
 
 ## Accessibility
 

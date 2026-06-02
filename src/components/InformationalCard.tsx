@@ -2,6 +2,7 @@ import type { CSSProperties, HTMLAttributes } from 'react';
 
 import { Button } from './Button';
 import { IconContainer } from './IconContainer';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type InformationalCardBgColor = 'blue' | 'yellow';
 
@@ -14,8 +15,8 @@ export type InformationalCardProps = {
 } & Omit<HTMLAttributes<HTMLElement>, 'children' | 'title'>;
 
 const cardPalettes: Record<InformationalCardBgColor, { background: string; border: string; icon: 'blue' | 'yellow' }> = {
-  blue: { background: '#EDF6F6', border: '#D0DEEA', icon: 'blue' },
-  yellow: { background: '#FFF6DC', border: '#FFF0C8', icon: 'yellow' },
+  blue: { background: tokens.color.primary00, border: tokens.color.secondary60, icon: 'blue' },
+  yellow: { background: tokens.color.yellow05, border: tokens.color.yellow10, icon: 'yellow' },
 };
 
 export function InformationalCard({
@@ -36,26 +37,26 @@ export function InformationalCard({
         alignItems: 'flex-start',
         backgroundColor: palette.background,
         border: `1px solid ${palette.border}`,
-        borderRadius: 8,
+        borderRadius: tokens.radius.md,
         boxSizing: 'border-box',
         display: 'flex',
-        gap: 16,
+        gap: tokens.spacing.xxl,
         maxWidth: 520,
-        padding: 20,
+        padding: tokens.spacing['2xl'],
         ...style,
       }}
       {...articleProps}
     >
       <IconContainer color={palette.icon} icon="info" label="" size={40} />
-      <div style={{ display: 'grid', flex: 1, gap: 8, minWidth: 0 }}>
-        <h3 style={{ color: '#141414', fontFamily: 'Raleway, Open Sans, Arial, sans-serif', fontSize: 18, lineHeight: '24px', margin: 0 }}>
+      <div style={{ display: 'grid', flex: 1, gap: tokens.spacing.sm, minWidth: 0 }}>
+        <h3 style={{ color: tokens.color.grey80, fontFamily: tokens.typography.subHeadingSemiBold.fontFamily, fontSize: 18, lineHeight: '24px', margin: 0 }}>
           {title}
         </h3>
-        <p style={{ color: '#434343', fontFamily: 'Open Sans, Arial, sans-serif', fontSize: 14, lineHeight: '20px', margin: 0 }}>
+        <p style={{ color: tokens.color.grey50, fontFamily: tokens.typography.bodyRegular.fontFamily, fontSize: tokens.typography.bodyRegular.fontSize, lineHeight: tokens.typography.subHeadingSemiBold.lineHeight, margin: 0 }}>
           {description}
         </p>
         {actionLabel ? (
-          <div style={{ paddingTop: 8 }}>
+          <div style={{ paddingTop: tokens.spacing.sm }}>
             <Button label={actionLabel} onClick={onAction} variant="text" />
           </div>
         ) : null}

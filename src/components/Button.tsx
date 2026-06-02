@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type ButtonProps = {
   label?: string;
@@ -13,46 +14,46 @@ export type ButtonProps = {
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'>;
 
 const colors = {
-  grey00: '#FFFFFF',
-  grey05: '#F5F5F5',
-  grey10: '#E6E6E6',
-  grey20: '#D3D3D3',
-  grey30: '#A4A4A4',
-  grey40: '#5C5C5C',
-  grey50: '#434343',
-  grey60: '#313131',
-  grey90: '#0B0B0B',
-  primary03: '#E3F0F0',
-  primary05: '#DBEBEB',
-  primary10: '#E6FEFF',
-  primary20: '#CDFEFF',
-  primary30: '#9BF0F1',
-  primary50: '#47A0B0',
-  primary70: '#3C7F82',
-  primary80: '#0D7779',
-  primary90: '#0C6466',
-  primary100: '#0A5253',
-  red50: '#FDE0E0',
-  red60: '#FACCCB',
-  red80: '#AB241F',
-  red90: '#921512',
-  orange80: '#E85801',
-  orange90: '#BF4315',
-  green80: '#0B7639',
-  green90: '#045728',
-  secondary80: '#42728A',
+  grey00: tokens.color.grey00,
+  grey05: tokens.color.grey05,
+  grey10: tokens.color.grey10,
+  grey20: tokens.color.grey20,
+  grey30: tokens.color.grey30,
+  grey40: tokens.color.grey40,
+  grey50: tokens.color.grey50,
+  grey60: tokens.color.grey60,
+  grey90: tokens.color.grey90,
+  primary03: tokens.color.primary03,
+  primary05: tokens.color.primary05,
+  primary10: tokens.color.primary10,
+  primary20: tokens.color.primary20,
+  primary30: tokens.color.primary30,
+  primary50: tokens.color.primary50,
+  primary70: tokens.color.primary70,
+  primary80: tokens.color.primary80,
+  primary90: tokens.color.primary90,
+  primary100: tokens.color.primary100,
+  red50: tokens.color.red50,
+  red60: tokens.color.red60,
+  red80: tokens.color.red80,
+  red90: tokens.color.red90,
+  orange80: tokens.color.orange80,
+  orange90: tokens.color.orange90,
+  green80: tokens.color.green80,
+  green90: tokens.color.green90,
+  secondary80: tokens.color.secondary80,
 };
 
 const baseStyle: CSSProperties = {
   alignItems: 'center',
-  borderRadius: 100,
+  borderRadius: tokens.radius.pill,
   border: '1px solid transparent',
   cursor: 'pointer',
   display: 'inline-flex',
-  fontFamily: 'Raleway, Open Sans, Arial, sans-serif',
-  fontSize: 16,
+  fontFamily: tokens.typography.subHeadingSemiBold.fontFamily,
+  fontSize: tokens.typography.subHeadingSemiBold.fontSize,
   fontWeight: 600,
-  gap: 4,
+  gap: tokens.spacing.xxs,
   justifyContent: 'center',
   lineHeight: 1.25,
   minHeight: 44,
@@ -83,13 +84,13 @@ const toneColors: Record<NonNullable<ButtonProps['tone']>, { light: string; pres
   warning: {
     light: colors.orange80,
     pressed: colors.orange90,
-    dark: '#FFE7D6',
+    dark: tokens.color.orange40,
     text: colors.grey00,
   },
   green: {
     light: colors.green80,
     pressed: colors.green90,
-    dark: '#CDFCE5',
+    dark: tokens.color.green10,
     text: colors.grey00,
   },
   standard: {
@@ -160,7 +161,7 @@ export function Button({
   const content = label ?? children;
   const isDisabled = disabled || state === 'disabled';
   const icon = (
-    <span aria-hidden="true" style={{ display: 'inline-flex', fontSize: 16, lineHeight: 1 }}>
+    <span aria-hidden="true" style={{ display: 'inline-flex', fontSize: tokens.typography.subHeadingSemiBold.fontSize, lineHeight: 1 }}>
       +
     </span>
   );

@@ -20,7 +20,7 @@ const meta = {
   },
   parameters: {
     design: { type: 'figma', url: 'https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=7478-9775' },
-    docs: { description: { component: 'StandardModal represents the sourced modal type variants with controlled action events.' } },
+    docs: { description: { component: 'StandardModal represents the sourced modal type variants with controlled action events. It is a presentational dialog surface; app-level overlays own focus trapping, escape close, and dismissal behavior.' } },
   },
 } satisfies Meta<typeof StandardModal>;
 

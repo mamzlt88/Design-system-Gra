@@ -1,4 +1,5 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type StatusIndicatorStatus = 'completed' | 'neutral' | 'attention';
 
@@ -8,15 +9,15 @@ export type StatusIndicatorProps = {
 } & HTMLAttributes<HTMLSpanElement>;
 
 const statusColors: Record<StatusIndicatorStatus, string> = {
-  completed: '#0C6466',
-  neutral: '#A4A4A4',
-  attention: '#AB241F',
+  completed: tokens.color.primary90,
+  neutral: tokens.color.grey30,
+  attention: tokens.color.red80,
 };
 
 const baseStyle: CSSProperties = {
   alignItems: 'center',
-  borderRadius: 999,
-  color: '#FFFFFF',
+  borderRadius: tokens.radius.circle,
+  color: tokens.color.grey00,
   display: 'inline-flex',
   flexShrink: 0,
   height: 27,

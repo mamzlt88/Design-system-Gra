@@ -1,4 +1,5 @@
 import type { HTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type PendingBalanceRowsType = 'paymentContent' | 'header' | 'interestContent';
 
@@ -7,6 +8,7 @@ export type PendingBalanceRowsProps = {
   label?: string;
   dueDate?: string;
   amount?: string;
+  semantic?: boolean;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'children'>;
 
 export function PendingBalanceRows({
@@ -14,21 +16,23 @@ export function PendingBalanceRows({
   label = 'Pending payment',
   dueDate = 'May 20',
   amount = '$125.00',
+  semantic = false,
   style,
   ...divProps
 }: PendingBalanceRowsProps) {
   const header = type === 'header';
   const interest = type === 'interestContent';
+  const cellRole = semantic ? (header ? 'columnheader' : 'cell') : undefined;
 
   return (
     <div
-      role="row"
+      role={semantic ? 'row' : undefined}
       data-figma-node-id="7489:926"
       style={{
-        backgroundColor: header ? '#F5F5F5' : interest ? '#FFF6DC' : '#FFFFFF',
-        borderBottom: '1px solid #E6E6E6',
+        backgroundColor: header ? tokens.color.grey05 : interest ? tokens.color.yellow05 : tokens.color.grey00,
+        borderBottom: `1px solid ${tokens.color.grey10}`,
         display: 'grid',
-        fontFamily: 'Open Sans, Arial, sans-serif',
+        fontFamily: tokens.typography.bodyRegular.fontFamily,
         fontSize: header ? 12 : 14,
         fontWeight: header ? 700 : interest ? 600 : 400,
         gridTemplateColumns: '1fr 100px 100px',
@@ -40,9 +44,9 @@ export function PendingBalanceRows({
       }}
       {...divProps}
     >
-      <span role={header ? 'columnheader' : 'cell'}>{header ? 'Balance' : interest ? 'Interest balance' : label}</span>
-      <span role={header ? 'columnheader' : 'cell'}>{header ? 'Due date' : dueDate}</span>
-      <span role={header ? 'columnheader' : 'cell'}>{header ? 'Amount' : amount}</span>
+      <span role={cellRole}>{header ? 'Balance' : interest ? 'Interest balance' : label}</span>
+      <span role={cellRole}>{header ? 'Due date' : dueDate}</span>
+      <span role={cellRole}>{header ? 'Amount' : amount}</span>
     </div>
   );
 }

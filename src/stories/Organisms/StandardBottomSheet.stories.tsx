@@ -17,7 +17,7 @@ const meta = {
   },
   parameters: {
     design: { type: 'figma', url: 'https://www.figma.com/design/LuOSourQp644YKhg0MrCE0/UI_Kit_-In-progress-?node-id=7482-653' },
-    docs: { description: { component: 'StandardBottomSheet is a presentational bottom-sheet surface with controlled action events.' } },
+    docs: { description: { component: 'StandardBottomSheet is a presentational bottom-sheet surface with controlled action events. App-level overlays own focus trapping, escape close, and dismissal behavior.' } },
   },
 } satisfies Meta<typeof StandardBottomSheet>;
 

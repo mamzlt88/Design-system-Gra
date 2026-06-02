@@ -1,6 +1,7 @@
 import type { ButtonHTMLAttributes, CSSProperties } from 'react';
 
 import { Icon } from './Icon';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type DocumentUploadSlotProps = {
   instructionText: string;
@@ -13,15 +14,15 @@ export type DocumentUploadSlotProps = {
 
 const baseStyle: CSSProperties = {
   alignItems: 'center',
-  backgroundColor: '#E3F0F0',
-  border: '1px dashed #0D7779',
-  borderRadius: 8,
-  color: '#0D7779',
+  backgroundColor: tokens.color.primary03,
+  border: `1px dashed ${tokens.color.primary80}`,
+  borderRadius: tokens.radius.md,
+  color: tokens.color.primary80,
   cursor: 'pointer',
   display: 'inline-flex',
   flexDirection: 'column',
-  fontFamily: 'Open Sans, Arial, sans-serif',
-  gap: 6,
+  fontFamily: tokens.typography.bodyRegular.fontFamily,
+  gap: tokens.spacing.xs,
   height: 107,
   justifyContent: 'center',
   minHeight: 107,
@@ -63,10 +64,10 @@ export function DocumentUploadSlot({
       disabled={disabled}
       style={{
         ...baseStyle,
-        backgroundColor: uploaded ? '#FFFFFF' : state === 'pressed' ? (tone === 'neutral' ? '#E6E6E6' : '#DBEBEB') : tone === 'neutral' ? '#F5F5F5' : '#E3F0F0',
-        borderColor: uploaded ? '#D3D3D3' : tone === 'neutral' ? '#A4A4A4' : '#0D7779',
+        backgroundColor: uploaded ? tokens.color.grey00 : state === 'pressed' ? (tone === 'neutral' ? tokens.color.grey10 : tokens.color.primary05) : tone === 'neutral' ? tokens.color.grey05 : tokens.color.primary03,
+        borderColor: uploaded ? tokens.color.grey20 : tone === 'neutral' ? tokens.color.grey30 : tokens.color.primary80,
         borderStyle: uploaded ? 'solid' : 'dashed',
-        color: tone === 'neutral' ? '#5C5C5C' : '#0D7779',
+        color: tone === 'neutral' ? tokens.color.grey40 : tokens.color.primary80,
         opacity: disabled ? 0.55 : 1,
         pointerEvents: disabled ? 'none' : undefined,
         ...style,
@@ -79,7 +80,7 @@ export function DocumentUploadSlot({
             aria-hidden="true"
             style={{
               backgroundImage:
-                'linear-gradient(45deg, #eeeeee 25%, transparent 25%), linear-gradient(-45deg, #eeeeee 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #eeeeee 75%), linear-gradient(-45deg, transparent 75%, #eeeeee 75%)',
+                `linear-gradient(45deg, ${tokens.color.checkerPattern} 25%, transparent 25%), linear-gradient(-45deg, ${tokens.color.checkerPattern} 25%, transparent 25%), linear-gradient(45deg, transparent 75%, ${tokens.color.checkerPattern} 75%), linear-gradient(-45deg, transparent 75%, ${tokens.color.checkerPattern} 75%)`,
               backgroundPosition: '0 0, 0 8px, 8px -8px, -8px 0px',
               backgroundSize: '16px 16px',
               inset: 0,
@@ -90,9 +91,9 @@ export function DocumentUploadSlot({
             aria-hidden="true"
             style={{
               alignItems: 'center',
-              backgroundColor: '#0C6466',
-              borderRadius: 100,
-              color: '#FFFFFF',
+              backgroundColor: tokens.color.primary90,
+              borderRadius: tokens.radius.pill,
+              color: tokens.color.grey00,
               display: 'inline-flex',
               height: 36,
               justifyContent: 'center',
@@ -108,7 +109,7 @@ export function DocumentUploadSlot({
       ) : (
         <>
           <Icon name="plus" width={24} height={24} />
-          <span style={{ display: 'grid', fontSize: 10, fontWeight: 400, gap: 0, lineHeight: 1.25 }}>
+          <span style={{ display: 'grid', fontSize: tokens.typography.captionRegular.fontSize, fontWeight: 400, gap: tokens.spacing.none, lineHeight: 1.25 }}>
             <span style={{ whiteSpace: 'pre-line' }}>{instructionText}</span>
             {details ? <span>{details}</span> : null}
           </span>

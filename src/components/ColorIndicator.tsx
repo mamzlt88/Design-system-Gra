@@ -1,4 +1,5 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type ColorIndicatorColor = 'red' | 'yellow' | 'green' | 'aquamarine' | 'blue' | 'brand';
 
@@ -9,16 +10,16 @@ export type ColorIndicatorProps = {
 } & HTMLAttributes<HTMLSpanElement>;
 
 const colorValues: Record<ColorIndicatorColor, string> = {
-  red: '#EF554E',
-  yellow: '#FFBF10',
-  green: '#83C23F',
-  aquamarine: '#9BF0F1',
-  blue: '#52BAC9',
-  brand: '#0C989A',
+  red: tokens.color.illustrativeRed,
+  yellow: tokens.color.yellow40,
+  green: tokens.color.colorIndicatorGreen,
+  aquamarine: tokens.color.primary30,
+  blue: tokens.color.primary40,
+  brand: tokens.color.primary60,
 };
 
 const baseStyle: CSSProperties = {
-  borderRadius: 4,
+  borderRadius: tokens.radius.xs,
   display: 'inline-block',
   flexShrink: 0,
   width: 6,

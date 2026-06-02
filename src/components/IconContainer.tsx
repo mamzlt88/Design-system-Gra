@@ -1,6 +1,7 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
 
 import { Icon, type IconName } from './Icon';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type IconContainerColor = 'red' | 'yellow' | 'green' | 'brand' | 'blue' | 'purple' | 'pink';
 export type IconContainerStyle = 'default' | 'emphasized';
@@ -15,39 +16,39 @@ export type IconContainerProps = {
 
 const colorStyles: Record<IconContainerColor, { surface: string; emphasizedSurface: string; foreground: string }> = {
   red: {
-    surface: '#FFEBEA',
-    emphasizedSurface: '#FFD3D2',
-    foreground: '#EF554E',
+    surface: tokens.color.illustrativeRedSoft,
+    emphasizedSurface: tokens.color.illustrativeRedSubtle,
+    foreground: tokens.color.illustrativeRed,
   },
   yellow: {
-    surface: '#FFF6DC',
-    emphasizedSurface: '#FFF0C8',
-    foreground: '#AE813D',
+    surface: tokens.color.yellow05,
+    emphasizedSurface: tokens.color.yellow10,
+    foreground: tokens.color.yellow50,
   },
   green: {
-    surface: '#E1FDF0',
-    emphasizedSurface: '#CDFCE5',
-    foreground: '#0B7639',
+    surface: tokens.color.green05,
+    emphasizedSurface: tokens.color.green10,
+    foreground: tokens.color.green80,
   },
   brand: {
-    surface: '#EDF6F6',
-    emphasizedSurface: '#DBEBEB',
-    foreground: '#0C6466',
+    surface: tokens.color.primary00,
+    emphasizedSurface: tokens.color.primary05,
+    foreground: tokens.color.primary90,
   },
   blue: {
-    surface: '#E3ECF4',
-    emphasizedSurface: '#D9E5EE',
-    foreground: '#42728A',
+    surface: tokens.color.secondary40,
+    emphasizedSurface: tokens.color.secondary50,
+    foreground: tokens.color.secondary80,
   },
   purple: {
-    surface: '#F8EEFF',
-    emphasizedSurface: '#F4E3FF',
-    foreground: '#74428A',
+    surface: tokens.color.illustrativePurpleSoft,
+    emphasizedSurface: tokens.color.illustrativePurpleSubtle,
+    foreground: tokens.color.illustrativePurple,
   },
   pink: {
-    surface: '#FFEEFB',
-    emphasizedSurface: '#F6DEF0',
-    foreground: '#D151A4',
+    surface: tokens.color.illustrativePinkSoft,
+    emphasizedSurface: tokens.color.illustrativePinkSubtle,
+    foreground: tokens.color.illustrativePink,
   },
 };
 
@@ -63,7 +64,7 @@ const colorLabels: Record<IconContainerColor, string> = {
 
 const baseStyle: CSSProperties = {
   alignItems: 'center',
-  borderRadius: 999,
+  borderRadius: tokens.radius.circle,
   boxSizing: 'border-box',
   display: 'inline-flex',
   flexShrink: 0,

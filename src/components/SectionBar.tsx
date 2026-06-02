@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, CSSProperties } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type SectionBarState = 'default' | 'selected';
 export type SectionBarInteraction = 'default' | 'pressed';
@@ -14,14 +15,14 @@ export type SectionBarProps = {
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'>;
 
 const colors = {
-  grey00: '#FFFFFF',
-  grey10: '#E6E6E6',
-  grey20: '#D3D3D3',
-  grey30: '#A4A4A4',
-  grey60: '#313131',
-  primary00: '#EDF6F6',
-  primary80: '#0D7779',
-  semanticRed80: '#AB241F',
+  grey00: tokens.color.grey00,
+  grey10: tokens.color.grey10,
+  grey20: tokens.color.grey20,
+  grey30: tokens.color.grey30,
+  grey60: tokens.color.grey60,
+  primary00: tokens.color.primary00,
+  primary80: tokens.color.primary80,
+  semanticRed80: tokens.color.red80,
 };
 
 const baseStyle: CSSProperties = {
@@ -33,14 +34,14 @@ const baseStyle: CSSProperties = {
   color: colors.grey60,
   cursor: 'pointer',
   display: 'grid',
-  fontFamily: 'Open Sans, Arial, sans-serif',
-  gap: 4,
+  fontFamily: tokens.typography.bodyRegular.fontFamily,
+  gap: tokens.spacing.xxs,
   height: 66,
   justifyItems: 'center',
   lineHeight: 1,
   maxHeight: 66,
   minWidth: 0,
-  padding: 4,
+  padding: tokens.spacing.xxs,
   position: 'relative',
   width: 78,
 };
@@ -156,7 +157,7 @@ export function SectionBar({
             style={{
               backgroundColor: colors.semanticRed80,
               border: `2px solid ${colors.grey00}`,
-              borderRadius: 100,
+              borderRadius: tokens.radius.pill,
               height: 9,
               position: 'absolute',
               right: -4,
@@ -168,8 +169,8 @@ export function SectionBar({
       </span>
       <span
         style={{
-          fontSize: 12,
-          lineHeight: '15px',
+          fontSize: tokens.typography.bodySmallRegular.fontSize,
+          lineHeight: tokens.typography.bodySmallRegular.lineHeight,
           maxWidth: '100%',
           overflowWrap: 'anywhere',
           textAlign: 'center',

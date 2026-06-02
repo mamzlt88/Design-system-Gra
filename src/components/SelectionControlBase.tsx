@@ -1,4 +1,5 @@
 import type { CSSProperties, InputHTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type SelectionControlState = 'default' | 'selected' | 'disabled';
 export type SelectionControlShape = 'circle' | 'square';
@@ -16,14 +17,14 @@ export type SelectionControlBaseProps = {
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'children' | 'checked'>;
 
 const colors = {
-  grey00: '#FFFFFF',
-  grey10: '#E6E6E6',
-  grey20: '#D3D3D3',
-  grey30: '#A4A4A4',
-  grey40: '#5C5C5C',
-  grey50: '#434343',
-  primary90: '#0C6466',
-  red80: '#AB241F',
+  grey00: tokens.color.grey00,
+  grey10: tokens.color.grey10,
+  grey20: tokens.color.grey20,
+  grey30: tokens.color.grey30,
+  grey40: tokens.color.grey40,
+  grey50: tokens.color.grey50,
+  primary90: tokens.color.primary90,
+  red80: tokens.color.red80,
 };
 
 const labelStyle: CSSProperties = {
@@ -31,25 +32,25 @@ const labelStyle: CSSProperties = {
   color: colors.grey50,
   cursor: 'pointer',
   display: 'inline-flex',
-  fontFamily: 'Open Sans, Arial, sans-serif',
-  gap: 8,
+  fontFamily: tokens.typography.bodyRegular.fontFamily,
+  gap: tokens.spacing.sm,
   lineHeight: 1.25,
 };
 
 const textWrapStyle: CSSProperties = {
   display: 'grid',
-  gap: 4,
-  paddingTop: 1,
+  gap: tokens.spacing.xxs,
+  paddingTop: tokens.spacing.xxxs / 2,
 };
 
 const itemTextStyle: CSSProperties = {
-  fontSize: 14,
+  fontSize: tokens.typography.bodyRegular.fontSize,
   fontWeight: 600,
 };
 
 const supportiveTextStyle: CSSProperties = {
   color: colors.grey40,
-  fontSize: 12,
+  fontSize: tokens.typography.bodySmallRegular.fontSize,
   fontWeight: 400,
 };
 
@@ -84,7 +85,7 @@ function getSelectionMark(shape: SelectionControlShape, state: SelectionControlS
   }
 
   if (shape === 'circle') {
-    return <span aria-hidden="true" style={{ backgroundColor: colors.grey00, borderRadius: 100, height: 8, width: 8 }} />;
+    return <span aria-hidden="true" style={{ backgroundColor: colors.grey00, borderRadius: tokens.radius.pill, height: 8, width: 8 }} />;
   }
 
   return (

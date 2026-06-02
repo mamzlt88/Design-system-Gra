@@ -1,6 +1,7 @@
 import type { HTMLAttributes } from 'react';
 
 import { StatusBadge } from './StatusBadge';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type PaymentStatusRowState = 'open' | 'closed';
 
@@ -9,6 +10,7 @@ export type PaymentStatusRowProps = {
   paymentLabel?: string;
   dueDate?: string;
   amount?: string;
+  semantic?: boolean;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'children'>;
 
 export function PaymentStatusRow({
@@ -16,6 +18,7 @@ export function PaymentStatusRow({
   paymentLabel = 'Payment 1',
   dueDate = 'May 20',
   amount = '$125.00',
+  semantic = false,
   style,
   ...divProps
 }: PaymentStatusRowProps) {
@@ -23,14 +26,14 @@ export function PaymentStatusRow({
 
   return (
     <div
-      role="row"
+      role={semantic ? 'row' : undefined}
       data-figma-node-id="7484:1012"
       style={{
-        backgroundColor: '#FFFFFF',
-        borderBottom: '1px solid #E6E6E6',
+        backgroundColor: tokens.color.grey00,
+        borderBottom: `1px solid ${tokens.color.grey10}`,
         display: 'grid',
-        fontFamily: 'Open Sans, Arial, sans-serif',
-        fontSize: 14,
+        fontFamily: tokens.typography.bodyRegular.fontFamily,
+        fontSize: tokens.typography.bodyRegular.fontSize,
         gridTemplateColumns: '1fr 96px 90px 96px',
         minHeight: 52,
         padding: '12px 16px',
@@ -39,10 +42,10 @@ export function PaymentStatusRow({
       }}
       {...divProps}
     >
-      <span role="cell">{paymentLabel}</span>
-      <span role="cell">{dueDate}</span>
-      <span role="cell">{amount}</span>
-      <span role="cell"><StatusBadge label={open ? 'OPEN' : 'CLOSED'} status={open ? 'attention' : 'success'} /></span>
+      <span role={semantic ? 'cell' : undefined}>{paymentLabel}</span>
+      <span role={semantic ? 'cell' : undefined}>{dueDate}</span>
+      <span role={semantic ? 'cell' : undefined}>{amount}</span>
+      <span role={semantic ? 'cell' : undefined}><StatusBadge label={open ? 'OPEN' : 'CLOSED'} status={open ? 'attention' : 'success'} /></span>
     </div>
   );
 }

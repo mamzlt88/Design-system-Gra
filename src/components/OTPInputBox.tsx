@@ -1,4 +1,5 @@
 import type { CSSProperties, InputHTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type OTPInputBoxState = 'enabled' | 'active' | 'filled' | 'filledError' | 'activeError';
 
@@ -10,11 +11,11 @@ export type OTPInputBoxProps = {
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'children' | 'value' | 'aria-label'>;
 
 const colors = {
-  grey10: '#E6E6E6',
-  grey20: '#D3D3D3',
-  grey90: '#141414',
-  primary90: '#0C6466',
-  red90: '#921512',
+  grey10: tokens.color.grey10,
+  grey20: tokens.color.grey20,
+  grey90: tokens.color.grey80,
+  primary90: tokens.color.primary90,
+  red90: tokens.color.red90,
 };
 
 function getBoxStyle(state: OTPInputBoxState): CSSProperties {
@@ -44,7 +45,7 @@ export function OTPInputBox({
       data-figma-node-id="7878:668"
       style={{
         alignItems: 'center',
-        borderRadius: 16,
+        borderRadius: tokens.radius.xl,
         boxSizing: 'border-box',
         display: 'inline-flex',
         height: 66,
@@ -68,13 +69,13 @@ export function OTPInputBox({
           border: 0,
           boxSizing: 'border-box',
           color: colors.grey90,
-          fontFamily: 'Open Sans, Arial, sans-serif',
-          fontSize: 24,
+          fontFamily: tokens.typography.bodyRegular.fontFamily,
+          fontSize: tokens.typography.displaySmallBold.fontSize,
           fontWeight: 400,
           height: '100%',
-          lineHeight: '30px',
+          lineHeight: tokens.typography.displaySmallBold.lineHeight,
           outline: 'none',
-          padding: 0,
+          padding: tokens.spacing.none,
           textAlign: 'center',
           width: '100%',
         }}

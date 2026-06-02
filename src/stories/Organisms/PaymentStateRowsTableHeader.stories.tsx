@@ -8,6 +8,7 @@ const meta = {
   tags: ['autodocs'],
   args: { firstColumn: 'Payment', secondColumn: 'Due date', thirdColumn: 'Status' },
   argTypes: {
+    semantic: { control: 'boolean', table: { category: 'Accessibility' } },
     firstColumn: { control: 'text', table: { category: 'Content' } },
     secondColumn: { control: 'text', table: { category: 'Content' } },
     thirdColumn: { control: 'text', table: { category: 'Content' } },

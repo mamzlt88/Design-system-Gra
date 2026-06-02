@@ -1,9 +1,15 @@
-import { Fragment, type CSSProperties, type HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 
-import { Button } from './Button';
-import { Icon } from './Icon';
-import { IconButton } from './IconButton';
-import { UserAvatar } from './UserAvatar';
+import {
+  InformativeHeader,
+  NavigationalHeader,
+  ProfileHeader,
+  StandardHeader,
+  appHeaderBaseStyle,
+  appHeaderColors,
+  appHeaderDimensions,
+} from './AppHeaderVariants';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type AppHeaderSize = 'large' | 'medium' | 'mediumRounded' | 'small';
 export type AppHeaderType = 'standard' | 'informative' | 'navigational' | 'profile';
@@ -23,415 +29,14 @@ export type AppHeaderProps = {
   business?: string;
   counter?: string;
   notice?: string;
+  primaryLabel?: string;
+  secondaryLabel?: string;
   showNotice?: boolean;
   showLanguage?: boolean;
   onBack?: () => void;
   onPrimaryClick?: () => void;
   onSecondaryClick?: () => void;
 } & Omit<HTMLAttributes<HTMLElement>, 'children' | 'title'>;
-
-const colors = {
-  header: '#023536',
-  headerDark: '#023536',
-  headerLight: '#0C6466',
-  headerGradient: 'linear-gradient(180deg, #0A5253 0%, #023536 100%)',
-  text: '#FFFFFF',
-  mutedText: 'rgba(255, 255, 255, 0.78)',
-  chip: 'rgba(255, 255, 255, 0.16)',
-  blush: '#FFD8D1',
-  cyan: '#D8F7F2',
-};
-
-const helpIllustrationSrc = new URL('../assets/illustrations/Help Illustration.svg', import.meta.url).href;
-
-const baseStyle: CSSProperties = {
-  background: colors.headerGradient,
-  backgroundColor: colors.header,
-  boxSizing: 'border-box',
-  color: colors.text,
-  display: 'grid',
-  fontFamily: 'Open Sans, Arial, sans-serif',
-  overflow: 'hidden',
-  position: 'relative',
-  width: 390,
-};
-
-const topIconStyle: CSSProperties = {
-  alignItems: 'center',
-  backgroundColor: 'transparent',
-  border: 0,
-  color: colors.text,
-  display: 'inline-flex',
-  height: 24,
-  justifyContent: 'center',
-  padding: 0,
-  width: 24,
-};
-
-const dimensions: Record<AppHeaderSize, { minHeight: number; radius: string; paddingBottom: number }> = {
-  large: { minHeight: 148, radius: '0', paddingBottom: 24 },
-  medium: { minHeight: 104, radius: '0', paddingBottom: 16 },
-  mediumRounded: { minHeight: 104, radius: '0 0 12px 12px', paddingBottom: 16 },
-  small: { minHeight: 56, radius: '0', paddingBottom: 12 },
-};
-
-function LabelPill({ label, value }: { label: string; value: string }) {
-  return (
-    <span style={{ backgroundColor: colors.chip, borderRadius: 4, color: colors.text, display: 'inline-flex', fontSize: 11, gap: 4, lineHeight: '15px', padding: '4px 8px' }}>
-      <strong>{label}</strong>
-      <span>{value}</span>
-    </span>
-  );
-}
-
-function TitleLabels({
-  title,
-  label1,
-  label2,
-  value1,
-  value2,
-  showTitle = true,
-}: {
-  title: string;
-  label1: string;
-  label2: string;
-  value1: string;
-  value2: string;
-  showTitle?: boolean;
-}) {
-  return (
-    <div style={{ display: 'grid', gap: 8, padding: '0 24px' }}>
-      {showTitle ? <h1 style={{ fontSize: 18, fontWeight: 700, lineHeight: '24px', margin: 0 }}>{title}</h1> : null}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
-        <LabelPill label={label1} value={value1} />
-        <LabelPill label={label2} value={value2} />
-      </div>
-    </div>
-  );
-}
-
-function TopBar({
-  left = 'menu',
-  right = true,
-  counter,
-  showLanguage = false,
-  minHeight = 36,
-  onBack,
-}: {
-  left?: 'menu' | 'back' | 'none';
-  right?: boolean;
-  counter?: string;
-  showLanguage?: boolean;
-  minHeight?: number;
-  onBack?: () => void;
-}) {
-  return (
-    <div style={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', minHeight, padding: '0 18px' }}>
-      {left === 'back' ? (
-        <button aria-label="Go back" onClick={onBack} style={topIconStyle} type="button">
-          <Icon name="arrowLeft" width={18} height={18} />
-        </button>
-      ) : left === 'menu' ? (
-        <span aria-hidden="true" style={topIconStyle}>
-          <Icon name="menu" width={18} height={18} />
-        </span>
-      ) : (
-        <span />
-      )}
-      {right ? (
-        <div style={{ alignItems: 'center', display: 'inline-flex', gap: 16 }}>
-          {showLanguage ? (
-            <span style={{ alignItems: 'center', display: 'inline-flex', fontSize: 12, fontWeight: 700, gap: 4 }}>
-              Eng
-              <Icon name="chevronDown" width={14} height={14} />
-            </span>
-          ) : null}
-          <Icon name="bell" width={18} height={18} />
-          {counter ? <span style={{ fontSize: 13, fontWeight: 700 }}>{counter}</span> : null}
-          <Icon name="helpCircle" width={18} height={18} />
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
-function SearchBar() {
-  return (
-    <div style={{ alignItems: 'center', backgroundColor: colors.headerLight, borderRadius: 6, color: colors.mutedText, display: 'flex', gap: 8, height: 36, margin: '10px 18px 0', padding: '0 12px' }}>
-      <Icon name="search" width={16} height={16} />
-      <span style={{ fontSize: 13 }}>Placeholder</span>
-    </div>
-  );
-}
-
-function Stepper() {
-  const steps = ['Step 1', 'Step 2', 'Step 3'];
-  return (
-    <div style={{ display: 'grid', gap: 8, padding: '8px 24px 4px' }}>
-      <div style={{ alignItems: 'center', display: 'grid', gridTemplateColumns: '20px 1fr 20px 1fr 20px' }}>
-        {steps.map((step, index) => (
-          <Fragment key={step}>
-            <span
-              aria-label={step}
-              style={{
-                alignItems: 'center',
-                backgroundColor: index === 0 ? '#FFFFFF' : colors.headerLight,
-                borderRadius: 999,
-                color: index === 0 ? colors.header : '#FFFFFF',
-                display: 'inline-flex',
-                fontSize: 11,
-                fontWeight: 700,
-                height: 20,
-                justifyContent: 'center',
-                width: 20,
-              }}
-            >
-              {index + 1}
-            </span>
-            {index < steps.length - 1 ? <span style={{ backgroundColor: colors.headerLight, height: 2 }} /> : null}
-          </Fragment>
-        ))}
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        {steps.map((step) => (
-          <span key={step} style={{ color: colors.mutedText, fontSize: 11 }}>
-            {step}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function HeaderIllustration() {
-  return (
-    <img
-      alt=""
-      aria-hidden="true"
-      src={helpIllustrationSrc}
-      style={{ alignSelf: 'start', display: 'block', height: 159, justifySelf: 'end', objectFit: 'contain', width: 134 }}
-    />
-  );
-}
-
-function InformativeMediumTitleBar({ title }: { title: string }) {
-  return (
-    <div style={{ alignItems: 'center', display: 'flex', gap: 16, height: 40, padding: '0 16px' }}>
-      <IconButton ariaLabel="Open menu" icon="menu" variant="filled" />
-      <h1
-        style={{
-          color: colors.text,
-          fontFamily: 'Raleway, Open Sans, Arial, sans-serif',
-          fontSize: 20,
-          fontWeight: 700,
-          letterSpacing: '0px',
-          lineHeight: '25px',
-          margin: 0,
-          textAlign: 'center',
-          width: 246,
-        }}
-      >
-        {title}
-      </h1>
-    </div>
-  );
-}
-
-function LoanRequestInfo({ label, value }: { label: string; value: string }) {
-  return (
-    <div style={{ alignItems: 'center', display: 'flex', height: 18, width: '100%' }}>
-      <span style={{ color: '#E6E6E6', fontFamily: 'Open Sans, Arial, sans-serif', fontSize: 14, fontWeight: 400, letterSpacing: '0px', lineHeight: '17.5px' }}>
-        {label.endsWith(' ') ? label : `${label} `}
-      </span>
-      <span style={{ color: colors.text, fontFamily: 'Open Sans, Arial, sans-serif', fontSize: 14, fontWeight: 400, letterSpacing: '0px', lineHeight: '17.5px' }}>
-        |
-      </span>
-      <span style={{ color: colors.text, fontFamily: 'Open Sans, Arial, sans-serif', fontSize: 14, fontWeight: 600, letterSpacing: '0px', lineHeight: '17.5px' }}>
-        {value}
-      </span>
-    </div>
-  );
-}
-
-function StandardHeader(props: Required<Pick<AppHeaderProps, 'title1' | 'label1' | 'label2' | 'value1' | 'value2'>> & { size: AppHeaderSize; showLanguage?: boolean }) {
-  return (
-    <>
-      <TopBar showLanguage={props.showLanguage} />
-      {props.size !== 'small' ? <TitleLabels {...props} title={props.title1} /> : null}
-    </>
-  );
-}
-
-function InformativeHeader({
-  size,
-  title1,
-  title2,
-  label1,
-  label2,
-  value1,
-  value2,
-  description,
-  mainMessage,
-  name,
-  business,
-  onPrimaryClick,
-  onSecondaryClick,
-  onBack,
-}: Required<Pick<AppHeaderProps, 'title1' | 'title2' | 'label1' | 'label2' | 'value1' | 'value2' | 'description' | 'mainMessage' | 'name' | 'business'>> & {
-  size: AppHeaderSize;
-  onPrimaryClick?: () => void;
-  onSecondaryClick?: () => void;
-  onBack?: () => void;
-}) {
-  if (size === 'medium') {
-    return (
-      <>
-        <InformativeMediumTitleBar title={title1} />
-        <div style={{ alignItems: 'stretch', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 134px', marginTop: 12, minHeight: 159, padding: '0 16px' }}>
-          <div style={{ alignContent: 'center', display: 'grid', gap: 0, minHeight: 159, paddingLeft: 4 }}>
-            <h1 style={{ fontFamily: 'Raleway, Open Sans, Arial, sans-serif', fontSize: 20, fontWeight: 700, letterSpacing: '0px', lineHeight: '25px', margin: 0, textAlign: 'left' }}>{title2}</h1>
-            <strong style={{ fontFamily: 'Raleway, Open Sans, Arial, sans-serif', fontSize: 24, letterSpacing: '0px', lineHeight: '30px', textAlign: 'left' }}>{mainMessage}</strong>
-          </div>
-          <HeaderIllustration />
-        </div>
-      </>
-    );
-  }
-
-  if (size === 'mediumRounded') {
-    return (
-      <div style={{ display: 'flex', gap: 12, minHeight: 133, padding: '0 16px' }}>
-        <IconButton ariaLabel="Go back" darkMode icon="arrowLeft" onClick={onBack} variant="standard" />
-        <div style={{ display: 'grid', flex: 1, gap: 20, paddingRight: 8 }}>
-          <div style={{ alignItems: 'start', display: 'flex', gap: 16, minHeight: 69 }}>
-            <UserAvatar avatar="1" label={name} size="small" type="avatar" />
-            <div style={{ display: 'grid', flex: 1, gap: 12 }}>
-              <div style={{ display: 'grid', gap: 4 }}>
-                <strong style={{ color: colors.text, fontFamily: 'Raleway, Open Sans, Arial, sans-serif', fontSize: 16, fontWeight: 700, letterSpacing: '0px', lineHeight: '20px' }}>{name}</strong>
-                <span style={{ color: '#E6E6E6', fontFamily: 'Open Sans, Arial, sans-serif', fontSize: 12, fontWeight: 600, letterSpacing: '0px', lineHeight: '15px' }}>{business}</span>
-              </div>
-              <LoanRequestInfo label={label1} value={value1} />
-            </div>
-          </div>
-          <div style={{ alignItems: 'center', display: 'flex', gap: 12, height: 44 }}>
-            <Button darkMode label="Button" onClick={onSecondaryClick} style={{ boxSizing: 'border-box', color: '#AB241F', height: 44, minHeight: 44, width: 143 }} tone="red" variant="filled" />
-            <Button darkMode label="Button" onClick={onPrimaryClick} style={{ boxSizing: 'border-box', height: 44, minHeight: 44, width: 143 }} tone="primary" variant="filled" />
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (size === 'small') {
-    return (
-      <>
-        <TopBar counter="1 of 8" left="back" onBack={onBack} />
-        <div style={{ alignItems: 'center', display: 'flex', gap: 8, padding: '0 24px' }}>
-          <h1 style={{ flex: 1, fontSize: 16, lineHeight: '22px', margin: 0 }}>{title1}</h1>
-        </div>
-      </>
-    );
-  }
-
-  return (
-    <>
-      <TopBar />
-      <div style={{ display: 'grid', gap: 8, padding: '0 24px' }}>
-        <h1 style={{ fontSize: 18, lineHeight: '24px', margin: 0 }}>{title1}</h1>
-        <h2 style={{ fontSize: 16, lineHeight: '22px', margin: 0 }}>{title2}</h2>
-        <p style={{ color: colors.mutedText, fontSize: 13, lineHeight: '18px', margin: 0, maxWidth: 310 }}>{description}</p>
-      </div>
-    </>
-  );
-}
-
-function NavigationalHeader({
-  size,
-  title1,
-  counter,
-  onBack,
-}: {
-  size: AppHeaderSize;
-  title1: string;
-  counter: string;
-  onBack?: () => void;
-}) {
-  if (size === 'mediumRounded') {
-    return (
-      <>
-        <TopBar />
-        <div style={{ padding: '0 24px' }}>
-          <h1 style={{ fontSize: 16, lineHeight: '22px', margin: 0 }}>{title1}</h1>
-        </div>
-        <SearchBar />
-      </>
-    );
-  }
-
-  return (
-    <>
-      <Stepper />
-      <TopBar counter={size === 'large' ? undefined : counter} left="back" onBack={onBack} />
-      <div style={{ padding: '0 24px' }}>
-        <h1 style={{ fontSize: 16, lineHeight: '22px', margin: 0 }}>{title1}</h1>
-      </div>
-    </>
-  );
-}
-
-function ProfileHeader({
-  size,
-  name,
-  label1,
-  value1,
-  onBack,
-}: {
-  size: AppHeaderSize;
-  name: string;
-  label1: string;
-  value1: string;
-  onBack?: () => void;
-}) {
-  if (size === 'medium') {
-    return (
-      <>
-        <TopBar left="none" right={false} />
-        <div style={{ alignItems: 'center', display: 'grid', gap: 12, gridTemplateColumns: '64px 1fr 40px', padding: '0 24px 18px' }}>
-          <UserAvatar label={name} size="medium" type="initials" />
-          <div style={{ display: 'grid', gap: 4 }}>
-            <strong style={{ fontSize: 16 }}>{name}</strong>
-            <LabelPill label={label1} value={value1} />
-          </div>
-          <IconButton ariaLabel="Go back" icon="arrowLeft" onClick={onBack} variant="standardInverse" />
-        </div>
-      </>
-    );
-  }
-
-  return (
-    <>
-      <TopBar />
-      <div style={{ alignItems: 'end', display: 'grid', minHeight: 120, position: 'relative' }}>
-        <div
-          aria-hidden="true"
-          style={{
-            backgroundColor: '#FFFFFF',
-            borderRadius: '50% 50% 0 0 / 100% 100% 0 0',
-            bottom: -40,
-            height: 118,
-            left: -36,
-            position: 'absolute',
-            width: 462,
-          }}
-        />
-        <div style={{ display: 'grid', gap: 6, justifyItems: 'center', paddingBottom: 8, position: 'relative', zIndex: 1 }}>
-          <UserAvatar label={name} size="big" type="initials" />
-          <strong style={{ color: colors.header, fontSize: 13 }}>{name}</strong>
-        </div>
-      </div>
-    </>
-  );
-}
 
 export function AppHeader({
   size = 'large',
@@ -447,16 +52,18 @@ export function AppHeader({
   name = 'Full Name',
   business = 'Type of Business',
   counter = '1 of 1',
+  notice = 'This is a notice that shows a short message relevant to the process.',
+  primaryLabel = 'Button',
+  secondaryLabel = 'Button',
   showNotice = false,
   showLanguage = false,
-  notice = 'This is a notice that shows a short message relevant to the process.',
   onBack,
   onPrimaryClick,
   onSecondaryClick,
   style,
   ...headerProps
 }: AppHeaderProps) {
-  const dim = dimensions[size];
+  const dimensions = appHeaderDimensions[size];
   const effectiveType = type === 'profile' && (size === 'mediumRounded' || size === 'small') ? 'profile' : type;
   const minHeight =
     effectiveType === 'informative' && size === 'large'
@@ -465,21 +72,21 @@ export function AppHeader({
         ? 176
         : effectiveType === 'navigational' && size === 'large'
           ? 184
-          : dim.minHeight;
+          : dimensions.minHeight;
   const paddingBottom =
     effectiveType === 'informative' && size === 'medium'
       ? 0
       : effectiveType === 'informative' && size === 'mediumRounded'
         ? 20
-        : dim.paddingBottom;
+        : dimensions.paddingBottom;
   const paddingTop = effectiveType === 'informative' && size === 'medium' ? 12 : undefined;
 
   return (
     <header
       data-figma-node-id="7591:4171"
       style={{
-        ...baseStyle,
-        borderRadius: dim.radius,
+        ...appHeaderBaseStyle,
+        borderRadius: dimensions.radius,
         minHeight,
         paddingBottom,
         paddingTop,
@@ -495,22 +102,22 @@ export function AppHeader({
           business={business}
           description={description}
           label1={label1}
-          label2={label2}
           mainMessage={mainMessage}
           name={name}
           onBack={onBack}
           onPrimaryClick={onPrimaryClick}
           onSecondaryClick={onSecondaryClick}
+          primaryLabel={primaryLabel}
+          secondaryLabel={secondaryLabel}
           size={size}
           title1={title1}
           title2={title2}
           value1={value1}
-          value2={value2}
         />
       ) : null}
       {effectiveType === 'navigational' ? <NavigationalHeader counter={counter} onBack={onBack} size={size} title1={title1} /> : null}
       {effectiveType === 'profile' ? <ProfileHeader label1={label1} name={name} onBack={onBack} size={size === 'large' ? 'large' : 'medium'} value1={value1} /> : null}
-      {showNotice ? <p style={{ color: colors.mutedText, fontSize: 12, lineHeight: '16px', margin: '10px 24px 0' }}>{notice}</p> : null}
+      {showNotice ? <p style={{ color: appHeaderColors.mutedText, fontSize: tokens.typography.bodySmallRegular.fontSize, lineHeight: '16px', margin: '10px 24px 0' }}>{notice}</p> : null}
     </header>
   );
 }

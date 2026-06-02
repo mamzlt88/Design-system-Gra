@@ -1,6 +1,7 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
 
 import { ValueAdjusterButton } from './ValueAdjusterButton';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type AmountSelectorProps = {
   value: string | number;
@@ -15,26 +16,26 @@ export type AmountSelectorProps = {
 
 const baseStyle: CSSProperties = {
   alignItems: 'center',
-  backgroundColor: '#FFFFFF',
-  borderRadius: 8,
-  color: '#5C5C5C',
+  backgroundColor: tokens.color.grey00,
+  borderRadius: tokens.radius.md,
+  color: tokens.color.grey40,
   display: 'inline-flex',
-  fontFamily: 'Open Sans, Arial, sans-serif',
-  fontSize: 34,
+  fontFamily: tokens.typography.bodyRegular.fontFamily,
+  fontSize: tokens.typography.displayMediumSemiBold.fontSize,
   fontWeight: 600,
   justifyContent: 'center',
   lineHeight: 1.25,
   minHeight: 80,
   minWidth: 326,
   overflow: 'hidden',
-  padding: 0,
+  padding: tokens.spacing.none,
 };
 
 const valueStyle: CSSProperties = {
   alignItems: 'center',
   alignSelf: 'stretch',
-  borderBottom: '1px solid #E6E6E6',
-  borderTop: '1px solid #E6E6E6',
+  borderBottom: `1px solid ${tokens.color.grey10}`,
+  borderTop: `1px solid ${tokens.color.grey10}`,
   display: 'inline-flex',
   flex: '1 1 auto',
   justifyContent: 'center',
@@ -63,7 +64,7 @@ export function AmountSelector({
       aria-label={state === 'initial' ? 'Amount selector' : `Selected amount: ${displayValue}`}
       style={{
         ...baseStyle,
-        color: state === 'initial' ? '#A4A4A4' : '#5C5C5C',
+        color: state === 'initial' ? tokens.color.grey30 : tokens.color.grey40,
         opacity: disabled ? 0.55 : 1,
         ...style,
       }}

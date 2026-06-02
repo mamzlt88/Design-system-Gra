@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, CSSProperties } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type SwitchState = 'off' | 'on' | 'disabledOn' | 'disabledOff';
 
@@ -9,29 +10,29 @@ export type SwitchProps = {
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'aria-label'>;
 
 const trackColors: Record<SwitchState, string> = {
-  off: '#A4A4A4',
-  on: '#0C6466',
-  disabledOn: '#D0DEEA',
-  disabledOff: '#E6E6E6',
+  off: tokens.color.grey30,
+  on: tokens.color.primary90,
+  disabledOn: tokens.color.secondary60,
+  disabledOff: tokens.color.grey10,
 };
 
 const baseStyle: CSSProperties = {
   alignItems: 'center',
   border: 0,
-  borderRadius: 100,
+  borderRadius: tokens.radius.pill,
   boxSizing: 'border-box',
   display: 'inline-flex',
   flexShrink: 0,
   height: 32,
-  padding: 4,
+  padding: tokens.spacing.xxs,
   position: 'relative',
   width: 54,
 };
 
 const thumbStyle: CSSProperties = {
   alignItems: 'center',
-  backgroundColor: '#FFFFFF',
-  borderRadius: 100,
+  backgroundColor: tokens.color.grey00,
+  borderRadius: tokens.radius.pill,
   display: 'inline-flex',
   height: 24,
   justifyContent: 'center',
@@ -71,7 +72,7 @@ export function Switch({
         aria-hidden="true"
         style={{
           ...thumbStyle,
-          color: '#0A5253',
+          color: tokens.color.primary100,
           left: checked ? 26 : 4,
         }}
       >

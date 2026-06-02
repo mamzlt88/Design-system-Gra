@@ -1,4 +1,5 @@
 import type { HTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type MambuWebviewTableType = 'content' | 'header' | 'total';
 export type MambuWebviewTableSize = 'small' | 'medium';
@@ -9,6 +10,7 @@ export type MambuWebviewTableProps = {
   label?: string;
   value?: string;
   balance?: string;
+  semantic?: boolean;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'children'>;
 
 export function MambuWebviewTable({
@@ -17,23 +19,25 @@ export function MambuWebviewTable({
   label = 'Principal',
   value = '$200.00',
   balance = '$1,250.00',
+  semantic = false,
   style,
   ...divProps
 }: MambuWebviewTableProps) {
   const header = type === 'header';
   const total = type === 'total';
   const compact = size === 'small';
+  const cellRole = semantic ? (header ? 'columnheader' : 'cell') : undefined;
 
   return (
     <div
-      role="row"
+      role={semantic ? 'row' : undefined}
       data-figma-node-id="8066:5933"
       style={{
-        backgroundColor: header ? '#F5F5F5' : total ? '#EDF6F6' : '#FFFFFF',
-        borderBottom: '1px solid #E6E6E6',
-        color: '#313131',
+        backgroundColor: header ? tokens.color.grey05 : total ? tokens.color.primary00 : tokens.color.grey00,
+        borderBottom: `1px solid ${tokens.color.grey10}`,
+        color: tokens.color.grey60,
         display: 'grid',
-        fontFamily: 'Open Sans, Arial, sans-serif',
+        fontFamily: tokens.typography.bodyRegular.fontFamily,
         fontSize: compact ? 12 : 14,
         fontWeight: header || total ? 700 : 400,
         gridTemplateColumns: '1fr 100px 100px',
@@ -45,9 +49,9 @@ export function MambuWebviewTable({
       }}
       {...divProps}
     >
-      <span role="cell">{header ? 'Label' : total ? 'Total' : label}</span>
-      <span role="cell">{header ? 'Value' : value}</span>
-      <span role="cell">{header ? 'Balance' : balance}</span>
+      <span role={cellRole}>{header ? 'Label' : total ? 'Total' : label}</span>
+      <span role={cellRole}>{header ? 'Value' : value}</span>
+      <span role={cellRole}>{header ? 'Balance' : balance}</span>
     </div>
   );
 }

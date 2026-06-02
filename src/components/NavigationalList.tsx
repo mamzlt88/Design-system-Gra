@@ -1,6 +1,7 @@
 import type { HTMLAttributes } from 'react';
 
 import { NavigationalListItem } from './NavigationalListItem';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type NavigationalListItemCount = 2 | 3 | 4 | 5 | 6 | 7;
 
@@ -38,7 +39,7 @@ export function NavigationalList({
   return (
     <div
       data-figma-node-id="9229:6313"
-      style={{ display: 'grid', fontFamily: 'Open Sans, Arial, sans-serif', gap: 8, maxWidth: 390, width: '100%', ...style }}
+      style={{ display: 'grid', fontFamily: tokens.typography.bodyRegular.fontFamily, gap: tokens.spacing.sm, maxWidth: 390, width: '100%', ...style }}
       {...divProps}
     >
       {labels.map((label, index) => (

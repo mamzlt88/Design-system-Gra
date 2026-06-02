@@ -1,6 +1,7 @@
 import type { AnchorHTMLAttributes, CSSProperties, MouseEvent } from 'react';
 
 import { Icon } from './Icon';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type ExternalLinkButtonProps = {
   label: string;
@@ -11,14 +12,14 @@ export type ExternalLinkButtonProps = {
 
 const baseStyle: CSSProperties = {
   alignItems: 'center',
-  backgroundColor: '#FFFFFF',
-  border: '1px solid #E3F0F0',
-  borderRadius: 16,
-  color: '#313131',
+  backgroundColor: tokens.color.grey00,
+  border: `1px solid ${tokens.color.primary03}`,
+  borderRadius: tokens.radius.xl,
+  color: tokens.color.grey60,
   display: 'inline-flex',
-  fontFamily: 'Open Sans, Arial, sans-serif',
+  fontFamily: tokens.typography.bodyRegular.fontFamily,
   fontWeight: 600,
-  gap: 12,
+  gap: tokens.spacing.lg,
   justifyContent: 'space-between',
   lineHeight: 1.25,
   minHeight: 48,
@@ -54,7 +55,7 @@ export function ExternalLinkButton({
       onClick={handleClick}
       style={{
         ...baseStyle,
-        backgroundColor: disabled ? '#F5F5F5' : baseStyle.backgroundColor,
+        backgroundColor: disabled ? tokens.color.grey05 : baseStyle.backgroundColor,
         fontSize: textSize === 'large' ? 16 : 14,
         opacity: disabled ? 0.55 : 1,
         pointerEvents: disabled ? 'none' : undefined,
@@ -64,7 +65,7 @@ export function ExternalLinkButton({
       {...anchorProps}
     >
       <span style={{ flex: '1 1 auto' }}>{label}</span>
-      <Icon name="externalLink" width={24} height={24} style={{ color: '#0D7779', flex: '0 0 auto' }} />
+      <Icon name="externalLink" width={24} height={24} style={{ color: tokens.color.primary80, flex: '0 0 auto' }} />
     </a>
   );
 }

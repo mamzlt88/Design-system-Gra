@@ -2,6 +2,7 @@ import type { CSSProperties, HTMLAttributes } from 'react';
 
 import { Icon } from './Icon';
 import { Logo } from './Logo';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type WebHeaderSize = 'mobile' | 'tabletDesktop';
 export type WebHeaderState = 'default' | 'loading';
@@ -14,15 +15,15 @@ export type WebHeaderProps = {
 } & Omit<HTMLAttributes<HTMLElement>, 'children' | 'title'>;
 
 const colors = {
-  border: '#CFE1F1',
-  skeleton: '#E2E6E8',
-  text: '#434343',
-  primary: '#0C6466',
-  white: '#FFFFFF',
+  border: tokens.color.webHeaderBorder,
+  skeleton: tokens.color.webHeaderSkeleton,
+  text: tokens.color.grey50,
+  primary: tokens.color.primary90,
+  white: tokens.color.grey00,
 };
 
 function Skeleton({ width, height = 12 }: { width: number; height?: number }) {
-  return <span aria-hidden="true" style={{ backgroundColor: colors.skeleton, borderRadius: 999, display: 'inline-block', height, width }} />;
+  return <span aria-hidden="true" style={{ backgroundColor: colors.skeleton, borderRadius: tokens.radius.circle, display: 'inline-block', height, width }} />;
 }
 
 function HeaderLogo({ mobile }: { mobile: boolean }) {
@@ -61,9 +62,9 @@ function LanguageControl({
         aria-hidden="true"
         style={{
           alignItems: 'center',
-          backgroundColor: '#EEF4F7',
+          backgroundColor: tokens.color.webHeaderAccent,
           border: `1px solid ${colors.border}`,
-          borderRadius: 999,
+          borderRadius: tokens.radius.circle,
           color: colors.primary,
           display: 'inline-flex',
           fontSize: mobile ? 8 : 9,
@@ -98,8 +99,8 @@ export function WebHeader({
     border: `1px solid ${colors.border}`,
     boxSizing: 'border-box',
     display: 'flex',
-    fontFamily: 'Open Sans, Arial, sans-serif',
-    gap: 12,
+    fontFamily: tokens.typography.bodyRegular.fontFamily,
+    gap: tokens.spacing.lg,
     height: mobile ? 34 : 42,
     justifyContent: 'space-between',
     padding: mobile ? '5px 10px' : '6px 18px',

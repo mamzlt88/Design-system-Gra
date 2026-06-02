@@ -11,6 +11,7 @@ const meta = {
   args: { type: 'content', loanLabel: 'Loan 2048', amount: '$500.00', statusLabel: 'CLOSED' },
   argTypes: {
     type: { control: { type: 'select' }, options: types, table: { category: 'Variant' } },
+    semantic: { control: 'boolean', table: { category: 'Accessibility' } },
     loanLabel: { control: 'text', table: { category: 'Content' } },
     amount: { control: 'text', table: { category: 'Content' } },
     statusLabel: { control: 'text', table: { category: 'Content' } },
@@ -30,8 +31,8 @@ export const TypeExamples: Story = {
   tags: ['!test', '!dev'],
   render: () => (
     <div role="table" style={{ border: '1px solid #E6E6E6', maxWidth: 560 }}>
-      <PastLoansRows type="header" />
-      <PastLoansRows />
+      <PastLoansRows semantic type="header" />
+      <PastLoansRows semantic />
     </div>
   ),
 };

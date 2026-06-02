@@ -2,6 +2,7 @@ import type { CSSProperties, HTMLAttributes } from 'react';
 
 import { Button } from './Button';
 import { IconContainer } from './IconContainer';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type LoanApprovalInProgressType =
   | 'centerApprovalInProgress'
@@ -60,27 +61,27 @@ export function LoanApprovalInProgress({
       data-figma-node-id="7575:11565"
       style={{
         alignItems: 'center',
-        backgroundColor: '#FFFFFF',
-        border: '1px solid #E6E6E6',
-        borderRadius: 8,
+        backgroundColor: tokens.color.grey00,
+        border: `1px solid ${tokens.color.grey10}`,
+        borderRadius: tokens.radius.md,
         boxSizing: 'border-box',
         display: 'grid',
-        fontFamily: 'Open Sans, Arial, sans-serif',
-        gap: 16,
+        fontFamily: tokens.typography.bodyRegular.fontFamily,
+        gap: tokens.spacing.xxl,
         justifyItems: 'center',
         maxWidth: 390,
-        padding: 28,
+        padding: tokens.spacing['3xl'] + tokens.spacing.xxs,
         textAlign: 'center',
         ...style,
       }}
       {...sectionProps}
     >
       <IconContainer color={content.color} icon={type === 'resubmitDocuments' ? 'upload' : 'check'} size={72} />
-      <div style={{ display: 'grid', gap: 8 }}>
-        <h3 style={{ color: '#141414', fontFamily: 'Raleway, Open Sans, Arial, sans-serif', fontSize: 22, lineHeight: '28px', margin: 0 }}>
+      <div style={{ display: 'grid', gap: tokens.spacing.sm }}>
+        <h3 style={{ color: tokens.color.grey80, fontFamily: tokens.typography.subHeadingSemiBold.fontFamily, fontSize: 22, lineHeight: '28px', margin: 0 }}>
           {title ?? content.title}
         </h3>
-        <p style={{ color: '#434343', fontSize: 14, lineHeight: '20px', margin: 0 }}>{description ?? content.description}</p>
+        <p style={{ color: tokens.color.grey50, fontSize: tokens.typography.bodyRegular.fontSize, lineHeight: tokens.typography.subHeadingSemiBold.lineHeight, margin: 0 }}>{description ?? content.description}</p>
       </div>
       <Button label={actionLabel ?? content.action} onClick={onAction} />
     </section>

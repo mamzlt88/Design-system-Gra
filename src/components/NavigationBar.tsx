@@ -1,6 +1,7 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
 
 import { SectionBar, type SectionBarIcon } from './SectionBar';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type NavigationBarLanguage = 'English' | 'Spanish';
 export type NavigationBarSection = 'My Loan' | 'Payments' | 'New Loan' | 'Approvals' | 'Resources' | 'None';
@@ -14,8 +15,8 @@ export type NavigationBarProps = {
 } & Omit<HTMLAttributes<HTMLElement>, 'children'>;
 
 const colors = {
-  grey00: '#FFFFFF',
-  grey20: '#D3D3D3',
+  grey00: tokens.color.grey00,
+  grey20: tokens.color.grey20,
 };
 
 const navItems: Array<{
@@ -33,10 +34,10 @@ const navItems: Array<{
 const wrapperStyle: CSSProperties = {
   backgroundColor: colors.grey00,
   borderTop: `1px solid ${colors.grey20}`,
-  boxShadow: '0 -2px 8px rgba(20, 20, 20, 0.08)',
+  boxShadow: tokens.effect.navigationElevation,
   boxSizing: 'border-box',
   display: 'inline-grid',
-  fontFamily: 'Open Sans, Arial, sans-serif',
+  fontFamily: tokens.typography.bodyRegular.fontFamily,
   maxWidth: '100%',
   overflow: 'hidden',
   width: 390,

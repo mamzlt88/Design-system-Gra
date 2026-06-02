@@ -1,6 +1,7 @@
 import type { ButtonHTMLAttributes } from 'react';
 
 import { Icon, type IconName } from './Icon';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type SideBarItemState = 'default' | 'pressed';
 export type SideBarItemPressedStyle = 'nA' | 'standard' | 'emphasis';
@@ -30,10 +31,10 @@ export function SideBarItem({
   const emphasized = pressed && pressedStyle === 'emphasis';
   const standardPressed = pressed && pressedStyle === 'standard';
   const badgeColors = emphasized
-    ? { backgroundColor: 'rgba(255, 255, 255, 0.22)', color: '#FFFFFF' }
+    ? { backgroundColor: tokens.color.transparentWhite22, color: tokens.color.grey00 }
     : standardPressed
-      ? { backgroundColor: '#FFFFFF', color: '#0C6466' }
-      : { backgroundColor: '#EDF6F6', color: '#0C6466' };
+      ? { backgroundColor: tokens.color.grey00, color: tokens.color.primary90 }
+      : { backgroundColor: tokens.color.primary00, color: tokens.color.primary90 };
 
   return (
     <button
@@ -41,16 +42,16 @@ export function SideBarItem({
       data-figma-node-id="7878:9372"
       style={{
         alignItems: 'center',
-        backgroundColor: pressedStyle === 'nA' ? 'transparent' : pressed ? (emphasized ? '#0C6466' : '#EDF6F6') : 'transparent',
+        backgroundColor: pressedStyle === 'nA' ? 'transparent' : pressed ? (emphasized ? tokens.color.primary90 : tokens.color.primary00) : 'transparent',
         border: '1px solid transparent',
-        borderRadius: 6,
-        color: emphasized ? '#FFFFFF' : pressed ? '#0C6466' : '#313131',
+        borderRadius: tokens.radius.sm,
+        color: emphasized ? tokens.color.grey00 : pressed ? tokens.color.primary90 : tokens.color.grey60,
         cursor: 'pointer',
         display: 'flex',
-        fontFamily: 'Open Sans, Arial, sans-serif',
-        fontSize: 12,
+        fontFamily: tokens.typography.bodyRegular.fontFamily,
+        fontSize: tokens.typography.bodySmallRegular.fontSize,
         fontWeight: pressed ? 700 : 600,
-        gap: 8,
+        gap: tokens.spacing.sm,
         lineHeight: '16px',
         minHeight: 28,
         padding: '4px 8px',
@@ -66,7 +67,7 @@ export function SideBarItem({
         <span
           style={{
             ...badgeColors,
-            borderRadius: 999,
+            borderRadius: tokens.radius.circle,
             flex: '0 0 auto',
             fontSize: 9,
             fontWeight: 700,

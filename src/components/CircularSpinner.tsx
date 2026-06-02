@@ -1,4 +1,5 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type CircularSpinnerSize = 'small' | 'medium' | 'large';
 export type CircularSpinnerRotation = '1' | '2' | '3' | '4';
@@ -23,8 +24,8 @@ const rotationMap: Record<CircularSpinnerRotation, number> = {
   '4': 270,
 };
 
-const trackColor = '#E6E6E6';
-const indicatorColor = '#0A5253';
+const trackColor = tokens.color.grey10;
+const indicatorColor = tokens.color.primary100;
 
 const baseStyle: CSSProperties = {
   alignItems: 'center',

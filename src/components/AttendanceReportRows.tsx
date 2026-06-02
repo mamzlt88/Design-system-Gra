@@ -1,4 +1,5 @@
 import type { HTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type AttendanceReportRowsType = 'content' | 'header';
 
@@ -7,6 +8,7 @@ export type AttendanceReportRowsProps = {
   memberName?: string;
   attendedLabel?: string;
   missedLabel?: string;
+  semantic?: boolean;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'children'>;
 
 export function AttendanceReportRows({
@@ -14,22 +16,24 @@ export function AttendanceReportRows({
   memberName = 'Member name',
   attendedLabel = '8',
   missedLabel = '1',
+  semantic = false,
   style,
   ...divProps
 }: AttendanceReportRowsProps) {
   const header = type === 'header';
+  const cellRole = semantic ? (header ? 'columnheader' : 'cell') : undefined;
 
   return (
     <div
-      role="row"
+      role={semantic ? 'row' : undefined}
       data-figma-node-id="7486:956"
       style={{
-        backgroundColor: header ? '#F5F5F5' : '#FFFFFF',
-        borderBottom: '1px solid #E6E6E6',
+        backgroundColor: header ? tokens.color.grey05 : tokens.color.grey00,
+        borderBottom: `1px solid ${tokens.color.grey10}`,
         boxSizing: 'border-box',
-        color: '#313131',
+        color: tokens.color.grey60,
         display: 'grid',
-        fontFamily: 'Open Sans, Arial, sans-serif',
+        fontFamily: tokens.typography.bodyRegular.fontFamily,
         fontSize: header ? 12 : 14,
         fontWeight: header ? 700 : 400,
         gridTemplateColumns: '1fr 80px 80px',
@@ -41,9 +45,9 @@ export function AttendanceReportRows({
       }}
       {...divProps}
     >
-      <span role="cell">{header ? 'Member' : memberName}</span>
-      <span role="cell">{header ? 'Attended' : attendedLabel}</span>
-      <span role="cell">{header ? 'Missed' : missedLabel}</span>
+      <span role={cellRole}>{header ? 'Member' : memberName}</span>
+      <span role={cellRole}>{header ? 'Attended' : attendedLabel}</span>
+      <span role={cellRole}>{header ? 'Missed' : missedLabel}</span>
     </div>
   );
 }

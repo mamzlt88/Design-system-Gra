@@ -11,6 +11,7 @@ const meta = {
   args: { state: 'open', paymentLabel: 'Payment 1', dueDate: 'May 20', amount: '$125.00' },
   argTypes: {
     state: { control: { type: 'select' }, options: states, table: { category: 'State' } },
+    semantic: { control: 'boolean', table: { category: 'Accessibility' } },
     paymentLabel: { control: 'text', table: { category: 'Content' } },
     dueDate: { control: 'text', table: { category: 'Content' } },
     amount: { control: 'text', table: { category: 'Content' } },
@@ -30,8 +31,8 @@ export const StateExamples: Story = {
   tags: ['!test', '!dev'],
   render: () => (
     <div role="table" style={{ border: '1px solid #E6E6E6', maxWidth: 620 }}>
-      <PaymentStatusRow state="open" />
-      <PaymentStatusRow state="closed" paymentLabel="Payment 2" />
+      <PaymentStatusRow semantic state="open" />
+      <PaymentStatusRow semantic state="closed" paymentLabel="Payment 2" />
     </div>
   ),
 };

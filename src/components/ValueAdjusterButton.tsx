@@ -1,6 +1,7 @@
 import type { ButtonHTMLAttributes, CSSProperties } from 'react';
 
 import { Icon } from './Icon';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type ValueAdjusterButtonProps = {
   adjustment?: 'decrease' | 'increase';
@@ -9,14 +10,14 @@ export type ValueAdjusterButtonProps = {
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'aria-label' | 'children' | 'type'>;
 
 const colors = {
-  grey00: '#FFFFFF',
-  grey10: '#E6E6E6',
-  grey20: '#D3D3D3',
-  grey30: '#A4A4A4',
-  primary05: '#DBEBEB',
-  primary20: '#CDFEFF',
-  primary90: '#0C6466',
-  primary100: '#0A5253',
+  grey00: tokens.color.grey00,
+  grey10: tokens.color.grey10,
+  grey20: tokens.color.grey20,
+  grey30: tokens.color.grey30,
+  primary05: tokens.color.primary05,
+  primary20: tokens.color.primary20,
+  primary90: tokens.color.primary90,
+  primary100: tokens.color.primary100,
 };
 
 const baseStyle: CSSProperties = {
@@ -30,7 +31,7 @@ const baseStyle: CSSProperties = {
   height: 80,
   justifyContent: 'center',
   minWidth: 52,
-  padding: 0,
+  padding: tokens.spacing.none,
   transition: 'background-color 120ms ease-in-out, border-color 120ms ease-in-out, color 120ms ease-in-out',
   width: 52,
 };

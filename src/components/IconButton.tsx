@@ -1,6 +1,7 @@
 import type { ButtonHTMLAttributes, CSSProperties } from 'react';
 
 import { Icon, type IconName } from './Icon';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type IconButtonProps = {
   ariaLabel: string;
@@ -11,34 +12,34 @@ export type IconButtonProps = {
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'aria-label' | 'children'>;
 
 const colors = {
-  grey00: '#FFFFFF',
-  grey10: '#E6E6E6',
-  grey20: '#D3D3D3',
-  grey30: '#A4A4A4',
-  grey40: '#5C5C5C',
-  grey50: '#434343',
-  grey60: '#313131',
-  primary05: '#DBEBEB',
-  primary20: '#CDFEFF',
-  primary30: '#9BF0F1',
-  primary70: '#3C7F82',
-  primary90: '#0C6466',
-  primary100: '#0A5253',
-  red50: '#FDE0E0',
-  red60: '#FACCCB',
-  red80: '#AB241F',
-  red90: '#921512',
+  grey00: tokens.color.grey00,
+  grey10: tokens.color.grey10,
+  grey20: tokens.color.grey20,
+  grey30: tokens.color.grey30,
+  grey40: tokens.color.grey40,
+  grey50: tokens.color.grey50,
+  grey60: tokens.color.grey60,
+  primary05: tokens.color.primary05,
+  primary20: tokens.color.primary20,
+  primary30: tokens.color.primary30,
+  primary70: tokens.color.primary70,
+  primary90: tokens.color.primary90,
+  primary100: tokens.color.primary100,
+  red50: tokens.color.red50,
+  red60: tokens.color.red60,
+  red80: tokens.color.red80,
+  red90: tokens.color.red90,
 };
 
 const baseStyle: CSSProperties = {
   alignItems: 'center',
-  borderRadius: 100,
+  borderRadius: tokens.radius.pill,
   border: '1px solid transparent',
   cursor: 'pointer',
   display: 'inline-flex',
   height: 40,
   justifyContent: 'center',
-  padding: 8,
+  padding: tokens.spacing.sm,
   transition: 'background-color 120ms ease-in-out, border-color 120ms ease-in-out, opacity 120ms ease-in-out',
   width: 40,
 };

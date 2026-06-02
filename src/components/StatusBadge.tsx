@@ -1,4 +1,5 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type StatusBadgeStatus =
   | 'informative'
@@ -19,40 +20,40 @@ export type StatusBadgeProps = {
 
 const statusColors: Record<Exclude<StatusBadgeStatus, 'loading'>, { background: string; text: string }> = {
   informative: {
-    background: '#EDF6F6',
-    text: '#0C6466',
+    background: tokens.color.primary00,
+    text: tokens.color.primary90,
   },
   success: {
-    background: '#CDFCE5',
-    text: '#045728',
+    background: tokens.color.green10,
+    text: tokens.color.green90,
   },
   warning: {
-    background: '#FFF6DC',
-    text: '#735425',
+    background: tokens.color.yellow05,
+    text: tokens.color.yellow60,
   },
   attention: {
-    background: '#FFE6DC',
-    text: '#BF4315',
+    background: tokens.color.orange40,
+    text: tokens.color.orange90,
   },
   critical: {
-    background: '#FDE0E0',
-    text: '#AB241F',
+    background: tokens.color.red50,
+    text: tokens.color.red80,
   },
   progress: {
-    background: '#D0DEEA',
-    text: '#244555',
+    background: tokens.color.secondary60,
+    text: tokens.color.secondary90,
   },
 };
 
 const baseStyle: CSSProperties = {
   alignItems: 'center',
-  borderRadius: 16,
+  borderRadius: tokens.radius.xl,
   display: 'inline-flex',
   flexShrink: 0,
-  fontFamily: 'Open Sans, Arial, sans-serif',
-  fontSize: 12,
+  fontFamily: tokens.typography.bodyRegular.fontFamily,
+  fontSize: tokens.typography.bodySmallRegular.fontSize,
   justifyContent: 'center',
-  lineHeight: '15px',
+  lineHeight: tokens.typography.bodySmallRegular.lineHeight,
   minHeight: 23,
   padding: '4px 8px',
   textAlign: 'center',
@@ -78,7 +79,7 @@ export function StatusBadge({
         data-figma-node-id="7483:6154"
         style={{
           ...baseStyle,
-          background: 'linear-gradient(90deg, #FFFFFF 0%, #E6E6E6 100%)',
+          background: tokens.gradient.shimmer,
           minWidth: 77,
           ...style,
         }}

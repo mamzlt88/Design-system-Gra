@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, type HTMLAttributes } from 'react';
+import { componentTokens as tokens } from '../tokens/componentTokens';
 
 export type UserAvatarSize = 'big' | 'medium' | 'small' | 'xSmall';
 export type UserAvatarType = 'avatar' | 'initials';
@@ -66,10 +67,10 @@ const avatarSources: Record<Exclude<UserAvatarVariant, 'none'>, Record<UserAvata
 };
 
 const initialsTypography: Record<UserAvatarSize, { fontFamily: string; fontSize: number; lineHeight: string }> = {
-  big: { fontFamily: 'Open Sans, Arial, sans-serif', fontSize: 40, lineHeight: '50px' },
-  medium: { fontFamily: 'Raleway, Open Sans, Arial, sans-serif', fontSize: 34, lineHeight: '42.5px' },
-  small: { fontFamily: 'Open Sans, Arial, sans-serif', fontSize: 24, lineHeight: '30px' },
-  xSmall: { fontFamily: 'Raleway, Open Sans, Arial, sans-serif', fontSize: 20, lineHeight: '25px' },
+  big: { fontFamily: tokens.typography.bodyRegular.fontFamily, fontSize: tokens.typography.displayLargeSemiBold.fontSize, lineHeight: tokens.typography.displayLargeSemiBold.lineHeight },
+  medium: { fontFamily: tokens.typography.subHeadingSemiBold.fontFamily, fontSize: tokens.typography.displayMediumSemiBold.fontSize, lineHeight: tokens.typography.displayMediumSemiBold.lineHeight },
+  small: { fontFamily: tokens.typography.bodyRegular.fontFamily, fontSize: tokens.typography.displaySmallBold.fontSize, lineHeight: tokens.typography.displaySmallBold.lineHeight },
+  xSmall: { fontFamily: tokens.typography.subHeadingSemiBold.fontFamily, fontSize: tokens.typography.headingBold.fontSize, lineHeight: tokens.typography.headingBold.lineHeight },
 };
 
 function getInitials({ firstName, lastName, name, initialsText }: Pick<UserAvatarProps, 'firstName' | 'lastName' | 'name' | 'initialsText'>) {
@@ -120,12 +121,12 @@ export function UserAvatar({
       role="img"
       style={{
         alignItems: 'center',
-        backgroundColor: shouldShowImage ? 'transparent' : '#DBEBEB',
-        border: shouldShowImage ? '0' : `${size === 'small' ? 1.375 : 1}px solid #EDF6F6`,
-        borderRadius: 999,
-        boxShadow: shouldShowImage && avatar !== '1' ? '0 2px 4px rgba(0, 0, 0, 0.16)' : undefined,
+        backgroundColor: shouldShowImage ? 'transparent' : tokens.color.primary05,
+        border: shouldShowImage ? '0' : `${size === 'small' ? 1.375 : 1}px solid ${tokens.color.primary00}`,
+        borderRadius: tokens.radius.circle,
+        boxShadow: shouldShowImage && avatar !== '1' ? tokens.effect.avatarImage : undefined,
         boxSizing: 'border-box',
-        color: '#0C6466',
+        color: tokens.color.primary90,
         display: 'inline-flex',
         flexShrink: 0,
         fontFamily: typography.fontFamily,
@@ -158,10 +159,10 @@ export function UserAvatar({
           aria-hidden="true"
           style={{
             alignItems: 'center',
-            backgroundColor: '#FFFFFF',
-            borderRadius: 8,
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.16)',
-            color: '#8F6A16',
+            backgroundColor: tokens.color.grey00,
+            borderRadius: tokens.radius.md,
+            boxShadow: tokens.effect.cardsElevation,
+            color: tokens.color.avatarWarning,
             display: 'inline-flex',
             height: 14,
             justifyContent: 'center',
