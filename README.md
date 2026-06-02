@@ -1,6 +1,6 @@
 # Design System Workspace
 
-This is a fresh Step 00 workspace for the Design System Agent.
+This workspace contains the design system components, stories, and documentation used for Storybook review.
 
 ## What Is Ready
 
@@ -8,12 +8,9 @@ This is a fresh Step 00 workspace for the Design System Agent.
 - Storybook stories folder: `src/stories`
 - Storybook config: `.storybook/main.ts` and `.storybook/preview.ts`
 - Implemented atom components: `ActionBar`, `AmountSelector`, `Button`, `CheckboxList`, `CheckboxRadioButton`, `CircularSpinner`, `ColorIndicator`, `DocumentUploadSlot`, `ExternalLinkButton`, `GuidanceAvatar`, `IconButton`, `IconContainer`, `LanguageImage`, `LanguageSelector`, `Logo`, `NavigationBar`, `NotificationBadge`, `NotificationIcon`, `OTPInput`, `OTPInputBox`, `OptionSelectionBottomSheet`, `PillButton`, `SavingsGoal`, `SavingsProgramLogo`, `SectionBar`, `SegmentedSpinner`, `StatusBadge`, `StatusIndicator`, `SubDetailsGroup`, `Switch`, `Tooltip`, `UserAvatar`, and `ValueAdjusterButton`
-- Agent state file: `.figma-storybook-agent-state.json`
-- Agent integration config placeholder: `.figma-storybook-agent.json`
 - Figma style tokens: `src/tokens/figma-tokens.json` and `src/tokens/figmaTokens.ts`
 - Figma component backlog: `docs/component-backlog/figma-components.md`
 - Figma icon library: `docs/icon-library/figma-icons.md`
-- Saved Figma API snapshot: `design/figma-file.snapshot.json`
 
 ## Component Best Practices
 
@@ -50,15 +47,19 @@ npm install
 npm run storybook
 ```
 
+Default local URL:
+
+- `http://127.0.0.1:6006`
+
 Shared review:
 
 - GitLab CI builds Storybook on every branch update.
 - The `pages` job publishes `storybook-static` as a GitLab Pages review site.
 - After the pipeline finishes, open the GitLab job or project Pages section to copy the live review URL.
 
-## Current Agent Step
+## Current Workspace Status
 
-The agent is in Step 09 refinement.
+The workspace is currently in Storybook review and refinement.
 
 In plain words: the current atom batch has been built, validated, and is being refined from Storybook review feedback.
 
@@ -139,13 +140,12 @@ Validation completed:
 
 - `npm run build`
 - `npm run build-storybook`
-- Agent regression check: `PYTHONPATH=src python3 -m unittest discover -s tests`
 
 Local review:
 
-- `http://127.0.0.1:6010`
+- `http://127.0.0.1:6006`
 
-Next plain-language step: continue Storybook review. If something looks wrong, give the agent the specific change, and it will update the component, story, and docs together.
+Next plain-language step: continue Storybook review. If something looks wrong, update the component, story, and docs together.
 
 Current counts:
 
