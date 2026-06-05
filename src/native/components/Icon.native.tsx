@@ -1,7 +1,7 @@
 import { StyleSheet, Text, type StyleProp, type TextStyle } from 'react-native';
 
-import type { IconName } from '../../components/Icon';
 import { nativeTokens } from '../tokens';
+import type { IconName } from './nativeComponentTypes';
 
 export type NativeIconProps = {
   name: IconName;

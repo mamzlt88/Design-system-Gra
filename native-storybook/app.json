@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "GRA Native Storybook",
+    "slug": "gra-native-storybook",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "gra-native-storybook",
+    "userInterfaceStyle": "light",
+    "platforms": ["ios", "android", "web"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.grameenamerica.designsystem.storybook"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "paths": {
+      "react": ["./node_modules/@types/react/index.d.ts"],
+      "react/jsx-runtime": ["./node_modules/@types/react/jsx-runtime.d.ts"],
+      "react-native": ["./node_modules/react-native"]
+    },
+    "strict": true
+  },
+  "include": [
+    "App.tsx",
+    ".rnstorybook",
+    "catalog",
+    "stories",
+    "../src/native/index.ts",
+    "../src/native/components/**/*.tsx",
+    "../src/native/tokens/**/*.ts"
+  ],
+  "exclude": ["../src/native/types"]
+}

@@ -7,6 +7,8 @@ This workspace contains the design system components, stories, and documentation
 - React component source folder: `src/components`
 - Storybook stories folder: `src/stories`
 - Storybook config: `.storybook/main.ts` and `.storybook/preview.ts`
+- React Native layer: `src/native`
+- Expo Native Storybook catalog: `native-storybook`
 - Implemented atom components: `ActionBar`, `AmountSelector`, `Button`, `CheckboxList`, `CheckboxRadioButton`, `CircularSpinner`, `ColorIndicator`, `DocumentUploadSlot`, `ExternalLinkButton`, `GuidanceAvatar`, `IconButton`, `IconContainer`, `LanguageImage`, `LanguageSelector`, `Logo`, `NavigationBar`, `NotificationBadge`, `NotificationIcon`, `OTPInput`, `OTPInputBox`, `OptionSelectionBottomSheet`, `PillButton`, `SavingsGoal`, `SavingsProgramLogo`, `SectionBar`, `SegmentedSpinner`, `StatusBadge`, `StatusIndicator`, `SubDetailsGroup`, `Switch`, `Tooltip`, `UserAvatar`, and `ValueAdjusterButton`
 - Figma style tokens: `src/tokens/figma-tokens.json` and `src/tokens/figmaTokens.ts`
 - Figma component backlog: `docs/component-backlog/figma-components.md`
@@ -36,6 +38,10 @@ npm install
 npm run storybook
 npm run build-storybook
 npm run build
+npm run native:install
+npm run native:storybook
+npm run native:storybook:ios
+npm run native:storybook:android
 ```
 
 ## Storybook Review
@@ -50,6 +56,35 @@ npm run storybook
 Default local URL:
 
 - `http://127.0.0.1:6006`
+
+## Native Storybook Review
+
+Native review lives in `native-storybook` and imports the React Native component layer from `src/native`.
+
+Install the native catalog dependencies:
+
+```bash
+npm run native:install
+```
+
+Run the on-device Expo Storybook catalog:
+
+```bash
+npm run native:storybook
+```
+
+Platform shortcuts:
+
+```bash
+npm run native:storybook:ios
+npm run native:storybook:android
+```
+
+Fallback Expo catalog screen without Storybook:
+
+```bash
+npm --prefix native-storybook run start
+```
 
 Shared review:
 

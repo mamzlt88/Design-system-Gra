@@ -5,7 +5,12 @@
   "scripts": {
     "build": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "native:install": "npm --prefix native-storybook install",
+    "native:storybook": "npm --prefix native-storybook run storybook",
+    "native:storybook:ios": "npm --prefix native-storybook run storybook:ios",
+    "native:storybook:android": "npm --prefix native-storybook run storybook:android",
+    "native:storybook:web": "npm --prefix native-storybook run storybook:web"
   },
   "dependencies": {
     "react": "^18.3.1",

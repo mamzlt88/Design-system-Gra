@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
 
-import type { StatusBadgeStatus, StatusBadgeStyle } from '../../components/StatusBadge';
 import { nativeTokens } from '../tokens';
+import type { StatusBadgeStatus, StatusBadgeStyle } from './nativeComponentTypes';
 
 export type NativeStatusBadgeProps = {
   label?: string;

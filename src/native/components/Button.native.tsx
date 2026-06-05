@@ -147,7 +147,7 @@ export function NativeButton({
 }: NativeButtonProps) {
   const isDisabled = state === 'disabled';
   const resolvedStyle = getNativeButtonStyle(variant, tone, state, darkMode);
-  const iconColor = resolvedStyle.text.color;
+  const iconColor = typeof resolvedStyle.text.color === 'string' ? resolvedStyle.text.color : undefined;
   const content = label ?? children;
 
   return (

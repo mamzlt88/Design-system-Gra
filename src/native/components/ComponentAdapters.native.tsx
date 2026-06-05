@@ -1,45 +1,60 @@
 import type { ReactNode } from 'react';
 import { Pressable, StyleSheet, Text, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
 
-import type { AppHeaderSize, AppHeaderType } from '../../components/AppHeader';
-import type { AttendanceReportRowsType } from '../../components/AttendanceReportRows';
-import type { CheckboxListItem } from '../../components/CheckboxList';
-import type { CheckboxButtonTone } from '../../components/CheckboxButton';
-import type { CheckboxRadioButtonType } from '../../components/CheckboxRadioButton';
-import type { CircularSpinnerRotation, CircularSpinnerSize } from '../../components/CircularSpinner';
-import type { ColorIndicatorColor } from '../../components/ColorIndicator';
-import type { GuidanceAvatarType } from '../../components/GuidanceAvatar';
-import type { IconContainerColor, IconContainerStyle } from '../../components/IconContainer';
-import type { IconName } from '../../components/Icon';
-import type { InformationButtonState, InformationButtonTextSize } from '../../components/InformationButton';
-import type { InformationalCardBgColor } from '../../components/InformationalCard';
-import type { LanguageImageLanguage } from '../../components/LanguageImage';
-import type { LanguageSelectorState } from '../../components/LanguageSelector';
-import type { LastPaymentsRowsType } from '../../components/LastPaymentsRows';
-import type { LoanApprovalInProgressType } from '../../components/LoanApprovalInProgress';
-import type { LogoType } from '../../components/Logo';
-import type { MambuWebviewTableSize, MambuWebviewTableType } from '../../components/MambuWebviewTable';
-import type { NavigationalListItemLeading, NavigationalListItemState } from '../../components/NavigationalListItem';
-import type { NotificationBadgeSize } from '../../components/NotificationBadge';
-import type { NotificationIconType } from '../../components/NotificationIcon';
-import type { OptionSelectionOption } from '../../components/OptionSelectionBottomSheet';
-import type { PastLoansRowsType } from '../../components/PastLoansRows';
-import type { PaymentStatusRowState } from '../../components/PaymentStatusRow';
-import type { PendingBalanceRowsType } from '../../components/PendingBalanceRows';
-import type { SavingsGoalType } from '../../components/SavingsGoal';
-import type { SavingsProgramLogoType } from '../../components/SavingsProgramLogo';
-import type { SectionBarIcon, SectionBarInteraction, SectionBarState } from '../../components/SectionBar';
-import type { SideBarItemPressedStyle, SideBarItemState } from '../../components/SideBarItem';
-import type { StandardModalType } from '../../components/StandardModal';
-import type { StatusIndicatorStatus } from '../../components/StatusIndicator';
-import type { SwitchState } from '../../components/Switch';
-import type { TooltipArrowAlignment, TooltipArrowPlacement } from '../../components/Tooltip';
-import type { UserAvatarSize, UserAvatarType, UserAvatarVariant } from '../../components/UserAvatar';
-import type { WebHeaderSize, WebHeaderState } from '../../components/WebHeader';
 import { NativeButton, type NativeButtonState } from './Button.native';
 import { NativeIcon } from './Icon.native';
 import { NativeStatusBadge } from './StatusBadge.native';
 import { nativeTokens } from '../tokens';
+import type {
+  AppHeaderSize,
+  AppHeaderType,
+  AttendanceReportRowsType,
+  CheckboxButtonTone,
+  CheckboxListItem,
+  CheckboxRadioButtonType,
+  CircularSpinnerRotation,
+  CircularSpinnerSize,
+  ColorIndicatorColor,
+  GuidanceAvatarType,
+  IconContainerColor,
+  IconContainerStyle,
+  IconName,
+  InformationButtonState,
+  InformationButtonTextSize,
+  InformationalCardBgColor,
+  LanguageImageLanguage,
+  LanguageSelectorState,
+  LastPaymentsRowsType,
+  LoanApprovalInProgressType,
+  LogoType,
+  MambuWebviewTableSize,
+  MambuWebviewTableType,
+  NavigationalListItemLeading,
+  NavigationalListItemState,
+  NotificationBadgeSize,
+  NotificationIconType,
+  OptionSelectionOption,
+  PastLoansRowsType,
+  PaymentStatusRowState,
+  PendingBalanceRowsType,
+  SavingsGoalType,
+  SavingsProgramLogoType,
+  SectionBarIcon,
+  SectionBarInteraction,
+  SectionBarState,
+  SideBarItemPressedStyle,
+  SideBarItemState,
+  StandardModalType,
+  StatusIndicatorStatus,
+  SwitchState,
+  TooltipArrowAlignment,
+  TooltipArrowPlacement,
+  UserAvatarSize,
+  UserAvatarType,
+  UserAvatarVariant,
+  WebHeaderSize,
+  WebHeaderState,
+} from './nativeComponentTypes';
 
 type NativeBaseProps = {
   accessibilityLabel?: string;
