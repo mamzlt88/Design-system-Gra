@@ -59,16 +59,18 @@ import {
   nativeTokens,
 } from '../../src/native';
 
-type CatalogSection = {
+export type NativeCatalogItem = {
+  id: string;
+  name: string;
+  node: ReactNode;
+  wide?: boolean;
+};
+
+export type NativeCatalogSection = {
   id: string;
   title: string;
   description: string;
-  items: Array<{
-    id: string;
-    name: string;
-    node: ReactNode;
-    wide?: boolean;
-  }>;
+  items: NativeCatalogItem[];
 };
 
 const palette = nativeTokens.color;
@@ -82,7 +84,7 @@ function DemoCard({ children, name, wide }: { children: ReactNode; name: string;
   );
 }
 
-function Section({ section }: { section: CatalogSection }) {
+function Section({ section }: { section: NativeCatalogSection }) {
   return (
     <View style={styles.section}>
       <Text style={styles.sectionTitle}>{section.title}</Text>
@@ -102,7 +104,7 @@ const rowStyle: ViewStyle = {
   minWidth: 300,
 };
 
-const sections: CatalogSection[] = [
+export const nativeCatalogSections: NativeCatalogSection[] = [
   {
     id: 'foundations',
     title: 'Foundations',
@@ -232,6 +234,69 @@ const sections: CatalogSection[] = [
   },
 ];
 
+function getNativeCatalogSection(sectionId: string) {
+  return nativeCatalogSections.find((section) => section.id === sectionId);
+}
+
+function getNativeCatalogItem(sectionId: string, itemId: string) {
+  const section = getNativeCatalogSection(sectionId);
+  const item = section?.items.find((sectionItem) => sectionItem.id === itemId);
+
+  return section && item ? { section, item } : undefined;
+}
+
+export type NativeCatalogGroupStoryProps = {
+  sectionId: string;
+};
+
+export function NativeCatalogGroupStory({ sectionId }: NativeCatalogGroupStoryProps) {
+  const section = getNativeCatalogSection(sectionId);
+
+  if (!section) {
+    return (
+      <View style={styles.storyFallback}>
+        <Text style={styles.cardTitle}>Native catalog group not found</Text>
+      </View>
+    );
+  }
+
+  return (
+    <ScrollView contentContainerStyle={styles.screen}>
+      <Section section={section} />
+    </ScrollView>
+  );
+}
+
+export type NativeComponentStoryProps = {
+  itemId: string;
+  sectionId: string;
+};
+
+export function NativeComponentStory({ itemId, sectionId }: NativeComponentStoryProps) {
+  const result = getNativeCatalogItem(sectionId, itemId);
+
+  if (!result) {
+    return (
+      <View style={styles.storyFallback}>
+        <Text style={styles.cardTitle}>Native component story not found</Text>
+      </View>
+    );
+  }
+
+  return (
+    <ScrollView contentContainerStyle={styles.singleStoryScreen}>
+      <View style={styles.header}>
+        <Text style={styles.eyebrow}>{result.section.title}</Text>
+        <Text style={styles.title}>{result.item.name}</Text>
+        <Text style={styles.description}>{result.section.description}</Text>
+      </View>
+      <DemoCard name={result.item.name} wide={result.item.wide ?? true}>
+        {result.item.node}
+      </DemoCard>
+    </ScrollView>
+  );
+}
+
 export function NativeCatalogScreen() {
   return (
     <ScrollView contentContainerStyle={styles.screen}>
@@ -242,7 +307,7 @@ export function NativeCatalogScreen() {
           Native Storybook coverage for every public native adapter exported from src/native.
         </Text>
       </View>
-      {sections.map((section) => (
+      {nativeCatalogSections.map((section) => (
         <Section key={section.id} section={section} />
       ))}
     </ScrollView>
@@ -311,6 +376,18 @@ const styles = StyleSheet.create({
     fontFamily: nativeTokens.typography.subHeadingSemiBold.fontFamily,
     fontSize: 22,
     fontWeight: 700,
+  },
+  singleStoryScreen: {
+    backgroundColor: '#F8F7F3',
+    gap: nativeTokens.spacing['3xl'],
+    minHeight: '100%',
+    padding: nativeTokens.spacing['3xl'],
+  },
+  storyFallback: {
+    backgroundColor: palette.grey00,
+    borderRadius: nativeTokens.radius.md,
+    margin: nativeTokens.spacing['3xl'],
+    padding: nativeTokens.spacing['3xl'],
   },
   title: {
     color: palette.grey80,
